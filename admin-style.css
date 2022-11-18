@@ -82,6 +82,35 @@ body{
     transition: 0.3s ease;
 
 }
+#menu .logout{
+    padding-top: 200px;
+    padding-bottom: 30px;
+}
+
+#menu .logout li{
+    list-style: none;
+    padding: 15px 0;
+    transition: 0.3s ease;
+
+}
+#menu .logout li i{
+    color: #210E54;
+    width: 30px;
+    height: 30px;
+    line-height: 30px ;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+
+}
+
+#menu .logout li a{
+    color: red;
+    font-weight: 300px;
+    transition: 0.3s ease;
+    text-decoration: none;
+
+}
 
 #interface{
     width: calc(100% - 300px);
