@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>LOGIN</title>
-        <link rel = "stylesheet" type = "text/css" href = "forgotstyle.css" />
+        <link rel = "stylesheet" type = "text/css" href = "./css/forgotstyle.css" />
     </head>
     <body>
     <h2>Forgot Password?</h2>
