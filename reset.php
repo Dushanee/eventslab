@@ -25,7 +25,7 @@
     <head>
         <meta charset="utf-8">
         <title>Password reset</title>
-        <link rel = "stylesheet" type = "text/css" href = "resetstyle.css" />
+        <link rel = "stylesheet" type = "text/css" href = "./css/resetstyle.css" />
     </head>
     <body>
         
