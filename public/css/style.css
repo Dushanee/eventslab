@@ -143,6 +143,14 @@ body {
     margin-right: 20px;
 }
 
+#bell-btn {
+    display: none;
+    color: #15141B;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
 .i-name {
     color: #210E54;
     margin-top: 70px;

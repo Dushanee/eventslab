@@ -30,8 +30,8 @@ if (isset($_SESSION['username'])) {
         </div>
         <div class="items">
             <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/service">Service Providers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="#">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
 
@@ -66,40 +66,6 @@ if (isset($_SESSION['username'])) {
         </div>
         <h3 class="i-name">Dashboard</h3>
 
-        <div class="values">
-            <div class="val-box">
-                <i class='bx bx-search-alt'></i>
-                <div>
-                    <h3>2812</h3>
-                    <span>new users</span>
-                </div>
-
-            </div>
-            <div class="val-box">
-                <i class='bx bx-search-alt'></i>
-                <div>
-                    <h3>2812</h3>
-                    <span>new users</span>
-                </div>
-
-            </div>
-            <div class="val-box">
-                <i class='bx bx-search-alt'></i>
-                <div>
-                    <h3>2812</h3>
-                    <span>new users</span>
-                </div>
-
-            </div>
-            <div class="val-box">
-                <i class='bx bx-search-alt'></i>
-                <div>
-                    <h3>2812</h3>
-                    <span>new users</span>
-                </div>
-
-            </div>
-        </div>
 
         <div class="board">
             <table width="100%">
