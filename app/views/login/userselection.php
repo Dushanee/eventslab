@@ -10,11 +10,11 @@
             <form>
                
                 <div class="row button">
-                <button ><a href="<?php echo BASEURL ?>/login">Admin</button><br><br>
+                <button ><a href="<?php echo BASEURL ?>/login/admin">Admin</button><br><br>
                 </div>
 
                 <div class="row button">
-                <button ><a href="<?php echo BASEURL ?>/login">Customer Suport</button><br><br>
+                <button ><a href="<?php echo BASEURL ?>/login/support">Customer Suport</button><br><br>
                 </div>
             </form>
         </div>
