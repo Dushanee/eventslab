@@ -25,13 +25,13 @@ if (isset($_SESSION['username'])) {
 <body>
     <section id="menu">
         <div class="logo">
-            <img src="images/logo.png" alt="">
+            <img src="<?php echo BASEURL ?>/images/logo.png" alt="">
             <h2>EVENT LABS</h2>
         </div>
         <div class="items">
             <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="customer">Customers</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Service Providers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/service">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
 
@@ -60,37 +60,37 @@ if (isset($_SESSION['username'])) {
 
             <div class="profile">
             <i id="bell-btn" class='bx bxs-bell'></i>
-                <img src="images/1.jpg" alt="">
+                <img src="<?php echo BASEURL ?>/images/1.jpg" alt="">
 
             </div>
         </div>
-        <h3 class="i-name">Dashboard</h3>
+        <h3 class="i-name">Customer Details</h3>
 
+       
+                    <button class="button-sec" type="submit" value="add">Add Customers </button>
+      
 
         <div class="board">
             <table width="100%">
                 <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Title</td>
+                    <tr>  
+                        <td>Id</td>
+                        <td>Details</td>
                         <td>Status</td>
-                        <td>Role</td>
+                        <td>Operations</td>
                         <td></td>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <tr>
+                    <tr> 
+                        <td>001</td>
                         <td class="people">
-                            <img src="images/2.jpg" alt="">
+                            <img src="<?php echo BASEURL ?>/images/2.jpg" alt="">
                             <div class="people-de">
                                 <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
+                   
                             </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
                         </td>
 
 
@@ -98,187 +98,13 @@ if (isset($_SESSION['username'])) {
                             <p>active</p>
                         </td>
 
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
+                      
 
-                        <td class="edit"><a href="#">Edit</a></td>
+                        <td class="edit"><a href="#">View</a></td>
                     </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
 
 
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
+          
                 </tbody>
             </table>
 

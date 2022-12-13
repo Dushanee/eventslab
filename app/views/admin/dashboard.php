@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) {
         <div class="items">
             <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/service">Service Providers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="adminFunnction/service">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
 
@@ -317,6 +317,12 @@ if (isset($_SESSION['username'])) {
             </table>
 
         </div>
+
+        <script>
+            $('#menu-btn').click(function() {
+                $('#menu').toggleClass("active");
+            })
+        </script>
 
     </section>
 
