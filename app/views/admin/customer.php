@@ -92,25 +92,48 @@ if (isset($_SESSION['username'])) {
                    
                             </div>
                         </td>
-
-
                         <td class="active">
                             <p>active</p>
                         </td>
-
-                      
-
-                        <td class="edit"><a href="#">View</a></td>
+                          <td class="edit"><a href="#">View</a></td>
                     </tr>
 
-
-          
                 </tbody>
             </table>
-
         </div>
-
     </section>
+
+    <div class="container">
+
+
+<form action="/action_page.php">
+    <div class="col">
+        <label for="id">User Id</label><br>
+        <input type="text" id="id" name="id" placeholder="1"><br>
+    </div>
+    <div class="col">
+        <label for="name">Full name</label><br>
+        <input type="text" id="name" name="name" placeholder="user"><br>
+    </div>
+
+    <div class="col">
+        <label for="email">Email Address</label><br>
+        <input type="text" id="email" name="email" placeholder="user@gmail.com"><br>
+    </div>
+    <div class="col">
+        <label for="uName">User Name</label><br>
+        <input type="text" id="uName" name="uName" placeholder="user123"><br>
+    </div>
+    <div class="col">
+        <label for="password">Temporary Password</label><br>
+        <input type="password" id="pwd" name="pwd" placeholder="123456"><br>
+    </div>
+
+    <div class="col">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
 
 
 </body>
