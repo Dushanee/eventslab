@@ -385,7 +385,8 @@ label {
     display: inline-block;
 }
 
-input[type=submit] {
+
+/* input[type=submit] {
     background-color: #210E54;
     margin-top: 20px;
     color: white;
@@ -398,7 +399,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #7281A3;
-}
+} */
 
 .container {
     margin-top: 165px;

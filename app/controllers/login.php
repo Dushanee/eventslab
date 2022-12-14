@@ -26,7 +26,7 @@ class login extends Controller
 
             $this->login($username, $password, 'admin');
         } else {
-            header("Location: " . BASEURL );
+            header("Location: " . BASEURL."/login/admin" );
         }
     }
 

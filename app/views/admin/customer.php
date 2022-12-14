@@ -3,7 +3,7 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-  // echo $_SESSION['username'];
+  echo $_SESSION['username'];
 
 } else {
   echo '<br>You are not logged in';
@@ -30,10 +30,10 @@ if (isset($_SESSION['username'])) {
         </div>
         <div class="items">
             <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/service">Service Providers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/service">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/welcome/signout">Log Out</a></li>
 
 
         </div>
@@ -106,31 +106,30 @@ if (isset($_SESSION['username'])) {
     <div class="container">
 
 
-<form action="/action_page.php">
+<form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
+    
     <div class="col">
-        <label for="id">User Id</label><br>
-        <input type="text" id="id" name="id" placeholder="1"><br>
-    </div>
-    <div class="col">
-        <label for="name">Full name</label><br>
-        <input type="text" id="name" name="name" placeholder="user"><br>
+        <label>Full name</label><br>
+        <input type="text" name="name" placeholder="user"><br>
     </div>
 
     <div class="col">
-        <label for="email">Email Address</label><br>
-        <input type="text" id="email" name="email" placeholder="user@gmail.com"><br>
+        <label>Email Address</label><br>
+        <input type="text" name="email" placeholder="user@gmail.com"><br>
     </div>
     <div class="col">
-        <label for="uName">User Name</label><br>
-        <input type="text" id="uName" name="uName" placeholder="user123"><br>
+        <label >User Name</label><br>
+        <input type="text" name="username" placeholder="user123"><br>
     </div>
     <div class="col">
-        <label for="password">Temporary Password</label><br>
-        <input type="password" id="pwd" name="pwd" placeholder="123456"><br>
+        <label>Temporary Password</label><br>
+        <input type="password" name="password" placeholder="123456"><br>
     </div>
 
     <div class="col">
-        <input type="submit" value="Submit">
+    <button>
+                <span class="btnText">Create customer</span>
+              </button>
     </div>
 </form>
 </div>
