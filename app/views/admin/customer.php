@@ -107,7 +107,10 @@ if (isset($_SESSION['username'])) {
 
 
 <form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
-    
+<div class="col">
+        <label>Customer ID</label><br>
+        <input type="text" name="id" placeholder="003"><br>
+    </div>
     <div class="col">
         <label>Full name</label><br>
         <input type="text" name="name" placeholder="user"><br>

@@ -8,12 +8,13 @@ class user extends Controller
         {
              if (isset($_POST['username'])) {
 
-                    $name = $_POST['name'];
+                     $id= $_POST['id'];
+                     $name = $_POST['name'];
                     $email = $_POST['email'];
                     $username = $_POST['username'];
                     $password = $_POST['password'];
 
-                    $this->model('insertModel')->insertCustomer($name, $email, $username, $password);
+                    $this->model('insertModel')->insertCustomer($id,$name, $email, $username, $password);
                     header("Location: " . BASEURL."/adminFunction/customer");
                     echo "username";
 
