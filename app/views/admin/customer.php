@@ -88,9 +88,9 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
                 </thead>
 
                 <tbody>
+              
                 <?php $i = 1; ?>
             <?php foreach($rows as $row) : ?>
-     
                     <tr> 
                         <td><?php echo $row["id"]; ?></td>
                         <td class="people">
@@ -150,31 +150,3 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
