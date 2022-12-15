@@ -8,7 +8,12 @@ if (isset($_SESSION['username'])) {
 } else {
   echo '<br>You are not logged in';
 }
+
+$conn = mysqli_connect("localhost", "root", "", "eventslab");
+$rows = mysqli_query($conn, "SELECT * FROM customer");
+
 ?>
+
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/style.css">
@@ -83,12 +88,15 @@ if (isset($_SESSION['username'])) {
                 </thead>
 
                 <tbody>
+                <?php $i = 1; ?>
+            <?php foreach($rows as $row) : ?>
+     
                     <tr> 
-                        <td>001</td>
+                        <td><?php echo $row["id"]; ?></td>
                         <td class="people">
                             <img src="<?php echo BASEURL ?>/images/2.jpg" alt="">
                             <div class="people-de">
-                                <h5>Jhon Doe</h5>
+                                <h5><?php echo $row["name"]; ?></h5>
                    
                             </div>
                         </td>
@@ -96,7 +104,10 @@ if (isset($_SESSION['username'])) {
                             <p>active</p>
                         </td>
                           <td class="edit"><a href="#">View</a></td>
+
+                          <td><button class="delBtn"><span>Delete</span></button></td>
                     </tr>
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>
