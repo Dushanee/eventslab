@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>LOGIN</title>
-        <link rel = "stylesheet" type = "text/css" href = "indexstyle.css" />
+        <link rel = "stylesheet" type = "text/css" href = "./css/indexstyle.css" />
     </head>
     <body>
     <h2><b>Customer Support Management</b></h2>
@@ -13,7 +13,7 @@
                 <p class = "error"><?php echo $_GET['error'];?></p>
            <?php } ?>
             <label class = "label-1">User Name</label>
-            <input class = "input-1" type="text" name = "uname" placeholder="enter your username">
+            <input class = "input-1" type="text" name = "username" placeholder="enter your username">
 
             <label class = "label-2">Password</label>
             <input class = "input-2" type="password" name = "password" placeholder="enter your password">
