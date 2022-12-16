@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin page</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="admin-style.css">
-</head>
+session_start();
+
+if (isset($_SESSION['username'])) {
+  // echo $_SESSION['username'];
+
+} else {
+  echo '<br>You are not logged in';
+}
+?>
+
+
+<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/style.css">
+
+
+
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js">
+    </script>
+
 
 <body>
     <section id="menu">
@@ -18,15 +30,11 @@
         </div>
         <div class="items">
             <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="adminFunnction/service">Service Providers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
 
-
-        </div>
-
-        <div class="logout">
-            <li><i class='bx  bx-right-arrow'></i><a href="#">logout</a></li>
 
         </div>
 
@@ -38,6 +46,10 @@
     <section id="interface">
         <div class="navigation">
             <div class="n1">
+                <div>
+                    <i id="menu-btn" class='bx bx-menu'>
+                    </i>
+                </div>
                 <div class="search">
                     <i class='bx bx-search-alt'></i>
                     <input type="text" placeholder="search">
@@ -47,7 +59,7 @@
             </div>
 
             <div class="profile">
-                <i class='bx bx-search-alt'></i>
+            <i id="bell-btn" class='bx bxs-bell'></i>
                 <img src="images/1.jpg" alt="">
 
             </div>
@@ -306,9 +318,41 @@
 
         </div>
 
+        <script>
+            $('#menu-btn').click(function() {
+                $('#menu').toggleClass("active");
+            })
+        </script>
+
     </section>
 
 
 </body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
