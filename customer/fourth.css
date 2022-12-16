@@ -1,0 +1,167 @@
+.loginForm{
+    width: 500px;
+    height: 520px;
+    background-color: rgb(214, 208, 208);
+    background-color: white;
+    box-shadow: 0px 10px 20px 6px rgba(3, 3, 3, 0.2);
+    margin-top: 100px;
+    margin-left: 480px;  
+}
+.overlay+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+    font-weight: 500;
+    margin-left: 690px;
+    margin-top: 60px;
+}
+.userNamelbl{
+    position: absolute;
+    width: 200px;
+    margin-top: 42px;
+    margin-left: 48px;
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: lightslategray;
+}
+#userName{
+    width: 400px;
+    height: 25px;
+    border: none;
+    background-color: rgb(223 218 218 / 34%);
+    border-radius: 10px;
+    text-align: left;
+    color: rgb(50, 48, 48);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 70px;
+    margin-left: 40px;
+    text-indent: 10px;
+    transition: 1s;
+}
+#userName:focus{
+    outline: none;
+    border-color: rgb(48, 47, 47);
+    box-shadow: 1px 2px 2px 3px rgba(3, 3, 3, 0.2);
+}
+.passwordlbl{
+    position: absolute;
+    width: 200px;
+    margin-top: 130px;
+    margin-left: -397px;
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: lightslategray;
+}
+#pwd{
+    width: 400px;
+    height: 25px;
+    border: none;
+    background-color: rgb(223 218 218 / 34%);
+    border-radius: 10px;
+    text-align: left;
+    color: rgb(50, 48, 48);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 64px;
+    margin-left: 38px;
+    text-indent: 10px;
+    transition: 1s;
+}
+#pwd:focus{
+    outline: none;
+    border-color: rgb(48, 47, 47);
+    box-shadow: 1px 2px 2px 3px rgba(3, 3, 3, 0.2);
+}
+#eyebtn{
+    position: absolute;
+    width: 28px;
+    height: 26px;
+    background-image: url("../images1/eye_32px.png");
+    background-repeat: no-repeat;
+    background-size:25px;
+    background-position: 50% 50%;
+    border: none;
+    background-color: transparent;
+    margin-top: -26px;
+    margin-left: 400px;
+    cursor: pointer;
+}
+#eyebtn:hover{
+    background-color: rgb(187, 184, 184);
+    border-radius: 50px;
+}
+#submit{
+    position: absolute;
+    margin-top: 170px;
+    margin-left: -255px;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(119, 116, 116);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+}
+#submit:hover{
+    cursor: pointer;
+}
+.line1{
+    width: 100px;
+    height: -2px;
+    background-color: rgb(215, 209, 209);
+    margin-top: 150px;
+    margin-left: 75px;
+}
+.line1+p{
+    color: grey;
+    margin-top: -20px;
+    margin-left: -18px;
+}    
+.line2{
+    width: 100px;
+    height: -2px;
+    background-color: rgb(215, 209, 209);
+    margin-top: -25px;
+    margin-left: 305px;
+}
+.login_google{
+    width: 25px;
+    height: auto;
+    margin-top: 10px;
+    margin-left: 205px;
+    cursor: pointer;
+}
+.login_facebook{
+    width: 25px;
+    height: auto;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.login_facebook+p{
+    color:rgb(115, 113, 113);
+    text-align: center;
+}
+p a{
+   color: rgb(11, 130, 170);
+}
+#create_B_account{
+    margin-left: -20px;
+}
+#errorMessage{
+    color: red;
+    margin-left: 140px;
+    margin-top: 40px;
+    position: absolute;
+}
+p{
+    color:rgb(115, 113, 113);
+    text-align: center;
+}
+.forgrtPWD{
+    position: absolute;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 150px;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
