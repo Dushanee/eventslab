@@ -9,67 +9,59 @@
        
     </head>
     <body>
-        <div class="split-screen">
-            <div class="left">
-                <section class="eventslab">
-                    <p>EVENTS LAB </p>
-                </section>
+        <div class="regform">
+            <div class="title">
+                LETS CREATE YOUR BUSSINESS ACCOUNT
             </div>
-            <div class="right">
-                <form>
-                    <section class="eventslab">
-                       
-                        <h4>LETS CREATE YOUR BUSSINESS ACCOUNT</h4>
-						
-						<h6>Tell us about you and your business so we can verify it. 
-						Please provide information per your official documents
-						to get verified quicker</h6>
-                       
-					   <div class="login-container">   
-                        </div>
-                    </section> 
-					<div class="input-container name">
-                        <label for="Bisname">Business name</label>
-                        <input type="text" placeholder="Enter your business name">
-                    </div>
-                    <div class="input-container name">
-                        <label for="Bpname">Business telphone number</label>
-                        <input type="tel" placeholder="Enter your telphone number">
-                    </div>
-					
-					
-					<label for="business type">business type</label>
-					
-                        
-					
-						<select name="business type" id="bs type"   class="dropbtn">
-						  <option value="v">Venue provider</option>
-						  <option value="c">catering service</option>
-						  <option value="d">decoration provider</option>
-						  <option value="p">photographer</option>
-						  <option value="l">Lights and sound</option>
-						  <option value="e">Entertainment</option>
-						  <option value="o">Other</option>
-						</select>
-					
-					<div class="input-container name">
-                        <label for="Badress">Address</label>
-                        <input type="text" placeholder="Enter your Business address">
-                    </div>
-					
-                        <label class="checkbox-container">
-                            <input type="checkbox">
-                            <span class="checkmark">I agree to Events lab <a href="x">privacy policy</a></span>
-                        
-                        </label>
-                   
-					
-                    <button class="submit-btn" type="submit"> Create Account</button>
+            <div class="form">
+               <div class="inputfield">
+                  <label>Business Name</label>
+                  <input type="text" class="input">
+               </div>  
+                <div class="inputfield">
+                  <label>bussiness address</label>
+                  <input type="text" class="input">
+               </div> 
+               
+               <div class="inputfield">
+                <label>Business Type</label>
+                <div class="custom_select">
+                  <select>
+                    <option value="v">venue provider</option>
+                    <option value="c">catering service</option>
+                    <option value="d">decoration provider</option>
+                    <option value="sl">sounds and light</option>
+                    <option value="p">photographer</option>
+                    <option value="e">entertainment</option>
+                    <option value="o">other</option>
+
+                  </select>
+                </div>
+             </div> 
+
+              <div class="inputfield">
+                  <label>Phone Number</label>
+                  <input type="text" class="input">
+               </div> 
+              <div class="inputfield">
+                  <label>Address</label>
+                  <textarea class="textarea"></textarea>
+               </div> 
+              
+              <div class="inputfield terms">
+                  <label class="check">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                  <p>Agreed to Events lab terms and conditions</p>
+               </div> 
+              <div class="inputfield">
+                <input type="submit" value="Submit" class="btn">
+              </div>
+            </div>
+        </div>	         
                     
                 
-                    
-                </form>
-            </div>	
-         </div>
+            	
     </body>
 </html>

@@ -12,7 +12,7 @@
 <body>
 
 <div class="topnav">
-  <img src="logo.png" alt="logo" style="width:100px;height:45px;" >
+  <img src="../img/logo.png" alt="logo" style="width:100px;height:45px;" >
   <div class="topnav-right">
   <a  href="#home">Home</a>
   <a href="#">Our services</a>
@@ -23,15 +23,20 @@
 </div>
 
 
-<form action="/action_page.php" class="container">
+<form action="splogin.php" method="post" class="container">
     <h1><center>Events Lab - Login<center></h1>
-    <form method="post">
+    
     <h3>
+
+    <?php if (isset($_GET['error'])) {?>
+            <p class="error"><?php echo ($_GET['error']); ?></p>
+            <?php } ?>
+
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email" >
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" >
 
     <button type="submit" class="button">Login</button></h3>
 	
