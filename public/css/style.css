@@ -47,10 +47,17 @@
         background: #e4dee9;
         cursor: pointer;
     }
-    
-    #menu .items li:nth-child(1) {
+    /* #menu .items li:nth-child(1) {
         border-left: 4px solid #FAF9F8;
     }
+    
+    #menu .items li:nth-child(2) {
+        border-left: 4px solid #FAF9F8;
+    }
+    
+    #menu .items li:nth-child(3) {
+        border-left: 4px solid #FAF9F8;
+    } */
     
     #menu .items li i {
         color: #210E54;
@@ -85,7 +92,7 @@
         align-items: center;
         justify-content: space-between;
         background: #e4dee9;
-        padding: 15px 30px;
+        padding: 10px 30px;
         border-bottom: 3px solid #210E54;
         position: fixed;
         width: calc(100% - 300px);
@@ -107,7 +114,7 @@
     #interface .navigation .search input {
         border: none;
         outline: none;
-        font-size: 14px;
+        font-size: 12px;
     }
     
     #interface .navigation .profile {
@@ -144,24 +151,27 @@
     }
     
     .button-sec {
-        background-image: linear-gradient(92.88deg, #ada4e0 9.16%, #654a85 43.89%, #420079 64.72%);
-        margin-left: 30px;
+        margin-left: 40px;
         margin-top: 20px;
         border-radius: 8px;
         border-style: none;
         box-sizing: border-box;
-        color: #FFFFFF;
+        background: #210E54;
         cursor: pointer;
-        flex-shrink: 0;
-        font-size: 16px;
-        font-weight: 500;
-        height: 40px;
-        padding: 4px;
-        text-align: center;
+        height: fit-content;
+        padding: 3px;
         transition: all .5s;
     }
     
-    .button-36:hover {
+    span {
+        color: #FAF9F8;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    txt .btn .button-36:hover {
         box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
         transition-duration: .1s;
     }
@@ -449,3 +459,8 @@ input[type=submit]:hover {
     /* .pop-up {
         margin-left: 400px;
     } */
+    
+    u {
+        color: #e4dee9;
+        text-decoration-thickness: 10px;
+    }

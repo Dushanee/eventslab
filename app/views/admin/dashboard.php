@@ -3,11 +3,14 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-  // echo $_SESSION['username'];
-
+    // echo $_SESSION['username'];
 } else {
-  echo '<br>You are not logged in';
+    echo '<br>You are not logged in';
 }
+
+$conn = mysqli_connect("localhost", "root", "", "eventslab");
+$rows = mysqli_query($conn, "SELECT username FROM admin");
+
 ?>
 
 
@@ -18,20 +21,20 @@ if (isset($_SESSION['username'])) {
 
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js">
-    </script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js">
+</script>
 
 
 <body>
     <section id="menu">
         <div class="logo">
-            <img src="images/logo.png" alt="">
+            <img src="<?php echo BASEURL ?>/images/logo.png" alt="">
             <h2>EVENT LABS</h2>
         </div>
         <div class="items">
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunction/customer">Customers</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="adminFunnction/service">Service Providers</a></li>
+            <li> <u><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/admin">Dashboard</a></u></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/service">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="welcome/signout">Log Out</a></li>
 
@@ -58,12 +61,20 @@ if (isset($_SESSION['username'])) {
                 </div>
             </div>
 
+
             <div class="profile">
-            <i id="bell-btn" class='bx bxs-bell'></i>
-                <img src="images/1.jpg" alt="">
+                <?php $i = 1; ?>
+                <?php foreach ($rows as $row) : ?>
+                    <h5>Hi <?php echo $row["username"]; ?> </h5>
+                <?php endforeach; ?>
+                <i id="bell-btn" class='bx bxs-bell'></i>
+                <img src="<?php echo BASEURL ?>/images/1.jpg" alt="">
 
             </div>
         </div>
+
+
+
         <h3 class="i-name">Dashboard</h3>
 
         <div class="values">
@@ -101,222 +112,6 @@ if (isset($_SESSION['username'])) {
             </div>
         </div>
 
-        <div class="board">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Title</td>
-                        <td>Status</td>
-                        <td>Role</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Jhon Doe</h5>
-                                <p>Jhon@emwdw.com</p>
-                            </div>
-                        </td>
-
-                        <td class="people-des">
-                            <h5>Software engineer</h5>
-                            <p>Web dev</p>
-                        </td>
-
-
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-
-                        <td class="role">
-                            <p>owner</p>
-                        </td>
-
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
 
         <script>
             $('#menu-btn').click(function() {
@@ -328,31 +123,3 @@ if (isset($_SESSION['username'])) {
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   

@@ -33,8 +33,8 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
             <h2>EVENT LABS</h2>
         </div>
         <div class="items">
-            <li><i class='bx  bx-right-arrow'></i><a href="#">Dashboard</a></li>
-            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/customer">Customers</a></li>
+            <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/admin">Dashboard</a></li>
+            <li> <u><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/customer">Customers</a> </u></li>
             <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/adminFunction/service">Service Providers</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="#">Notifications</a></li>
             <li><i class='bx  bx-right-arrow'></i><a href="<?php echo BASEURL ?>/welcome/signout">Log Out</a></li>
@@ -71,8 +71,8 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
         <h3 class="i-name">Customer Details</h3>
 
 
-        <button>
-            <a href=#view> <span class="btnText">Create Customer</span></a>
+        <button class="button-sec">
+            <a href=#view> <span class="btntext"> + Create New Customer </span></a>
         </button>
 
 
@@ -148,7 +148,10 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
                         <label>Temporary Password</label><br>
                         <input type="password" name="password" placeholder="123456"><br>
                     </div>
-
+                    <div class="col">
+                        <label>Profile Picture</label><br>
+                        <input type="file" name="image" ><br>
+                    </div>
 
                     <div class="col">
                     <button type="submit" value="login">Submit </button>
