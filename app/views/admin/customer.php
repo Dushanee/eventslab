@@ -3,10 +3,9 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-  echo $_SESSION['username'];
-
+    // echo $_SESSION['username'];
 } else {
-  echo '<br>You are not logged in';
+    echo '<br>You are not logged in';
 }
 
 $conn = mysqli_connect("localhost", "root", "", "eventslab");
@@ -23,8 +22,8 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
 
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js">
-    </script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js">
+</script>
 
 
 <body>
@@ -64,21 +63,23 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
             </div>
 
             <div class="profile">
-            <i id="bell-btn" class='bx bxs-bell'></i>
+                <i id="bell-btn" class='bx bxs-bell'></i>
                 <img src="<?php echo BASEURL ?>/images/1.jpg" alt="">
 
             </div>
         </div>
         <h3 class="i-name">Customer Details</h3>
 
-       
-                    <button class="button-sec" type="submit" value="add">Add Customers </button>
-      
+
+        <button>
+            <a href=#view> <span class="btnText">Create Customer</span></a>
+        </button>
+
 
         <div class="board">
             <table width="100%">
                 <thead>
-                    <tr>  
+                    <tr>
                         <td>Id</td>
                         <td>Details</td>
                         <td>Status</td>
@@ -88,25 +89,25 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
                 </thead>
 
                 <tbody>
-              
-                <?php $i = 1; ?>
-            <?php foreach($rows as $row) : ?>
-                    <tr> 
-                        <td><?php echo $row["id"]; ?></td>
-                        <td class="people">
-                            <img src="<?php echo BASEURL ?>/images/2.jpg" alt="">
-                            <div class="people-de">
-                                <h5><?php echo $row["name"]; ?></h5>
-                   
-                            </div>
-                        </td>
-                        <td class="active">
-                            <p>active</p>
-                        </td>
-                          <td class="edit"><a href="#">View</a></td>
 
-                          <td><button class="delBtn"><span>Delete</span></button></td>
-                    </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($rows as $row) : ?>
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td class="people">
+                                <img src="<?php echo BASEURL ?>/images/2.jpg" alt="">
+                                <div class="people-de">
+                                    <h5><?php echo $row["name"]; ?></h5>
+
+                                </div>
+                            </td>
+                            <td class="active">
+                                <p>active</p>
+                            </td>
+                            <td class="edit"><a href="#">View</a></td>
+
+                            <td><button class="delBtn"><span>Delete</span></button></td>
+                        </tr>
                     <?php endforeach; ?>
 
                 </tbody>
@@ -114,39 +115,52 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
         </div>
     </section>
 
-    <div class="container">
 
 
-<form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
-<div class="col">
-        <label>Customer ID</label><br>
-        <input type="text" name="id" placeholder="003"><br>
-    </div>
-    <div class="col">
-        <label>Full name</label><br>
-        <input type="text" name="name" placeholder="user"><br>
-    </div>
 
-    <div class="col">
-        <label>Email Address</label><br>
-        <input type="text" name="email" placeholder="user@gmail.com"><br>
-    </div>
-    <div class="col">
-        <label >User Name</label><br>
-        <input type="text" name="username" placeholder="user123"><br>
-    </div>
-    <div class="col">
-        <label>Temporary Password</label><br>
-        <input type="password" name="password" placeholder="123456"><br>
-    </div>
 
-    <div class="col">
-    <button>
-                <span class="btnText">Create customer</span>
-              </button>
-    </div>
-</form>
-</div>
 
+    <div class="overlay" id="view">
+        <div class="pop-up">
+
+
+            <div class="container">
+
+                <form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
+                    <div class="col">
+                        <label>Customer ID</label><br>
+                        <input type="text" name="id" placeholder="003"><br>
+                    </div>
+                    <div class="col">
+                        <label>Full name</label><br>
+                        <input type="text" name="name" placeholder="user"><br>
+                    </div>
+
+                    <div class="col">
+                        <label>Email Address</label><br>
+                        <input type="text" name="email" placeholder="user@gmail.com"><br>
+                    </div>
+                    <div class="col">
+                        <label>User Name</label><br>
+                        <input type="text" name="username" placeholder="user123"><br>
+                    </div>
+                    <div class="col">
+                        <label>Temporary Password</label><br>
+                        <input type="password" name="password" placeholder="123456"><br>
+                    </div>
+
+
+                    <div class="col">
+                    <button type="submit" value="login">Submit </button>
+                </div>
+                    <div class="col">
+                        <button>
+                            <a href="<?php echo BASEURL ?>/adminFunction/customer"><span class="btnText">Close</span></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
