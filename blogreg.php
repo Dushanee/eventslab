@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="./css/indexstyle.css">
+	<link rel="stylesheet" type="text/css" href="./css/blogreg.css">
 </head>
 <body>
     <div class="form">
@@ -62,8 +61,8 @@
 		           name="pp">
 		  </div>
 		  
-		  <button type="submit" class="register">Sign Up</button>
-		  <a href="login.php" class="link">Login</a>
+		  <button type="submit" class="register">Sign Up</button><br />
+		  <p>Already registered? </p><a href="./bloglog.php" class="link">Login</a>
 		</form>
     </div>
 </body>

@@ -51,7 +51,7 @@ if(isset($_POST['pass']) &&
                $stmt = $conn->prepare($sql);
                $stmt->execute([$pass, $uname, $repass, $new_img_name]);
 
-               header("Location: ./blogreg.php?success=Your account has been created successfully");
+               header("Location: ./bloghome.php?success=Your account has been created successfully");
                 exit;
             }else {
                $em = "You can't upload files of this type";
@@ -71,7 +71,7 @@ if(isset($_POST['pass']) &&
        	$stmt = $conn->prepare($sql);
        	$stmt->execute([$pass, $uname, $repass]);
 
-       	header("Location: ./blogreg.php?success=Your account has been created successfully");
+       	header("Location: ./bloghome.php?success=Your account has been created successfully");
    	    exit;
       }
     }

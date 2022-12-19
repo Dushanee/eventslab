@@ -13,13 +13,15 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-
-    <link rel="stylesheet" href="./css/homestyle0.css">
     
+    <link rel="stylesheet" href="./css/homestyle0.css">
+
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+<i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
   <div class="sidebar">
     <div class="logo-details">
     <i class='bx bxs-balloon'></i>
@@ -27,13 +29,13 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
-      <li>
+    <li>
           <i class='bx bx-search' ></i>
          <input type="text" placeholder="Search...">
          <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="dashboard.php">
+        <a href="#">
         <i class='bx bxs-grid-alt' ></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -47,7 +49,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
        <span class="tooltip">User</span>
      </li>
      <li>
-       <a href="msgbox0.php">
+       <a href="#">
        <i class='bx bxs-conversation' ></i>
          <span class="links_name">Messages</span>
        </a>
@@ -61,7 +63,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
        <span class="tooltip">Blog</span>
      </li>
      <li>
-       <a href="reviewbox0.php">
+       <a href="#">
        <i class='bx bxs-comment-detail' ></i>
          <span class="links_name">Review</span>
        </a>
@@ -69,10 +71,10 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
      </li>
      <li>
        <a href="#">
-       <i class='bx bxs-calendar'></i>
-         <span class="links_name">Calender</span>
+       <i class='bx bxs-chart' ></i>
+         <span class="links_name">Overview</span>
        </a>
-       <span class="tooltip">Calender</span>
+       <span class="tooltip">Overview</span>
      </li>
      <li>
        <a href="#">
@@ -81,18 +83,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
        </a>
        <span class="tooltip">Notifications store</span>
      </li>
-     <li>
-       <a href="#">
-       <i class='bx bxs-message-dots'></i>
-         <span class="links_name">Live chat</span>
-       </a>
-       <span class="tooltip">Live chat</span>
-     </li>
      <li class="profile">
          <div class="profile-details">
            <img src="./images/santaq.jpg" alt="profileImg">
            <div class="name_job">
-             <div class="name"><?php echo $_SESSION['username'];?></div>
+             <div class="name">Hello, <?php echo $_SESSION['username'];?></div>
+             <div class="job">how's it going?</div>
            </div>
          </div>
          <a href="logout.php">
@@ -102,10 +98,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
     </ul>
   </div>
   <section class="home-section">
-  <div class="text">
-             <div class="name">Welcome back, <?php echo $_SESSION['username'];?></div>
-             <div class="job">It's good to see you again!</div>
-           </div>
+      <div class="text">Dashboard</div>
   </section>
   <script>
   let sidebar = document.querySelector(".sidebar");
@@ -137,7 +130,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
 <?php
 
 }else {
-    header("Location: index.php");
+    header("Location: blogreg.php");
     exit();
 }
 

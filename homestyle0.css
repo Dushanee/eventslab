@@ -252,3 +252,50 @@
   .bxs-balloon {
     color: #210E54;
   }
+
+  .home-section .name {
+    font-size: 25px;
+  }
+
+  .home-section .text .job {
+    font-size: 10px;
+  }
+
+  .home-section .text{
+    font-size: 13px;
+  }
+
+  td {
+    border: hidden;
+    height: 45px;
+    }
+
+  .UName {
+    width: 200px;
+    text-align: left;
+  }
+
+  .msg{
+    width: 500px;
+    text-align: left;
+  }
+
+  .review {
+    width: 500px;
+    text-align: left;
+  }
+.button{
+  width: 50px;
+  text-align: right;
+  
+}
+  
+  .home-section .message {
+    width: 800px;
+    background-color: #c1b9d6;
+    padding: 15px;
+    margin-top: 30px;
+    border: hidden;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+  }

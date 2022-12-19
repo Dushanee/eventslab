@@ -1,6 +1,7 @@
 <?php
 
 include 'db_conn.php';
+//include 'viewmsg.php';
 
 session_start();
    
@@ -15,7 +16,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="./css/homestyle0.css">
-    
+
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -104,8 +105,34 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
   <section class="home-section">
   <div class="text">
              <div class="name">Welcome back, <?php echo $_SESSION['username'];?></div>
-             <div class="job">It's good to see you again!</div>
-           </div>
+             <div class="job"></div><br>
+             <div class="message">
+              <table>
+                <tr>
+                  <th class="UName"></th>
+                  <th class="msg"></th>
+                  <th class="button"></th>
+                </tr>
+              <?php $query = "SELECT * FROM fromCustomers";
+$result = mysqli_query($conn, $query);
+
+while($view=mysqli_fetch_assoc($result)) {
+?>
+  <tr>
+    <td><b><?php echo $view['UName'];?></b></td>
+    <td><?php echo $view['msg'];?></td>
+    <td><a href="replyform.php" onclick="submitForm()"><i class='bx bx-reply'></a></i></td>
+  </tr>
+  <?php
+}
+?>
+</table>
+
+
+
+</div>
+  </div>
+           
   </section>
   <script>
   let sidebar = document.querySelector(".sidebar");

@@ -1,6 +1,7 @@
 <?php
 
 include 'db_conn.php';
+//include 'viewmsg.php';
 
 session_start();
    
@@ -13,7 +14,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-
+    
     <link rel="stylesheet" href="./css/homestyle0.css">
     
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -61,7 +62,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
        <span class="tooltip">Blog</span>
      </li>
      <li>
-       <a href="reviewbox0.php">
+       <a href="#">
        <i class='bx bxs-comment-detail' ></i>
          <span class="links_name">Review</span>
        </a>
@@ -104,8 +105,34 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
   <section class="home-section">
   <div class="text">
              <div class="name">Welcome back, <?php echo $_SESSION['username'];?></div>
-             <div class="job">It's good to see you again!</div>
-           </div>
+             <div class="job"></div><br>
+             <div class="message">
+              <table>
+                <tr>
+                  <th class="UName"></th>
+                  <th class="Review"></th>
+                  <th class="button"></th>
+                </tr>
+              <?php $query = "SELECT * FROM reviews";
+$result = mysqli_query($conn, $query);
+
+while($view=mysqli_fetch_assoc($result)) {
+?>
+  <tr>
+    <td><b><?php echo $view['UName'];?></b></td>
+    <td><?php echo $view['Review'];?></td>
+    <td><a href="Rateform.php" onclick="submitForm()"><i class='bx bxs-star'></i></a></td>
+  </tr>
+  <?php
+}
+?>
+</table>
+
+
+
+</div>
+  </div>
+           
   </section>
   <script>
   let sidebar = document.querySelector(".sidebar");

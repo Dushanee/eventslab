@@ -15,13 +15,13 @@
         $pass = validate($_POST['password']);
 
         if(empty($uname)) {
-            header("Location: index.php?error=User Name is required");
+            header("Location: bloglog.php?error=User Name is required");
             exit();
         }else if(empty($pass)) {
-            header("Location: index.php?error=Password is required");
+            header("Location: bloglog.php?error=Password is required");
             exit();
         }else {
-            $sql = "SELECT * FROM customersupport WHERE username='$uname' AND password='$pass'";
+            $sql = "SELECT * FROM blog_managers WHERE username='$uname' AND repassword='$repass'";
         }
 
         $result = mysqli_query($conn, $sql);
@@ -32,19 +32,19 @@
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['name'] = $row['name'];
                 $_SESSION['id'] = $row['id'];
-                $_SESSION['re_password'] = $row['re_password'];
+                $_SESSION['repassword'] = $row['repassword'];
                 $_SESSION['pp'] = $row['pp'];
-                header("Location: home0.php");
+                header("Location: bloghome.php");
                 exit();
             }
 
         }else {
-            header("Location: index.php?error=Incorrect username or password");
+            header("Location: bloglog.php?error=Incorrect username or password");
             exit();
         }
 
     }else {
-        header("Location: index.php?error");
+        header("Location: bloglog.php?error");
         exit();
     }
 

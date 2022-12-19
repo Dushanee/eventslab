@@ -13,7 +13,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-
+    
     <link rel="stylesheet" href="./css/homestyle0.css">
     
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -104,7 +104,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
   <section class="home-section">
   <div class="text">
              <div class="name">Welcome back, <?php echo $_SESSION['username'];?></div>
-             <div class="job">It's good to see you again!</div>
+             <div class="job"></div>
            </div>
   </section>
   <script>
