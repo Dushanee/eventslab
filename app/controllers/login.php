@@ -17,6 +17,8 @@ class login extends Controller
         $this->view('login/admin');
     }
 
+    
+
     public function adminLogin()
     {
         if (isset($_POST['username'])) {
@@ -26,10 +28,11 @@ class login extends Controller
 
             $this->login($username, $password, 'admin');
         } else {
-            header("Location: " . BASEURL );
+            header("Location: " . BASEURL."/login/admin" );
         }
     }
 
+ 
 
     public function login($username = null, $password = null, $usertype = null)
     {
