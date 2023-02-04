@@ -17,6 +17,8 @@ class login extends Controller
         $this->view('login/admin');
     }
 
+    
+
     public function adminLogin()
     {
         if (isset($_POST['username'])) {
