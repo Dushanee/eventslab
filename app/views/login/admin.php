@@ -82,10 +82,10 @@
                     </tr>
                     <tr>
                         <td class="label-td">
-                        <input type="text" name="username" placeholder="Username" class="input-text">
+                        <input type="text" name="email" placeholder="Username" class="input-text">
                         </td>
                     </tr>
-                    <tr>
+                    <tr
                         <td class="label-td">
                             <label for="userpassword" class="form-label">Password: </label>
                         </td>

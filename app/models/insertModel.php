@@ -23,7 +23,11 @@ class insertModel extends Model
     
       
  }
-
+ public function insertMessage($id, $title, $message) {
+    $this->insert('message', ['service_provider_id'=> $service_provider_id, 'sp_email'=> $sp_email,'sp_name '=> $sp_name ,'password'=> $password]);
+    
+      
+ }
   //  public function insertAdmin(  $name, $email,$username,$password)
   //  {
   //    $this->insert('customer', [ 'name'=> $name,'email'=> $email,'username'=> $username,'password'=> $password]);

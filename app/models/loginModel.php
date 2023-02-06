@@ -8,9 +8,9 @@ class loginModel extends Model
     {
         parent::__construct();
     }
-    public function login($username, $password)
+    public function login($email, $password)
     {
-        return $this->get("admin", "username = '$username' AND password = '$password'");
+        return $this->get("users", "email = '$email' AND password = '$password'");
     
     }
    

@@ -21,12 +21,12 @@ class login extends Controller
 
     public function adminLogin()
     {
-        if (isset($_POST['username'])) {
+        if (isset($_POST['email'])) {
 
-            $username = $_POST['username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $this->login($username, $password, 'admin');
+            $this->login($email, $password, 'users');
         } else {
             header("Location: " . BASEURL."/login/admin" );
         }
@@ -34,13 +34,13 @@ class login extends Controller
 
  
 
-    public function login($username = null, $password = null, $usertype = null)
+    public function login($email = null, $password = null, $usertype = null)
     {
-        if ($username != null) {
+        if ($email != null) {
             $path = BASEURL;
             //echo $username;
 
-            $result = $this->model('loginModel')->login($username, $password, $usertype);
+            $result = $this->model('loginModel')->login($email, $password, $user_type);
 
             if ($result != null) {
                 session_destroy();
@@ -50,8 +50,8 @@ class login extends Controller
                 
 
                 $row = $result->fetch_assoc();
-                echo $row['username'];
-                $_SESSION['username'] = $row['username'];
+                echo $row['email'];
+                $_SESSION['email'] = $row['email'];
                 echo "success";
                 
                 header("location: $path/welcome");
