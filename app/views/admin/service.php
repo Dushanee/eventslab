@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab1");
+$conn = mysqli_connect("localhost", "root", "", "eventslab");
 $rows = mysqli_query($conn, "SELECT * FROM service_provider");
 
 ?>
