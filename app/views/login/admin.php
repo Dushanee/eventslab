@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                         <td class="label-td">
-                        <input type="text" name="username" placeholder="Username" class="input-text">
+                        <input type="text" name="email" placeholder="Email" class="input-text">
                         </td>
                     </tr>
                     <tr>

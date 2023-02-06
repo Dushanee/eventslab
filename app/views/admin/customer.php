@@ -8,8 +8,8 @@ if (isset($_SESSION['username'])) {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab1");
-$rows = mysqli_query($conn, "SELECT * FROM customer");
+$conn = mysqli_connect("localhost", "root", "", "eventslab");
+$rows = mysqli_query($conn, "SELECT * FROM customers");
 
 ?>
 
@@ -123,9 +123,9 @@ $rows = mysqli_query($conn, "SELECT * FROM customer");
                     <?php foreach ($rows as $row) : ?>
                         
                         <tr>
-                            <td><?php echo $row["ID"]; ?></td>
+                            <td><?php echo $row["cust_id"]; ?></td>
                           
-                            <td><?php echo $row["FirstName"]; ?></td>
+                            <td><?php echo $row["cust_fname"]; ?></td>
                             <td>Paid</td>
                             <td class="warning">View</td>
                             <td class="warning">Update</td>
