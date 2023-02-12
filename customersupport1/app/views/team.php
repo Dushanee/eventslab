@@ -77,56 +77,50 @@
 
 
 <div class="common" style="position:absolute;margin-left:20%;padding:1px 16px;height:1000px; top: 50px">
-
-
-<div class="outer-t">
-<span class="one-t"><i class='bx bxs-folder' style='color:#210e54'  ></i><span class="name-t">Administrators</span><div class="value"><b>php Table</b></div></span>
-  <span class="two-t"><i class='bx bxs-folder-open' style='color:#210e54'  ></i><span class="name-t">Customer Support Managers</span>
-    <div class="value" style="margin-left: 40px">
-        <table>
-        <tr>
-
-          <th class="id"></th>
-          <th class="firstname" style="width: 50px"></th>
-          <th class="lastname" style="width: 200px"></th>
-          
-        </tr>
-      <?php //$query = "SELECT * FROM customersupport";
-//$result = mysqli_query($conn, $query);
-
-//while($view=mysqli_fetch_assoc($result)) {
-?>
-<tr>
-<td style="width: 20px; height: 30px; text-align:left"></td><!--<?php echo $view['id'];?>-->
-<td style="width: 50px; height: 30px; text-align:left"></td><!--<?php echo $view['firstname'];?>-->
-<td style="width: 200px; height: 30px; text-align:left;"></td><!--<?php echo $view['lastname'];?>-->$_COOKIE
-
-</tr>
-<tr>
-<td style="width: 20px; height: 30px; text-align:left"></td><!--<?php echo $view['id'];?>-->
-<td style="width: 50px; height: 30px; text-align:left"></td><!--<?php echo $view['firstname'];?>-->
-<td style="width: 200px; height: 30px; text-align:left;"></td><!--<?php echo $view['lastname'];?>-->$_COOKIE
-
-</tr>
-<tr>
-<td style="width: 20px; height: 30px; text-align:left"></td><!--<?php echo $view['id'];?>-->
-<td style="width: 50px; height: 30px; text-align:left"></td><!--<?php echo $view['firstname'];?>-->
-<td style="width: 200px; height: 30px; text-align:left;"></td><!--<?php echo $view['lastname'];?>-->$_COOKIE
-
-</tr>
-<?php
-//}
-?>
-</table>
-    </div>
-  </span>
-  <span class="three-t"><i class='bx bxs-check-circle' style='color:#210e54'  ></i><span class="name-t">Service Providers</span><div class="value"><b>php Table</b></div></span>
+<din class="topic">
+  <h3 class="team-mem">Service Providers</h3>
+</din>
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id"></th>
+      <th class="name"></th>
+      <th class="email"></th>
+      <th class="c-button"></th>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+          <button class="message-btn">MESSAGE</button>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+          <button class="message-btn">MESSAGE</button>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+          <button class="message-btn">MESSAGE</button>
+        </form>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<div class="outer1-t">
-<span class="one1-t"><i class='bx bxs-folder' style='color:#210e54'  ></i><span class="name-t">Customers</span><div class="value"><b>php Table</b></div></span>
-  <span class="two1-t"><i class='bx bxs-folder-open' style='color:#210e54'  ></i><span class="name-t">Bloggers</span><div class="value"><b>php Table</b></div></span>
-  <span class="three1-t"><i class='bx bxs-check-circle' style='color:#210e54'  ></i><span class="name-t">Blog Managers</span><div class="value"><b>php Table</b></div></span>
 </div>
 
 </body>
