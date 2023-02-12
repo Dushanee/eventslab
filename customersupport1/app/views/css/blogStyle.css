@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+:root {
+    --name-color: pink;
+    --button-cage-background-color: pink;
+    --button-background-color: black;
+    --button-text-color: white;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+.navbar-cage {
+    height: 100px;
+    background-color: pink;
+}
+
+.main-cage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-cage {
+    width: 90%;
+    height: 650px;
+    align-self: center;
+    background-image: url('../images/coverimage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+}
+
+.intro-cage {
+    /* background-color: rgb(234, 213, 213); */
+    width: 60%;
+    height: 200px;
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-cage {
+    width: 50%;
+    height: auto;
+    display: flex;
+}
+
+.logo-cage .logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.name-cage {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.name {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    color: var(--name-color);
+    position: relative;
+    font-size: 80px;
+}
+
+.title-cage {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.button-cage {
+    width: 80%;
+    height: 200px;
+    background-color: var(--button-cage-background-color);
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.go-to-main-page {
+    margin-top: 15%;
+    width: 500px;
+    height: 50px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: larger;
+}
+
+.artical-cage {
+    width: 90%;
+    height: auto;
+    background-color: green;
+}
