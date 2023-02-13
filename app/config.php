@@ -1,6 +1,6 @@
 <?php
 
-define("BASEURL", "http://localhost/eventslabori");
+define("BASEURL", "http://localhost/eventslab");
 define('SERVER', 'localhost');
 define('USERNAME', 'root'); 
 define('DB_NAME', 'eventslab');
