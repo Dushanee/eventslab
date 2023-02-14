@@ -69,30 +69,38 @@
     <a href="./csmmessageportal.php"><i class='bx bxs-conversation' ></i>Message Portal</a>
   </li>
   <li>
-    <a href="./loginFront.php" id="log_out"><i class='bx bxs-log-out' ></i></a>
+    <a href="./loginFront.php" id="log_out"><i class='bx bxs-log-out' ></i>Logout</a>
   </li>
 </ul>
 </div>
 
 
-<div class="common" style="position:absolute;margin-left:29%;padding:1px 16px;height:1000px; top: 50px">
+<div class="common">
     <div class="mainprofcage">
         <div class="forcentering">
         <div class="proImagecage">
             <img src="./images/propic.png" alt="profile_picture" class="proImage" />
-            <a href="./editProfile.php">Edit</a>
+            <form action="./editprofile.php" class="edit-form">
+              <button class="edit">EDIT PROFILE PICTURE</button>
+            </form>
         </div><br />
         <div class="details">
             <div class="entry">
                 <p class="data">Name: Amaya Wedamulla</p>
-                <a href="./editProfile.php">Edit</a>
+                <form action="./editprofile.php" class="edit-form">
+                  <button class="edit">EDIT NAME</button>
+                </form>
             </div>
             <div class="entry">
                 <p class="email">Email: amaya@eventslab.com</p>
-                <a href ="./editProfile.php">Edit</a>
+                <form action="./editprofile.php" class="edit-form">
+                  <button class="edit">EDIT EMAIL</button>
+                </form>
             </div><br />
             <div class="entry">
-                <a href =".editProfile.php">Change Password</a>
+                <form action="./editprofile.php" class="edit-form">
+                  <button class="edit">CHANGE PASSWORD</button>
+                </form>
             </div>
         </div>
         </div>

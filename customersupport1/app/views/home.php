@@ -74,16 +74,16 @@
     <a href="./csmmessageportal.php"><i class='bx bxs-conversation' ></i>Message Portal</a>
   </li>
   <li>
-    <a href="./loginFront.php" id="log_out"><i class='bx bxs-log-out' ></i></a>
+    <a href="./loginFront.php" id="log_out"><i class='bx bxs-log-out' ></i>Logout</a>
   </li>
 </ul>
 </div>
 
 
-
-<div class="common" style="position:absolute;margin-left:18%;padding:1px 16px;height:1000px; top: 50px">
+<div class="to-left-the-common">
+<div class="common">
   
-  <div class="container0" style="margin-top: 100px;">
+  <div class="container0">
   <div class="card">
     <div class="img">
       <img src="./images/1.png">
@@ -179,6 +179,7 @@
     </div>
   </div>
 
+</div>
 </div>
 
 
