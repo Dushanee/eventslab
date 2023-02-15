@@ -7,7 +7,7 @@
 
 body {
   margin: 0;
-  background-color: #ffffff;
+  background-color: #efeffb;
 }
 
 .to-left-the-common {
@@ -71,7 +71,7 @@ li a {
 }
 
 li a.active {
-  background-color: #8d8da7;
+  background-color: #d7d7e7;
   color: white;
 }
 
@@ -385,27 +385,42 @@ height: 50px;
 }
 
 .card {
-  height: 327px;
-  max-width: 350px;
+  height: 197px;
+  width: 350px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #8d8da7;
+  display: flex;
+  justify-content: space-around;
 }
 
 .card .img {
+  margin-top: 10%;
   height: 197px;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.what {
+  font-size: 24px !important;
+  color: #ffffff !important;
+}
+
+.icon {
+  font-size: 30px !important;
+  color: #ffffff !important;
 }
 
 .card .img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card .top-text {
@@ -417,7 +432,7 @@ height: 50px;
   color: #210e54;
 }
 
-.card .bottom-text button{
+/* .card .bottom-text button{
   font-family: 'Poppins', sans-serif;
   padding: 5px 20px 5px 20px;
   margin-top: 5px;
@@ -425,28 +440,28 @@ height: 50px;
   background-color: #DCD7CE;
   border-radius: 5px;
   border-style: none;
-}
+} */
 
-.card .bottom-text .btn {
+/* .card .bottom-text .btn {
   text-align: center;
- /* background: #DCD7CE; */
+ /* background: #DCD7CE; 
   padding: 5px 8px;
   border-radius: 5px;
   border-style: none;
-}
+} */
 
-.card .bottom-text .btn a {
+/* .card .bottom-text .btn a {
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
   color: #210e54;
   transition: 0.2s;
-}
+} */
 
-.card .bottom-text .btn a:hover {
-  background-color: #8d8da7;
+/* .card .bottom-text .btn a:hover {
+  background-color: #ffffff;
   color: #ffffff;
   opacity: 0.7;
-}
+} */
 
 @media screen and (max-width: 978px) {
   .container0 {
@@ -468,19 +483,19 @@ height: 50px;
 }
 
 .card1 {
-  height: 420px;
+  height: 380px;
   width: 720px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #ffffff;
 }
 
 .card1 .chart {
   height: 325px;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #ffffff;
 }
 
@@ -494,7 +509,7 @@ height: 50px;
   /*width: 100%;*/
   object-fit: cover;
   border-style: none;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #ffffff;
 }
 
@@ -535,27 +550,27 @@ height: 50px;
 }
 
 .card2 {
-  height: 420px;
+  height: 380px;
   max-width: 350px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #8d8da7;
 }
 
 .card2 .img {
   height: 197px;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .card2 .img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card2 .top-text {

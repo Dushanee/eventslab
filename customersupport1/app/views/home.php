@@ -84,44 +84,68 @@
 <div class="common">
   
   <div class="container0">
+  <a href="./messages.php" class="go" style="text-decoration: none;">
   <div class="card">
     <div class="img">
-      <img src="./images/1.png">
+      <!-- <img src="./images/1.png"> -->
+      <div class="icon"><i class='bx bx-message-square-dots' style='color:#ffffff'  ></i></div>
+      <div class="what">Forum Messages</div>
     </div>
-    <div class="top-text">
+    <div class="bot-text" style="display: flex;">
+      <div class="frm-bc-end">10</div>
+      <div class="bc-end-desc">Unread Messages</div>
+    </div>
+</a>
+    <!-- <div class="top-text">
       <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">10 unread messages</p></div>
-    </div>
-    <div class="bottom-text">
+    </div> -->
+    <!-- <div class="bottom-text">
       <div class="btn">
         <button onclick="window.location.href='./messages.php';">View</button>
       </div>
-    </div>
+    </div> -->
   </div>
+  <a href="./consult.php" class="go" style="text-decoration: none;">
   <div class="card">
     <div class="img">
-      <img src="./images/2.png">
+      <!-- <img src="./images/2.png"> -->
+      <div class="icon"><i class='bx bx-donate-heart'></i></i></div>
+      <div class="what">Consultations</div>
     </div>
-    <div class="top-text">
+    <div class="bot-text" style="display: flex;">
+      <div class="frm-bc-end">10</div>
+      <div class="bc-end-desc">Unread Messages</div>
+    </div>
+</a>
+    <!-- <div class="top-text">
       <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">3 new bookings</p></div>
-    </div>
-    <div class="bottom-text">
+    </div> -->
+    <!-- <div class="bottom-text">
       <div class="btn">
         <button onclick="window.location.href='./consult.php';">View</button>
       </div>
-    </div>
+    </div> -->
   </div>
+  <a href="./blogSpot.php" class="go" style="text-decoration: none;">
   <div class="card">
     <div class="img">
-      <img src="./images/3.png">
+      <!-- <img src="./images/3.png"> -->
+      <div class="icon"><i class='bx bx-book-reader'></i></div>
+      <div class="what">Blog</div>
     </div>
-    <div class="top-text">
+    <div class="bot-text" style="display: flex;">
+      <div class="frm-bc-end">10</div>
+      <div class="bc-end-desc">Unread Messages</div>
+    </div>
+</a>
+    <!-- <div class="top-text">
       <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">5 new articles</p></div>
-    </div>
-    <div class="bottom-text">
+    </div> -->
+    <!-- <div class="bottom-text">
       <form class="btn" action="https://eventslabblogspot.my.canva.site/">
         <button >View</button>
     </form>
-    </div>
+    </div> -->
   </div>
   </div>
   <div class="container1">
@@ -161,6 +185,7 @@
       </div>
     </div>
   </div>
+  <a href="./csmprofile.php" class="go" style="text-decoration: none;">
   <div class="card2">
     <div class="img">
       <img src="./images/propic.png">
@@ -172,12 +197,13 @@
     </p>
     </div>
     </div>
-    <div class="bottom-text">
+    <!-- <div class="bottom-text">
       <div class="btn">
         <button onclick="window.location.href='./csmprofile.php';">View</button>
       </div>
-    </div>
+    </div> -->
   </div>
+</a>
 
 </div>
 </div>

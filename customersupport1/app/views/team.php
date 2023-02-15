@@ -16,6 +16,7 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/team.css">
 <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
@@ -76,51 +77,201 @@
 </div>
 
 
-<div class="common" style="position:absolute;margin-left:20%;padding:1px 16px;height:1000px; top: 50px">
-<din class="topic">
+<div class="common-cage">
+<div class="table-cage">
+<div class="topic">
   <h3 class="team-mem">Service Providers</h3>
-</din>
+</div>
 <div class="sp-table">
   <table class="show-team">
     <tr class="main-row">
-      <th class="id"></th>
-      <th class="name"></th>
-      <th class="email"></th>
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
       <th class="c-button"></th>
     </tr>
     <tr class="sub-row">
       <td>1</td>
-      <td>Pabodhi Herath</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
       <td>hmpabodhiherath@gmail.com</td>
       <td>
         <form action="msg-window">
-          <button class="message-btn">MESSAGE</button>
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
         </form>
       </td>
     </tr>
     <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi Herath</td>
+      <td>2</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
       <td>hmpabodhiherath@gmail.com</td>
       <td>
         <form action="msg-window">
-          <button class="message-btn">MESSAGE</button>
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
         </form>
       </td>
     </tr>
     <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi Herath</td>
+      <td>3</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
       <td>hmpabodhiherath@gmail.com</td>
       <td>
         <form action="msg-window">
-          <button class="message-btn">MESSAGE</button>
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
         </form>
       </td>
     </tr>
   </table>
 </div>
+</div><br /><br />
+<div class="table-cage">
+<div class="topic">
+  <h3 class="team-mem">Customers</h3>
+</div>
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
+      <th class="c-button"></th>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>2</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>3</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div class="table-cage"><br /><br />
+<div class="topic">
+  <h3 class="team-mem">Blog Managers</h3>
+</div>
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
+      <th class="c-button"></th>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>2</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+    <tr class="sub-row">
+      <td>3</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+        <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+</div><br /><br />
 
+<div class="table-cage">
+<div class="topic">
+  <h3 class="team-mem">Admin</h3>
+</div>
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
+      <th class="c-button"></th>
+    </tr>
+    <tr class="sub-row">
+      <td>1</td>
+      <td>Pabodhi</td>
+      <td>Herath</td>
+      <td>hmpabodhiherath@gmail.com</td>
+      <td>
+        <form action="msg-window">
+          <a href="./liveChat.php" class="message-btn">
+          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+          </a>
+        </form>
+      </td>
+    </tr>
+</div>
+</div>
 </div>
 
 </body>
