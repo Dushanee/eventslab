@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>csm Login</title>
-        <link rel="stylesheet" href="../front/css/loginFront.css">
+        <link rel="stylesheet" href="./css/loginFront.css">
     </head>
     <body>
         <div class="form-cage">
@@ -10,13 +10,16 @@
                 <h2>Login</h2>
             </div>
             <div class="tocenterthispest">
-            <form class="data-cage" action="./home.php" method="POST">
+            <form class="data-cage" action="../src/login.php" method="POST">
+            <?php if(isset($_GET['error'])) { ?>
+                <p class = "error"><?php echo $_GET['error'];?></p>
+           <?php } ?>
             
                 <div class="email-cage">
                     <label class="text-label">Email</label> <!--change into email later-->
-                    <input type="text" class="input" name="email" />
+                    <input type="text" class="input" name="email" required />
                     <label class="text-label">Password</label> <!--change into password later-->
-                    <input type="password" class="input" name="password" />
+                    <input type="password" class="input" name="password" required />
                  </div><br />
                  <div class="btn">
                     <input type="submit" name="login" class="login-btn" value="Login">
