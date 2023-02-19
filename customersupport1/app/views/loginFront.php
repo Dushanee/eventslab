@@ -14,6 +14,10 @@
             <?php if(isset($_GET['error'])) { ?>
                 <p class = "error"><?php echo $_GET['error'];?></p>
            <?php } ?>
+
+           <?php if(isset($_GET['cheer'])) { ?>
+            <p class="cheer"><?php echo $_GET['cheer'];?></p>
+           <?php } ?>
             
                 <div class="email-cage">
                     <label class="text-label">Email</label> <!--change into email later-->
