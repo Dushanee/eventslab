@@ -127,7 +127,7 @@ if (isset($_SESSION['email'])) {
                         echo "<td>" . $row["sp_name"] . "</td>";
                           
                          
-                        echo "<td>" . $row["sp_type"] . "</td>";
+                        echo "<td>" . $row["sp_type_id"] . "</td>";
 
                         echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
 

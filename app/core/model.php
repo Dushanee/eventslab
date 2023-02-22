@@ -68,4 +68,21 @@ class Model extends Database
         $result = $this->runQuery($sql);
         return $result;
     }
+
+
+    public function getThreeJoin($table1, $table2, $table3, $joinOn1, $joinOn2, $where = null, $order = null, $limit = null) {
+        $sql = "SELECT * FROM $table1 JOIN $table2 ON $joinOn1 JOIN $table3 ON $joinOn2";
+        if ($where != null) {
+            $sql .= " WHERE $where";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+        }
+        $result = $this->runQuery($sql);
+        return $result;
+    }
+    
 }

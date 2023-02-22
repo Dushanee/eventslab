@@ -49,16 +49,22 @@ class adminFunction extends Controller
 
 
 
-    public function packages()
+    public function packages($sp_type_id=null)
     {
-        $result = $this->model('viewModel')->viewPackage();
-
+        $result = $this->model('viewModel')->viewPackage($sp_type_id);
+        $drop = $this->model('viewModel')->viewPackage();
+        
+        
         $data = [
             'inputValue' => "",
             'result' => $result,
+            'drop' => $drop,
+
         ];
 
-        $this->view('admin/packages', $data);
+      
+
+        $this->view('admin/packages', $data );
     }
 
 

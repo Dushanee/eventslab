@@ -8,8 +8,6 @@ if (isset($_SESSION['email'])) {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT email FROM users");
 
 ?>
 
@@ -109,63 +107,64 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
         <h1>Packages</h1>
 
 <p>filter by</p>
-<div class="custom-select">
-    <select name="sp_type" >
-        <option value="">Venue</option>
-        <option value="">Decoration</option>
-        <option value="">Catering</option>
-    </select>
 
+<div class="custom-select">
+<select name="sp_type_id" onchange="setSessionVariable(this.value)">
+    <?php
+        while ($row = $data['drop']->fetch_assoc()) {
+         
+            echo '<option value="' . $row['sp_type_id'] . '">' . $row['sp_type_id'] . '</option>';
+        }
+    ?>
+</select>
 </div>
               <!-- -------orders table----- -->
             <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Package Id</th>
-                            <th>Package Name</th>
-                            <th>Service Provider</th>
-                            <th>Package Description</th>
-                            <th>Location</th>
-                            <th>Options</th>
-                            <th>Rates</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Araliya Resort</td>
-                            <td>Jhon Doe</td>
-
-                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci atque te</td>
-                            <td>Kandy</td>
-                            <td><select name="option_name" class="custom-select"><option value="">Hall 1</option><option value="">Hall 2</option>
-                            </select></td>
-
-                            <td class="primary">10,000</td>
-                            <td class="primary">Delete</td>
-                        </tr>
+            <h2>Package Details</h2>
+                <?php 
+    $path = BASEURL;
+    echo"<table>";
+    echo" <thead>";
+    echo" <tr>";
+    echo"    <th>Package Id</th>";
+    echo" <th>Package Name</th>";
+    echo" <th>Service Provider Id</th>";
+    echo" <th>Service Provider Name</th>";
+    echo" <th>Service Type</th>";
+    // echo" <th>Package Description</th>";
+    // echo"  <th>Location</th>";
+    // echo"<th>Options</th>";
+    // echo" <th>Rates</th>";
+    // echo" <th>Actions</th>";
+    echo" </tr>";
+    echo" </thead>";
+    echo" <tbody>";
+                        
 
 
-                        <tr>
-                            <td>1</td>
-                            <td>Araliya Resort</td>
-                            <td>Jhon Doe</td>
 
-                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci atque te</td>
-                            <td>Kandy</td>
-                            <td><select name="option_name" class="custom-select"><option value="">Hall 1</option><option value="">Hall 2</option>
-                            </select></td>
+    
+    mysqli_data_seek($data['result'], 0);
+    while ($row = $data['result']->fetch_assoc()) {
 
-                            <td class="primary">10,000</td>
-                            <td class="primary">Delete</td>
-                        </tr>
-                    </tbody>
+     
 
+        echo "<tr>";
+        echo "<td>" . $row["pack_id"] . "</td>";
+        echo "<td>" . $row["pack_name"] . "</td>";
+   
+        echo "<td>" . $row["sp_id"] . "</td>";
 
-                </table>
+        echo "<td>" . $row["sp_name"] . "</td>";
+        echo "<td>" . $row["sp_type_id"] . "</td>";
+        echo "</tr>";
+         
+                        echo"</tbody>";
+
+    }
+                        echo"</table>";
+
+                        ?>
                 <a href="">Show all</a>
             </div>
         </main>
@@ -176,7 +175,16 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
 </body>
 
 
-
+<script>
+    function setSessionVariable(value) {
+        // Set the selected value as a session variable
+        // You can modify the session variable name to fit your needs
+        <?php $_SESSION['selected_sp_type_id'] = "' + value + '"; ?>
+        // Redirect to the packages function in the adminFunction controller with the sp_type_id parameter
+        // You can modify the BASEURL to match the base URL of your website
+        window.location.href = '<?php echo BASEURL ?>/adminFunction/packages/'+ value;
+    }
+</script>
 
 
 

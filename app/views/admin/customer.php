@@ -107,6 +107,9 @@ if (isset($_SESSION['email'])) {
             <!-- -------orders table----- -->
             <div class="recent-orders">
                 <h2>Customer Details</h2>
+
+
+        
                 <?php 
 
                 $path = BASEURL;
@@ -142,7 +145,18 @@ if (isset($_SESSION['email'])) {
                         echo"    </tbody>";
                    }
               echo"  </table>";
+
+
+              
               ?>
+<form method="POST" action="<?php echo BASEURL ?>/pdf" target="_blank">
+
+<input type="submit" name="pd_createrf" value="PDF">
+
+</form>
+
+<a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
+
 
 
                 <a href="">Show all</a>

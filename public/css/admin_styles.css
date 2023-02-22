@@ -347,6 +347,7 @@ main .recent-orders h2 {
 }
 
 main .recent-orders table {
+    border-collapse: separate;
     background-color: var(--color-light-purple);
     width: 100%;
     border-radius: var(--card-border-radius);
@@ -367,10 +368,10 @@ main table thead {
     height: 2.8rem;
     border-bottom: 1px solid var(--color-dark);
     color: var(--color-primary);
-    text-align: center;
 }
 
 main table tbody td {
+    border-collapse: collapse;
     padding-right: 1.6rem;
     height: 2.8rem;
     border-bottom: 1px solid var(--color-primary);

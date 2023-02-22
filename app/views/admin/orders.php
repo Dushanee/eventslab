@@ -116,8 +116,8 @@ if (isset($_SESSION['email'])) {
     echo" <tr>";
     echo" <th>Order Id</th>";
     echo" <th>Date</th>";
-    echo" <th>Option Id</th>";
-    echo" <th>Option </th>";
+    echo" <th>Customer Id</th>";
+    echo" <th>Customer Name </th>";
                           
     echo" </thead>";
     echo" <tbody>";
@@ -126,8 +126,8 @@ if (isset($_SESSION['email'])) {
                         echo "<tr>";
                         echo "<td>" . $row["order_id"] . "</td>";
                         echo "<td>" . $row["order_date"] . "</td>";
-                        echo "<td>" . $row["option_id"] . "</td>";
-                        echo "<td>" . $row["option_name"] . "</td>";
+                        echo "<td>" . $row["cust_id"] . "</td>";
+                        echo "<td>" . $row["cust_fname"] . "</td>";
                           
                          
                         echo "<td>Paid</td>";

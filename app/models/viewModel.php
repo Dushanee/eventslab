@@ -45,8 +45,8 @@ class viewModel extends Model
     {
 
         $table1 = "orders";
-        $table2 = "options";
-        $joinOn1 = "orders.option_id = options.option_id";
+        $table2 = "customers";
+        $joinOn1 = "orders.cust_id = customers.cust_id";
         $where = "";
         $order = "";
         $limit = "";
@@ -54,16 +54,26 @@ class viewModel extends Model
         return $this->getjoin($table1, $table2, $joinOn1, $where, $order, $limit);
     }
 
-    public function viewPackage()
+    public function viewPackage($sp_type_id=null)
+
     {
 
-        $table1 = "packages";
-        $table2 = "options";
-        $joinOn1 = "packages.pack_id = options.pack_id";
-        $where = "";
+        if (isset($sp_type_id)) {
+            $append = "sp_type_id='$sp_type_id '";
+        } else {
+            $append = '';
+        }
+     
+        $table1 = "service_providers";
+        $table2 = "sp_pack";
+        $table3 = "packages";
+        $joinOn1 = "service_providers.sp_id = sp_pack.sp_id";
+        $joinOn2 = "sp_pack.pack_id = packages.pack_id";
+        $where = $append;
         $order = "";
         $limit = "";
+  
 
-        return $this->getjoin($table1, $table2, $joinOn1, $where, $order, $limit);
+        return $this->getThreeJoin($table1, $table2, $table3, $joinOn1, $joinOn2, $where,$order, $limit);
     }
 }
