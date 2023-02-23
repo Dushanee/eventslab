@@ -21,10 +21,10 @@ if (isset($_SESSION['email'])) {
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="">
+                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
                     <h2>Events
                         <span class="logo-colour">Lab</span>
                     </h2>
@@ -57,15 +57,22 @@ if (isset($_SESSION['email'])) {
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
                     <h3>Messages</h3>
                     <span class="message-count">31</span>
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
-                    <h3>Gigs</h3>
+                    <h3>Packages</h3>
                 </a>
 
                 <a href=""><span class="material-symbols-rounded">
@@ -99,7 +106,9 @@ if (isset($_SESSION['email'])) {
             <h1>Customers</h1>
 
             <div class="date">
-                <input type="date">
+             <select name="" id="">
+                <option value="">Jhon</option>
+             </select>
             </div>
 
             

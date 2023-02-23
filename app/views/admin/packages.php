@@ -22,7 +22,7 @@ if (isset($_SESSION['email'])) {
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
                     <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
@@ -70,7 +70,7 @@ if (isset($_SESSION['email'])) {
                 </a>
 
 
-                <a href="<?php echo BASEURL ?>/adminFunction/packages" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"class="active"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
                     <h3>Packages</h3>

@@ -22,10 +22,10 @@ if (isset($_SESSION['email'])) {
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="">
+                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
                     <h2>Events
                         <span class="logo-colour">Lab</span>
                     </h2>
@@ -34,7 +34,7 @@ if (isset($_SESSION['email'])) {
                 </div>
             </div>
             <div class="sidebar">
-                <a href="<?php echo BASEURL ?>/adminFunction/admin"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/admin" ><span class="material-symbols-rounded">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
@@ -44,7 +44,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Customers</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/service" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/service"class="active"><span class="material-symbols-rounded">
                         storefront
                     </span>
                     <h3>Service Providers</h3>
@@ -58,12 +58,19 @@ if (isset($_SESSION['email'])) {
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
                     <h3>Messages</h3>
                     <span class="message-count">31</span>
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
                     <h3>Packages</h3>
@@ -99,11 +106,7 @@ if (isset($_SESSION['email'])) {
         <main>
             <h1>Service Providers</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
-
-            
+       
            
             <!-- -------orders table----- -->
             <div class="recent-orders">

@@ -108,9 +108,7 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
         <main>
             <h1>Dashboard</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
+           
 
             <div class="insights">
                 <div class="sales">

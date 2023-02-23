@@ -9,7 +9,7 @@
 
 
 <div class="container">
-        <aside>
+<aside>
             <div class="top">
                 <div class="logo">
                     <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
@@ -37,11 +37,18 @@
                     <h3>Service Providers</h3>
                 </a>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
                 </a>
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
@@ -50,10 +57,10 @@
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
-                    <h3>Gigs</h3>
+                    <h3>Packages</h3>
                 </a>
 
                 <a href=""><span class="material-symbols-rounded">
