@@ -1,6 +1,6 @@
 <?php
 
-include '../back/db_conn.php';
+// include '../back/db_conn.php';
 //include 'viewmsg.php';
 
 session_start();
