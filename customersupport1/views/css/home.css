@@ -30,7 +30,7 @@ body {
     position: absolute;
     margin-top: 60px;
     width: 250px;
-}
+} 
 
 .eventslab img{
     position: absolute;
@@ -52,7 +52,7 @@ ul {
 }
 
 li i {
-    padding: 8px 16px;
+    padding: 8px 8px;
     display: flex;
     color: #8d8da7;
     font-size: 20px;
@@ -66,31 +66,49 @@ li a {
   position: relative;
   color: #8d8da7;
   display: block;
-  padding: 8px 16px;
+  padding: 8px 5px;
   text-decoration: none;
 }
 
 li a.active {
-  background-color: #d7d7e7;
-  color: white;
+  background-color: #efeef1;
+  color: #4c4b84;
+  border-left: 5px solid #4c4b84;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 98%;
+  height: 45px;
+  padding-bottom: 30px;
 }
 
 li i.active {
-  background-color: #8d8da7;
-  color: white;
+  /* background-color: #8d8da7; */
+  color: #4c4b84;
+  border-left: 5px solid #4c4b84;
 }
 
 li a:hover:not(.active) {
-    color: white;
-    background-color: #8d8da7;
-    opacity: 0.3;
+    color: #4c4b84;
+    /* background-color: #8d8da7;
+    opacity: 0.3; */
+    transform: translate(-3px, -3px);
+    /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px 0px #a5efea; */
+    transition: all 0.4s ease-in-out;
 }
 
 li i:hover:not(.active) {
-  color: white;
-  background-color: #8d8da7;
-  opacity: 0.3;
+  color: #4c4b84;
+  /* background-color: #8d8da7;
+  opacity: 0.3; */
+  transform: translate(-3px, -3px);
+  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px 0px #a5efea; */
+  transition: all 0.4s ease-in-out;
 }
+
+/* .nav-bar-icons.active {
+  background-color: #4c4b84;
+  opacity: 0.5;
+} */
 
 /* #log_out {
     margin-left: 70px;
@@ -299,13 +317,22 @@ i {
 
 .message {
   color: white;
-  width: 800px;
+  /* width: 800px; */
   background-color: #7281A3;
   padding: 15px;
-  margin-top: 50px;
+  /* margin-top: 10%;
+  margin-left: 0; */
   border: hidden;
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.username-cage {
+  position: absolute;
+  color: #4c4b84;
+  margin-left: 18%;
+  margin-top: 2.5%;
 }
 
 
@@ -390,7 +417,7 @@ height: 50px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #8d8da7;
   display: flex;
   justify-content: space-around;
@@ -400,7 +427,7 @@ height: 50px;
   margin-top: 10%;
   height: 197px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
   display: flex;
   justify-content: space-around;
 }
@@ -419,8 +446,8 @@ height: 50px;
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .card .top-text {
@@ -488,14 +515,14 @@ height: 50px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #ffffff;
 }
 
 .card1 .chart {
   height: 325px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #ffffff;
 }
 
@@ -509,7 +536,7 @@ height: 50px;
   /*width: 100%;*/
   object-fit: cover;
   border-style: none;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #ffffff;
 }
 
@@ -538,7 +565,7 @@ height: 50px;
   text-align: center;
   background: #DCD7CE;
   padding: 5px 8px;
-  border-radius: 5px;
+  border-radius: 15px;
   border-style: none;
 }
 
@@ -555,22 +582,22 @@ height: 50px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #8d8da7;
 }
 
 .card2 .img {
   height: 197px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .card2 .img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .card2 .top-text {
@@ -588,7 +615,7 @@ height: 50px;
   margin-top: 5px;
   background-color: #DCD7CE;
   width: 150px;
-  border-radius: 5px;
+  border-radius: 15px;
   border-style: none;
 }
 
@@ -598,7 +625,7 @@ height: 50px;
   text-align: center;
  /* background: #DCD7CE;*/
   padding: 5px 8px;
-  border-radius: 5px;
+  border-radius: 15px;
   border-style: none;
 }
 

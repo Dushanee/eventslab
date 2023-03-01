@@ -1,11 +1,23 @@
 <?php
+    require ('../config/connection.php');
 
-// include '../back/db_conn.php';
-// //include 'viewmsg.php';
+    //session_start();
 
-// session_start();
-   
-// if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
+    $query_1 = "SELECT * FROM users WHERE user_type = 'admin'";
+    $result_1 = mysqli_query($conn, $query_1);
+
+    $query_2 = "SELECT * FROM users WHERE user_type = 'cs_manager'";
+    $result_2 = mysqli_query($conn, $query_2);
+
+    $query_3 = "SELECT * FROM users WHERE user_type = 'blog_manager'";
+    $result_3 = mysqli_query($conn, $query_3);
+
+    $query_4 = "SELECT * FROM service_providers";
+    $result_4 = mysqli_query($conn, $query_4);
+
+    $query_5 = "SELECT * FROM customers";
+    $result_5 = mysqli_query($conn, $query_5);
+
 
 ?>
 
@@ -21,66 +33,49 @@
 </head>
 <body>
 
-<div class="topbar">
-        
-        <div class="logo">
-            <img src="./images/logo 1.png">
-        </div> 
-   
-    <div class="search0">
-      <h1 class="username">Welcome back, Amaya!</h1>
-    </div>
-    <i class='bx bxs-bell'></i>
-    
-    <div class="user">
-        <img src="./images/propic.png" alt="propic">
-        
-    </div>
+<?php include '../public/top-bar.php';?>
 
-    <h6> Amaya Wedamulla </h6>
-</div>
-
-<div class="nav-bar" style="top:8px;">
+<div class="nav-bar" style="top: 8px;">
 
 <ul>
-<div class="eventslab"><img src="./images/logo 1.png"></div>
   <li>
-    <a href="./home.php"><i class='bx bxs-dashboard' ></i>Dashboard</a>
-    
+    <a href="./home.php">
+    <i class='bx bx-grid-alt' style='color:#8d8da7'></i>Dashboard</a>
   </li>
   <li>
-    <a class="active" href="./team.php"><i class='bx bxs-group' ></i>Team</a>
-    
+    <a class="active" href="./team.php"><i class='bx bx-group'></i>Team</a>
   </li>
   
   <li>
-    <a href="./reviews.php"><i class='bx bxs-bookmark-heart' ></i>Reviews</a>
-    
+    <a href="./reviews.php"><i class='bx bx-bookmark-heart'></i>Reviews</a>
   </li>
   
   <li>
-    <a href="./calendar.php"><i class='bx bxs-calendar' ></i>Calendar</a>
-    
+    <a href="./calendar-tmp.php"><i class='bx bx-calendar'></i>Calendar</a>
   </li>
   <li>
-    <a href="./notification-store.php"><i class='bx bxs-envelope' ></i>Notification Store</a>
-    
+    <a href="./notification-store.php"><i class='bx bx-envelope'></i>Notification Store</a>
   </li>
-  
+
   <li>
-    <a href="./csmmessageportal.php"><i class='bx bxs-conversation' ></i>Message Portal</a>
+    <a href="./submit-a-blog-article.php"><i class='bx bx-edit-alt' style='color:#8d8da7' ></i>Write a blog</a>
+  </li>
+ 
+  <li>
+    <a href="./csmmessageportal.php"><i class='bx bx-message-rounded-dots'></i>Message Portal</a>
   </li>
   <li>
-    <a href="./loginFront.php.php" id="log_out"><i class='bx bxs-log-out' ></i></a>
+    <a href="./loginFront.php" id="log_out"><i class='bx bx-log-out'></i>Logout</a>
   </li>
 </ul>
+</div><br /><br />
+<div class="username-cage">
+  <h2 class="username"><b>Hello <?php echo $firstname.""?></b></h2>
 </div>
-
-
-<div class="common-cage">
+<div class="common-cage" style="position:absolute;margin-left:18%;padding:1px 16px;height:auto; margin-top: 8%">
 <div class="table-cage">
 <div class="topic">
-  <h3 class="team-mem">Service Providers</h3>
+  <h3 class="team-mem">Administrator</h3>
 </div>
 <div class="sp-table">
   <table class="show-team">
@@ -91,48 +86,139 @@
       <th class="email">Email</th>
       <th class="c-button"></th>
     </tr>
-    <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
+    <?php
+            while($users = mysqli_fetch_assoc($result_1)) {
+        ?>
+                <tr class="data-row">
+                    <td><?php echo $users['id']; ?></td>
+                    <td><?php echo $users['fname']; ?></td>
+                    <td><?php echo $users['lname']; ?></td>
+                    <td><?php echo $users['email']; ?></td>
+                    <td>
+                    <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-    <tr class="sub-row">
-      <td>2</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-    <tr class="sub-row">
-      <td>3</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
+                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    </a>
+                    </form>
+                </tr>
+
+        <?php
+            }
+        ?>
       </td>
     </tr>
   </table>
+  </div>
+  </div><br /><br />
+  <div class="table-cage">
+<div class="topic">
+  <h3 class="team-mem">Customer Support Manager</h3>
 </div>
-</div><br /><br />
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
+      <th class="c-button"></th>
+    </tr>
+    <?php
+            while($users = mysqli_fetch_assoc($result_2)) {
+        ?>
+                <tr class="data-row">
+                    <td><?php echo $users['id']; ?></td>
+                    <td><?php echo $users['fname']; ?></td>
+                    <td><?php echo $users['lname']; ?></td>
+                    <td><?php echo $users['email']; ?></td>
+                    <td>
+                    <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    </a>
+                    </form>
+                </tr>
+
+        <?php
+            }
+        ?>
+      </td>
+    </tr>
+  </table>
+  </div>
+  </div><br /><br />
+  <div class="table-cage">
+<div class="topic">
+  <h3 class="team-mem">Blog Manager</h3>
+</div>
+<div class="sp-table">
+  <table class="show-team">
+    <tr class="main-row">
+      <th class="id">ID</th>
+      <th class="fname">First Name</th>
+      <th class="lname">Last Name</th>
+      <th class="email">Email</th>
+      <th class="c-button"></th>
+    </tr>
+    <?php
+            while($users = mysqli_fetch_assoc($result_3)) {
+        ?>
+                <tr class="data-row">
+                    <td><?php echo $users['id']; ?></td>
+                    <td><?php echo $users['fname']; ?></td>
+                    <td><?php echo $users['lname']; ?></td>
+                    <td><?php echo $users['email']; ?></td>
+                    <td>
+                    <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    </a>
+                    </form>
+                </tr>
+
+        <?php
+            }
+        ?>
+      </td>
+    </tr>
+  </table>
+  </div>
+  </div><br /><br />
+<div class="topic">
+  <h3 class="team-mem">Service Providers</h3>
+</div>
+<div class="sp-table">
+  <table class="show-team" style="width: 100%;">
+        <tr class="main-row">
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th></th>
+        </tr>
+        <?php
+            while($service_providers = mysqli_fetch_assoc($result_4)) {
+        ?>
+                <tr class="data-row">
+                    <td><?php echo $service_providers['sp_id']; ?></td>
+                    <td><?php echo $service_providers['sp_name']; ?></td>
+                    <td><?php echo $service_providers['sp_email']; ?></td>
+                    <td>
+                    <form action="msg-window">
+                    <a href="./liveChat.php" class="message-btn">
+                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    </a>
+                    </form>
+                </tr>
+
+        <?php
+            }
+        ?>
+
+
+    </table>
+</div>
+<!-- </div> <br /><br /> -->
+
 <div class="table-cage">
 <div class="topic">
   <h3 class="team-mem">Customers</h3>
@@ -146,142 +232,34 @@
       <th class="email">Email</th>
       <th class="c-button"></th>
     </tr>
-    <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
+    <?php
+            while($customers = mysqli_fetch_assoc($result_5)) {
+        ?>
+                <tr class="data-row">
+                    <td><?php echo $customers['cust_id']; ?></td>
+                    <td><?php echo $customers['cust_fname']; ?></td>
+                    <td><?php echo $customers['cust_lname']; ?></td>
+                    <td><?php echo $customers['cust_email']; ?></td>
+                    <td>
+                    <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
+                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    </a>
+                    </form>
+                </tr>
+
+        <?php
+            }
+        ?>
       </td>
     </tr>
-    <tr class="sub-row">
-      <td>2</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-    <tr class="sub-row">
-      <td>3</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-  </table>
-</div>
-</div>
-<div class="table-cage"><br /><br />
-<div class="topic">
-  <h3 class="team-mem">Blog Managers</h3>
-</div>
-<div class="sp-table">
-  <table class="show-team">
-    <tr class="main-row">
-      <th class="id">ID</th>
-      <th class="fname">First Name</th>
-      <th class="lname">Last Name</th>
-      <th class="email">Email</th>
-      <th class="c-button"></th>
-    </tr>
-    <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-    <tr class="sub-row">
-      <td>2</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-                    <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-    <tr class="sub-row">
-      <td>3</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-        <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-  </table>
+  </table>  
 </div>
 </div><br /><br />
 
-<div class="table-cage">
-<div class="topic">
-  <h3 class="team-mem">Admin</h3>
-</div>
-<div class="sp-table">
-  <table class="show-team">
-    <tr class="main-row">
-      <th class="id">ID</th>
-      <th class="fname">First Name</th>
-      <th class="lname">Last Name</th>
-      <th class="email">Email</th>
-      <th class="c-button"></th>
-    </tr>
-    <tr class="sub-row">
-      <td>1</td>
-      <td>Pabodhi</td>
-      <td>Herath</td>
-      <td>hmpabodhiherath@gmail.com</td>
-      <td>
-        <form action="msg-window">
-          <a href="./liveChat.php" class="message-btn">
-          <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
-          </a>
-        </form>
-      </td>
-    </tr>
-</div>
-</div>
 </div>
 
 </body>
 </html>
 
-<?php
 
-// }else {
-//     header("Location: ../front/index.php");
-//     exit();
-// }
-
-?>

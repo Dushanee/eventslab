@@ -1,13 +1,15 @@
 <?php
 
-// include '../back/db_conn.php';
-// include './csmmessageportal.php';
-// include 'viewmsg.php';
+include '../config/connection.php';
+
 
 // session_start();
    
-// if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
-
+// if(isset($_SESSION['id']) && isset($_SESSION['email'])) {
+//   //header('Location:../public/home.php');   //why these?
+//       $firstname = $_SESSION['fname'];
+//       $lastname  = $_SESSION['lname'];
+//       $pro_pic   = $_SESSION['pro_pic'];
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +19,7 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/calendar.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
@@ -24,64 +27,48 @@
 <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-<div class="topbar">
-        
-        <div class="logo">
-            <img src="./images/logo 1.png">
-        </div> 
-   
-    
-    <div class="search0">
-      <h1 class="username">Welcome back, Amaya!</h1>
-    </div>
-    <i class='bx bxs-bell'></i>
-    
-    <div class="user">
-        <img src="./images/propic.png" alt="propic">
-        
-    </div>
+  <?php include '../public/top-bar.php';?>
 
-    <h6> Amaya Wedamulla </h6>
-</div>
-<div class="nav-bar" style="top: 8px;">
+  <div class="nav-bar" style="top: 8px;">
 
 <ul>
   <li>
-    <a class="active" href="./home.php"><i class='bx bxs-dashboard' ></i>Dashboard</a>
-    
+    <a class="active" href="./home.php">
+    <i class='bx bx-grid-alt' style='color:#8d8da7'></i>Dashboard</a>
   </li>
   <li>
-    <a href="./team.php"><i class='bx bxs-group' ></i>Team</a>
-    
+    <a href="./team.php"><i class='bx bx-group'></i>Team</a>
+  </li>
+  
+  <li>
+    <a href="./reviews.php"><i class='bx bx-bookmark-heart'></i>Reviews</a>
   </li>
   
   <li>
-    <a href="./reviews.php"><i class='bx bxs-bookmark-heart' ></i>Reviews</a>
-    
-  </li>
-  
-  
-  <li>
-    <a href="./calendar-tmp.php"><i class='bx bxs-calendar' ></i>Calendar</a>
-    
+    <a href="./calendar-tmp.php"><i class='bx bx-calendar'></i>Calendar</a>
   </li>
   <li>
-    <a href="./notification-store.php"><i class='bx bxs-envelope' ></i>Notification Store</a>
-    
+    <a href="./notification-store.php"><i class='bx bx-envelope'></i>Notification Store</a>
+  </li>
+
+  <li>
+    <a href="./submit-a-blog-article.php"><i class='bx bx-edit-alt' style='color:#8d8da7' ></i>Write a blog</a>
   </li>
  
   <li>
-    <a href="./csmmessageportal.php"><i class='bx bxs-conversation' ></i>Message Portal</a>
+    <a href="./csmmessageportal.php"><i class='bx bx-message-rounded-dots'></i>Message Portal</a>
   </li>
   <li>
-    <a href="./loginFront.php" id="log_out"><i class='bx bxs-log-out' ></i>Logout</a>
+    <a href="./loginFront.php" id="log_out"><i class='bx bx-log-out'></i>Logout</a>
   </li>
 </ul>
+</div><br /><br />
+<div class="username-cage">
+  <h2 class="username"><b>Hello <?php echo $firstname.""?></b></h2>
 </div>
-
-
 <div class="to-left-the-common">
 <div class="common">
+
   
   <div class="container0">
   <a href="./messages.php" class="go" style="text-decoration: none;">
@@ -185,29 +172,143 @@
       </div>
     </div>
   </div>
-  <a href="./csmprofile.php" class="go" style="text-decoration: none;">
+  <!-- <a href="./csmprofile.php" class="go" style="text-decoration: none;">
   <div class="card2">
     <div class="img">
       <img src="./images/propic.png">
-    </div>
-    <div class="top-text">
+    </div> -->
+    <!-- <div class="top-text">
       <div class="name0" style="margin-top: 10px;"><p style="padding:5px;"><p>
         See your profile
 
     </p>
-    </div>
-    </div>
-    <!-- <div class="bottom-text">
-      <div class="btn">
-        <button onclick="window.location.href='./csmprofile.php';">View</button>
-      </div>
     </div> -->
+    <!-- <script type="text/javascript" src="./calendar.js"></script> -->
+    <div id="calendar" class="calendar">
+  <div class="calendar-title">
+    <div class="calendar-title-text"></div>
+    <div class="calendar-button-group">
+      <button id="prevMonth">&lt;</button>
+      <button id="today">Today</button>
+      <button id="nextMonth">&gt;</button>
+    </div>
   </div>
-</a>
-
+  <div class="calendar-day-name"></div>
+  <div class="calendar-dates"></div>
 </div>
-</div>
 
+<script>
+  let currentDate = dayjs();
+let daysInMonth = dayjs().daysInMonth();
+let firstDayPosition = dayjs().startOf("month").day();
+let monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+let weekNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+let dateElement = document.querySelector("#calendar .calendar-dates");
+let calendarTitle = document.querySelector(".calendar-title-text");
+let nextMonthButton = document.querySelector("#nextMonth");
+let prevMonthButton = document.querySelector("#prevMonth");
+let dayNamesElement = document.querySelector(".calendar-day-name");
+let todayButton = document.querySelector("#today");
+let dateItems = null;
+let newMonth = null;
+
+weekNames.forEach(function (item) {
+  dayNamesElement.innerHTML += `<div>${item}</div>`;
+});
+
+function plotDays() {
+  let count = 1;
+  dateElement.innerHTML = "";
+
+  let prevMonthLastDate = currentDate.subtract(1, "month").endOf("month").$D;
+  let prevMonthDateArray = [];
+
+  //plot prev month array
+  for (let p = 1; p < firstDayPosition; p++) {
+    prevMonthDateArray.push(prevMonthLastDate--);
+  }
+  prevMonthDateArray.reverse().forEach(function (day) {
+    dateElement.innerHTML += `<button class="calendar-dates-day-empty">${day}</button>`;
+  });
+
+  //plot current month dates
+  for (let i = 0; i < daysInMonth; i++) {
+    dateElement.innerHTML += `<button class="calendar-dates-day">${count++}</button>`;
+  }
+
+  //next month dates
+  let diff =
+    42 - Number(document.querySelector(".calendar-dates").children.length);
+  let nextMonthDates = 1;
+  for (let d = 0; d < diff; d++) {
+    document.querySelector(
+      ".calendar-dates"
+    ).innerHTML += `<button class="calendar-dates-day-empty">${nextMonthDates++}</button>`;
+  }
+
+  //month name and year
+  calendarTitle.innerHTML = `${
+    monthNames[currentDate.month()]
+  } - ${currentDate.year()}`;
+}
+
+//highlight current date
+function highlightCurrentDate() {
+  dateItems = document.querySelectorAll(".calendar-dates-day");
+  if (dateElement && dateItems[currentDate.$D - 1]) {
+    dateItems[currentDate.$D - 1].classList.add("today-date");
+  }
+}
+
+//next month button event
+nextMonthButton.addEventListener("click", function () {
+  newMonth = currentDate.add(1, "month").startOf("month");
+  setSelectedMonth();
+});
+
+//prev month button event
+prevMonthButton.addEventListener("click", function () {
+  newMonth = currentDate.subtract(1, "month").startOf("month");
+  setSelectedMonth();
+});
+
+//today button event
+todayButton.addEventListener("click", function () {
+  newMonth = dayjs();
+  setSelectedMonth();
+  setTimeout(function () {
+    highlightCurrentDate();
+  }, 50);
+});
+
+//set next and prev month
+function setSelectedMonth() {
+  daysInMonth = newMonth.daysInMonth();
+  firstDayPosition = newMonth.startOf("month").day();
+  currentDate = newMonth;
+  plotDays();
+}
+
+//init
+plotDays();
+setTimeout(function () {
+  highlightCurrentDate();
+}, 50);
+
+</script>
 
 </body>
 </html>
@@ -215,8 +316,8 @@
 <?php
 
 // }else {
-//     header("Location: ../front/loginFront.php");
-//     exit();
+//   header("Location: ../public/loginFront.php");
+//   exit();
 // }
 
 ?>
