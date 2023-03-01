@@ -104,7 +104,7 @@ if (isset($_SESSION['email'])) {
         <!-- ------- end of side bar ----- -->
         <main>
             <h1>Customers</h1>
-
+            <p>Total Customers: <?php echo $data['drop']; ?></p>
             <div class="date">
              <select name="" id="">
                 <option value="">Jhon</option>
@@ -165,6 +165,10 @@ if (isset($_SESSION['email'])) {
 </form>
 
 <a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
+
+
+
+
 
 
 

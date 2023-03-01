@@ -117,8 +117,9 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>25,000</h1>
+                        <h3>Total Customers</h3>
+               
+               <h1> <?php echo $data['drop']; ?></h1>
 
                         </div>
 
@@ -137,14 +138,16 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                     </small>
                 </div>
                 <!-- ------- end of sales card ----- -->
-                <div class="expenses">
+                
+               <div class="expenses">
                     <span class="material-symbols-rounded">
                         bar_chart
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>34,000</h1>
+                        <h3>Total Service Providers</h3>
+               
+               <h1> <?php echo $data['result']; ?></h1>
 
                         </div>
 
@@ -169,9 +172,9 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>3,000</h1>
-
+                            <h3>Total Packages</h3>
+               
+                            <h1> <?php echo $data['result']; ?></h1>
                         </div>
 
                         <div class="progress">

@@ -4,20 +4,32 @@ class adminFunction extends Controller
 {
     public function index()
     {
-        $this->view('admin/dashboard');
+  
+        $drop = $this->model('viewModel')->getTotalCustomers();
+        $result = $this->model('viewModel')->getTotalSps();  
+     
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+            'drop' => $drop,
+        ];
+
+        $this->view('admin/dashboard' ,$data);
     }
 
 
 
     public function customer()
     {
-        $result = $this->model('viewModel')->viewCustomer();
-
+        $result = $this->model('viewModel')->viewCustomer();   
+        $drop = $this->model('viewModel')->getTotalCustomers();
+     
         $data = [
             'inputValue' => "",
             'result' => $result,
+            'drop' => $drop,
         ];
-
+        var_dump($data);
         $this->view('admin/customer', $data);
     }
     public function service()
@@ -41,6 +53,7 @@ class adminFunction extends Controller
         $data = [
             'inputValue' => "",
             'result' => $result,
+            
         ];
 
         $this->view('admin/orders', $data);

@@ -76,4 +76,12 @@ class viewModel extends Model
 
         return $this->getThreeJoin($table1, $table2, $table3, $joinOn1, $joinOn2, $where,$order, $limit);
     }
+    public function getTotalCustomers() {
+        return $this->getTableCount('customers');
+    }
+
+    public function getTotalSps() {
+        return $this->getTableCount('service_providers');
+    }
+
 }

@@ -85,4 +85,16 @@ class Model extends Database
         return $result;
     }
     
+
+    public function getTableCount($table) {
+        $sql = "SELECT COUNT(*) AS count FROM $table";
+        $result = $this->runQuery($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row["count"];
+        } else {
+            return 0;
+        }
+    }
 }
