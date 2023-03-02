@@ -1,10 +1,10 @@
 <!-- 
 <script>
     function validateForm() {
-        let x = document.forms["myForm"]["username"].value;
+        let x = document.forms["myForm"]["email"].value;
         let y = document.forms["myForm"]["password"].value;
         if (x == "") {
-            alert("Username must be filled out");
+            alert("email must be filled out");
             return false;
         }
         if (y == "") {
@@ -24,7 +24,7 @@
             <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
                 <div class="row"> 
                     <i class="fas fa-user"></i>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="email" placeholder="email">
                 </div>
                 <div class="row">
                     <i class="fas fa-lock"></i>
@@ -77,17 +77,17 @@
                     <tr>
                   <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
                             <td class="label-td">
-                                <label for="useremail" class="form-label">Email: </label>
+                                <label for="email" class="form-label">Email: </label>
                             </td>
                     </tr>
                     <tr>
                         <td class="label-td">
-                        <input type="text" name="email" placeholder="Email" class="input-text">
+                        <input type="text" name="email" placeholder="email" class="input-text">
                         </td>
                     </tr>
                     <tr>
                         <td class="label-td">
-                            <label for="userpassword" class="form-label">Password: </label>
+                            <label for="password" class="form-label">Password: </label>
                         </td>
                     </tr>
 

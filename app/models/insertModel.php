@@ -12,21 +12,21 @@ class insertModel extends Model
         $result = $this->get('customer', "$column = '$value'");
         return $result;
     }
-     public function insertCustomer( $ID, $Email,  $FirstName ,$SecondName, $Password,$PhoneNumber)
+     public function insertCustomer( $cust_id, $cust_email,  $cust_fname ,$cust_lname, $cust_password)
     {
-      $this->insert('customer', ['ID'=> $ID, 'Email'=> $Email,'FirstName'=> $FirstName,'SecondName'=> $SecondName,'Password'=> $Password,'PhoneNumber'=> $PhoneNumber]);
+      $this->insert('customers', ['cust_id'=> $cust_id, 'cust_email'=> $cust_email,'cust_fname'=> $cust_fname,'cust_lname'=> $cust_lname,'cust_password'=> $cust_password]);
       
         
    }
-   public function insertServiceProvider($service_provider_id, $sp_email, $sp_name , $password) {
-    $this->insert('service_provider', ['service_provider_id'=> $service_provider_id, 'sp_email'=> $sp_email,'sp_name '=> $sp_name ,'password'=> $password]);
+   public function insertServiceProvider($sp_id, $sp_email, $sp_name , $sp_password) {
+    $this->insert('service_providers', ['sp_id'=> $sp_id, 'sp_email'=> $sp_email,'sp_name '=> $sp_name ,'sp_password'=> $sp_password]);
     
       
  }
 
-  //  public function insertAdmin(  $name, $email,$username,$password)
+  //  public function insertAdmin(  $name, $cust_email,$username,$password)
   //  {
-  //    $this->insert('customer', [ 'name'=> $name,'email'=> $email,'username'=> $username,'password'=> $password]);
+  //    $this->insert('customer', [ 'name'=> $name,'cust_email'=> $cust_email,'username'=> $username,'password'=> $password]);
   //    echo $username;
        
   // }

@@ -2,10 +2,19 @@
 
 class welcome extends Controller
 {
-    public function index() 
+    public function index()
     {
-        $this->view('admin/dashboard');
-    }  
+
+        $drop = $this->model('viewModel')->getTotalCustomers();
+
+        $data = [
+            'inputValue' => "",
+
+            'drop' => $drop,
+        ];
+        var_dump($data);
+        $this->view('admin/dashboard', $data);
+    }
 
     public function signout()
     {
@@ -13,7 +22,22 @@ class welcome extends Controller
         session_start();
         session_destroy();
     }
-    
 
+    public function admin()
+    {
+
+        $drop = $this->model('viewModel')->getTotalCustomers();
+
+        $data = [
+            'inputValue' => "",
+
+            'drop' => $drop,
+        ];
+        var_dump($data);
+        $this->view('admin/dashboard', $data);
+    }
+    public function cs_manager()
+    {
+        $this->view('csm/dashboard');
+    }
 }
-?>

@@ -2,14 +2,14 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
-    // echo $_SESSION['username'];
+if (isset($_SESSION['email'])) {
+    // echo $_SESSION['email'];
 } else {
     echo '<br>You are not logged in';
 }
 
 $conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT username FROM admin");
+$rows = mysqli_query($conn, "SELECT email FROM users");
 
 ?>
 
@@ -52,11 +52,18 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                     <h3>Service Providers</h3>
                 </a>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
                 </a>
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
@@ -65,10 +72,10 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
-                    <h3>Gigs</h3>
+                    <h3>Packages</h3>
                 </a>
 
                 <a href=""><span class="material-symbols-rounded">
@@ -101,9 +108,7 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
         <main>
             <h1>Dashboard</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
+           
 
             <div class="insights">
                 <div class="sales">
@@ -112,8 +117,9 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>25,000</h1>
+                        <h3>Total Customers</h3>
+               
+               <h1> <?php echo $data['drop']; ?></h1>
 
                         </div>
 
@@ -132,14 +138,16 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                     </small>
                 </div>
                 <!-- ------- end of sales card ----- -->
-                <div class="expenses">
+                
+               <div class="expenses">
                     <span class="material-symbols-rounded">
                         bar_chart
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>34,000</h1>
+                        <h3>Total Service Providers</h3>
+               
+               <h1> <?php echo $data['result']; ?></h1>
 
                         </div>
 
@@ -164,9 +172,9 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                     </span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Total Sales</h3>
-                            <h1>3,000</h1>
-
+                            <h3>Total Packages</h3>
+               
+                            <h1> <?php echo $data['result']; ?></h1>
                         </div>
 
                         <div class="progress">
@@ -250,7 +258,7 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="<?php echo BASEURL ?>/images/logo1.png" alt="dp">
+                        <img src="<?php echo BASEURL ?>/images/man.jpg" alt="dp">
                     </div>
                 </div>
             </div>
@@ -362,7 +370,7 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
         </div>
 
         </div>
-
+<script src="<?php echo BASEURL ?>/public/js/index.js"></script>
 </body>
 
 
@@ -430,7 +438,7 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
 
             <div class="profile">
                
-                    <h5>Hi <?php echo $_SESSION["username"]; ?> </h5>
+                    <h5>Hi <?php echo $_SESSION["email"]; ?> </h5>
                     <br>
                     <br>
                

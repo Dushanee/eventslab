@@ -4,14 +4,11 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
-    // echo $_SESSION['username'];
+if (isset($_SESSION['email'])) {
+    // echo $_SESSION['email'];
 } else {
     echo '<br>You are not logged in';
 }
-
-$conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT * FROM service_provider");
 
 ?>
 
@@ -25,10 +22,10 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="" alt="">
+                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
                     <h2>Events
                         <span class="logo-colour">Lab</span>
                     </h2>
@@ -37,7 +34,7 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
                 </div>
             </div>
             <div class="sidebar">
-                <a href="<?php echo BASEURL ?>/adminFunction/admin"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/admin" ><span class="material-symbols-rounded">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
@@ -47,17 +44,24 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
                     </span>
                     <h3>Customers</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/service" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/service"class="active"><span class="material-symbols-rounded">
                         storefront
                     </span>
                     <h3>Service Providers</h3>
                 </a>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
                 </a>
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
@@ -66,10 +70,10 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
-                    <h3>Gigs</h3>
+                    <h3>Packages</h3>
                 </a>
 
                 <a href=""><span class="material-symbols-rounded">
@@ -102,42 +106,45 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
         <main>
             <h1>Service Providers</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
-
-            
+       
            
             <!-- -------orders table----- -->
             <div class="recent-orders">
                 <h2>Service Provider Details</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Business</th>
-                            <th colspan="3">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($rows as $row) : ?>
-                        
-                        <tr>
-                            <td><?php echo $row["service_provider_id"]; ?></td>
+                <?php 
+    $path = BASEURL;
+    echo"<table>";
+    echo"<thead>";
+    echo" <tr>";
+    echo"<th>Id</th>";
+    echo"<th>Name</th>";
+    echo" <th>Business</th>";
+    echo"<th >Actions</th>";
+    echo" </tr>";
+    echo" </thead>";
+    echo" <tbody>";
+    while ($row = $data['result']->fetch_assoc()) {
+               
+                        echo "<tr>";
+                        echo "<td>" . $row["sp_id"] . "</td>";
+                        echo "<td>" . $row["sp_name"] . "</td>";
                           
-                            <td><?php echo $row["sp_name"]; ?></td>
-                            <td><?php echo $row["sp_type"]; ?></td>
-                            <td class="warning">View</td>
-                            <td class="warning">Update</td>
-                            <td class="primary">Delete</td>
-                        </tr>
-                        
-                    </tbody>
+                         
+                        echo "<td>" . $row["sp_type_id"] . "</td>";
 
-                    <?php endforeach; ?>
-                </table>
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteService/". $row["sp_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                      echo "  </tr>";
+                        
+                      echo " </tbody>";
+      }
+      echo "   </table>";
+
+      ?>
                 <a href="">Show all</a>
             </div>
         </main>
@@ -174,7 +181,7 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
                     <form action="<?php echo BASEURL ?>/user/addServiceProvider" method="post">
                     <div class="col">
                         <label>Service Provider Id</label><br>
-                        <input type="text" name="service_provider_id" placeholder="3"><br>
+                        <input type="text" name="sp_id" placeholder="3"><br>
                     </div>
                     <div class="col">
                         <label>Email Address</label><br>
@@ -239,14 +246,14 @@ $rows = mysqli_query($conn, "SELECT * FROM service_provider");
 
 session_start();
 
-if (isset($_SESSION['username'])) {
-    // echo $_SESSION['username'];
+if (isset($_SESSION['email'])) {
+    // echo $_SESSION['email'];
 } else {
     echo '<br>You are not logged in';
 }
 
 $conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT username FROM admin");
+$rows = mysqli_query($conn, "SELECT email FROM admin");
 
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/style.css">
@@ -289,7 +296,7 @@ $rows = mysqli_query($conn, "SELECT username FROM admin");
             </div>
 
             <div class="profile">
-            <h5>Hi <?php echo $_SESSION["username"]; ?> </h5>
+            <h5>Hi <?php echo $_SESSION["email"]; ?> </h5>
                     <br>
                     <br>
                

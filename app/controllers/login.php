@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['email'])) {
     header('Location: ' . BASEURL . '/welcome');
 }
 
@@ -17,7 +17,7 @@ class login extends Controller
         $this->view('login/admin');
     }
 
-    
+   
 
     public function adminLogin()
     {
@@ -34,13 +34,13 @@ class login extends Controller
 
  
 
-    public function login($email = null, $password = null, $usertype = null)
+    public function login($email = null, $password = null, $user_type = null)
     {
         if ($email != null) {
             $path = BASEURL;
-            //echo $username;
+            //echo $email;
 
-            $result = $this->model('loginModel')->login($email, $password, $usertype);
+            $result = $this->model('loginModel')->login($email, $password, $user_type);
 
             if ($result != null) {
                 session_destroy();
@@ -54,7 +54,7 @@ class login extends Controller
                 $_SESSION['email'] = $row['email'];
                 echo "success";
                 
-                header("location: $path/welcome");
+                header("location: $path/welcome/".$row['user_type']);
 
             } else {
                 echo "<br>Error<br><br><br> ";

@@ -50,8 +50,10 @@ body {
                 <td colspan="3">
                     <center>
                         <a href="<?php echo BASEURL ?>/login/admin">
-                            <input type="button" value="Administrator Login" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                            <input type="button" value="Login" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         </a>
+
+                       
                     </center>
                 </td>
 

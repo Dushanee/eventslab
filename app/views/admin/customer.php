@@ -2,14 +2,12 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
-    // echo $_SESSION['username'];
+if (isset($_SESSION['email'])) {
+    // echo $_SESSION['email'];
 } else {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT * FROM customers");
 
 ?>
 
@@ -23,10 +21,10 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="" alt="">
+                    <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
                     <h2>Events
                         <span class="logo-colour">Lab</span>
                     </h2>
@@ -51,11 +49,18 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
                     <h3>Service Providers</h3>
                 </a>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
                 </a>
+                <a href=""><span class="material-symbols-rounded">
+                        mail
+                    </span>
+                    <h3>Verify Users</h3>
+                    <span class="message-count">31</span>
+                </a>
+
                 <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
@@ -64,10 +69,10 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
                 </a>
 
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
-                    <h3>Gigs</h3>
+                    <h3>Packages</h3>
                 </a>
 
                 <a href=""><span class="material-symbols-rounded">
@@ -98,10 +103,12 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
 
         <!-- ------- end of side bar ----- -->
         <main>
-            <h1>Dashboard</h1>
-
+            <h1>Customers</h1>
+            <p>Total Customers: <?php echo $data['drop']; ?></p>
             <div class="date">
-                <input type="date">
+             <select name="" id="">
+                <option value="">Jhon</option>
+             </select>
             </div>
 
             
@@ -109,33 +116,62 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
             <!-- -------orders table----- -->
             <div class="recent-orders">
                 <h2>Customer Details</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Payment</th>
-                            <th colspan="3">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($rows as $row) : ?>
-                        
-                        <tr>
-                            <td><?php echo $row["cust_id"]; ?></td>
-                          
-                            <td><?php echo $row["cust_fname"]; ?></td>
-                            <td>Paid</td>
-                            <td class="warning">View</td>
-                            <td class="warning">Update</td>
-                            <td class="primary">Delete</td>
-                        </tr>
-                        
-                    </tbody>
 
-                    <?php endforeach; ?>
-                </table>
+
+        
+                <?php 
+
+                $path = BASEURL;
+               echo" <table>";
+                   echo "<thead>";
+                   echo "<tr>";
+                   echo " <th>Id</th>";
+                   echo "  <th>Name</th>";
+                   echo "  <th>Email</th>";
+                   echo " <th>Actions</th>";
+                   echo " </tr>";
+                   echo "</thead>";
+                   echo " <tbody>";
+                   while ($row = $data['result']->fetch_assoc()) {
+              
+                 
+                        
+                        echo "<tr>";
+                        echo "<td>" . $row["cust_id"] . "</td>";
+                        echo "<td>" . $row["cust_fname"] . "</td>";
+                          
+                         
+                        echo "<td>" . $row["cust_email"] . "</td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/". $row["cust_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/". $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteCustomer/". $row["cust_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo" </tr>";
+                        
+                        echo"    </tbody>";
+                   }
+              echo"  </table>";
+
+
+              
+              ?>
+<form method="POST" action="<?php echo BASEURL ?>/pdf" target="_blank">
+
+<input type="submit" name="pd_createrf" value="PDF">
+
+</form>
+
+<a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
+
+
+
+
+
+
+
                 <a href="">Show all</a>
             </div>
         </main>
@@ -172,31 +208,28 @@ $rows = mysqli_query($conn, "SELECT * FROM customers");
                     <form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
                     <div class="col">
                         <label>Customer Id</label><br>
-                        <input type="text" name="ID" placeholder="3"><br>
+                        <input type="text" name="cust_id" placeholder="3"><br>
                     </div>
                     <div class="col">
                         <label>Email Address</label><br>
-                        <input type="text" name="Email" placeholder="user@gmail.com"><br>
+                        <input type="text" name="cust_email" placeholder="user@gmail.com"><br>
                     </div>
                     <div class="col">
                         <label>First Name</label><br>
-                        <input type="text" name="FirstName" placeholder="user"><br>
+                        <input type="text" name="cust_fname" placeholder="user"><br>
                     </div>
                     
                     <div class="col">
                         <label>Second Name</label><br>
-                        <input type="text" name="SecondName" placeholder="user123"><br>
+                        <input type="text" name="cust_lname" placeholder="user123"><br>
                     </div>
 
                     <div class="col">
                         <label>Temporary Password</label><br>
-                        <input type="password" name="Password" placeholder="123456"><br>
+                        <input type="password" name="cust_password" placeholder="123456"><br>
                     </div>
                     
-                    <div class="col">
-                        <label>Phone Number</label><br>
-                        <input type="text" name="PhoneNumber" placeholder="123456"><br>
-                    </div>
+                 
                     
 
                     <div class="col">
