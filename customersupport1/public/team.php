@@ -3,6 +3,14 @@
 
     //session_start();
 
+    session_start();
+
+                             $_SESSION['id'];
+                             $_SESSION['email'];
+                             $_SESSION['fname'];
+                             $_SESSION['lname'];
+                             $_SESSION['pro_pic'];
+
     $query_1 = "SELECT * FROM users WHERE user_type = 'admin'";
     $result_1 = mysqli_query($conn, $query_1);
 

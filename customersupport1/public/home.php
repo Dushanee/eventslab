@@ -2,14 +2,15 @@
 
 include '../config/connection.php';
 
+session_start();
 
-// session_start();
-   
-// if(isset($_SESSION['id']) && isset($_SESSION['email'])) {
-//   //header('Location:../public/home.php');   //why these?
-//       $firstname = $_SESSION['fname'];
-//       $lastname  = $_SESSION['lname'];
-//       $pro_pic   = $_SESSION['pro_pic'];
+                             $_SESSION['id'];
+                             $_SESSION['email'];
+                             $_SESSION['fname'];
+                             $_SESSION['lname'];
+                             $_SESSION['pro_pic'];
+                             
+
 ?>
 
 <!DOCTYPE html>
@@ -27,114 +28,17 @@ include '../config/connection.php';
 <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-  <?php include '../public/top-bar.php';?>
+<?php 
+        include '../public/top-bar.php'; 
+        include '../public/nav-bar.php';
+        include '../public/card.php';
+    ?>
 
-  <div class="nav-bar" style="top: 8px;">
-
-<ul>
-  <li>
-    <a class="active" href="./home.php">
-    <i class='bx bx-grid-alt' style='color:#8d8da7'></i>Dashboard</a>
-  </li>
-  <li>
-    <a href="./team.php"><i class='bx bx-group'></i>Team</a>
-  </li>
-  
-  <li>
-    <a href="./reviews.php"><i class='bx bx-bookmark-heart'></i>Reviews</a>
-  </li>
-  
-  <li>
-    <a href="./calendar-tmp.php"><i class='bx bx-calendar'></i>Calendar</a>
-  </li>
-  <li>
-    <a href="./notification-store.php"><i class='bx bx-envelope'></i>Notification Store</a>
-  </li>
-
-  <li>
-    <a href="./submit-a-blog-article.php"><i class='bx bx-edit-alt' style='color:#8d8da7' ></i>Write a blog</a>
-  </li>
- 
-  <li>
-    <a href="./csmmessageportal.php"><i class='bx bx-message-rounded-dots'></i>Message Portal</a>
-  </li>
-  <li>
-    <a href="./loginFront.php" id="log_out"><i class='bx bx-log-out'></i>Logout</a>
-  </li>
-</ul>
-</div><br /><br />
-<div class="username-cage">
-  <h2 class="username"><b>Hello <?php echo $firstname.""?></b></h2>
+<div class="username-cage" style="margin-top: 5%; margin-left: 19.5%">
+  <h2 class="username"><b>Hello, <?php echo $firstname.""?>!</b></h2>
 </div>
-<div class="to-left-the-common">
-<div class="common">
-
-  
-  <div class="container0">
-  <a href="./messages.php" class="go" style="text-decoration: none;">
-  <div class="card">
-    <div class="img">
-      <!-- <img src="./images/1.png"> -->
-      <div class="icon"><i class='bx bx-message-square-dots' style='color:#ffffff'  ></i></div>
-      <div class="what">Forum Messages</div>
-    </div>
-    <div class="bot-text" style="display: flex;">
-      <div class="frm-bc-end">10</div>
-      <div class="bc-end-desc">Unread Messages</div>
-    </div>
-</a>
-    <!-- <div class="top-text">
-      <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">10 unread messages</p></div>
-    </div> -->
-    <!-- <div class="bottom-text">
-      <div class="btn">
-        <button onclick="window.location.href='./messages.php';">View</button>
-      </div>
-    </div> -->
-  </div>
-  <a href="./consult.php" class="go" style="text-decoration: none;">
-  <div class="card">
-    <div class="img">
-      <!-- <img src="./images/2.png"> -->
-      <div class="icon"><i class='bx bx-donate-heart'></i></i></div>
-      <div class="what">Consultations</div>
-    </div>
-    <div class="bot-text" style="display: flex;">
-      <div class="frm-bc-end">10</div>
-      <div class="bc-end-desc">Unread Messages</div>
-    </div>
-</a>
-    <!-- <div class="top-text">
-      <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">3 new bookings</p></div>
-    </div> -->
-    <!-- <div class="bottom-text">
-      <div class="btn">
-        <button onclick="window.location.href='./consult.php';">View</button>
-      </div>
-    </div> -->
-  </div>
-  <a href="./blogSpot.php" class="go" style="text-decoration: none;">
-  <div class="card">
-    <div class="img">
-      <!-- <img src="./images/3.png"> -->
-      <div class="icon"><i class='bx bx-book-reader'></i></div>
-      <div class="what">Blog</div>
-    </div>
-    <div class="bot-text" style="display: flex;">
-      <div class="frm-bc-end">10</div>
-      <div class="bc-end-desc">Unread Messages</div>
-    </div>
-</a>
-    <!-- <div class="top-text">
-      <div class="name0" style="margin-top: 10px;"><p style="padding:5px;">5 new articles</p></div>
-    </div> -->
-    <!-- <div class="bottom-text">
-      <form class="btn" action="https://eventslabblogspot.my.canva.site/">
-        <button >View</button>
-    </form>
-    </div> -->
-  </div>
-  </div>
+<!-- <div class="to-left-the-common">
+<div class="common"> -->
   <div class="container1">
   <div class="card1">
     <div class="chart">
@@ -312,12 +216,3 @@ setTimeout(function () {
 
 </body>
 </html>
-
-<?php
-
-// }else {
-//   header("Location: ../public/loginFront.php");
-//   exit();
-// }
-
-?>

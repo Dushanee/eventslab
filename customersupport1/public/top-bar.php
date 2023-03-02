@@ -3,7 +3,7 @@
 include '../config/connection.php';
 
 
-session_start();
+//session_start();
    
 if(isset($_SESSION['id']) && isset($_SESSION['email'])) {
   //header('Location:../public/home.php');   //why these?
@@ -32,18 +32,29 @@ if(isset($_SESSION['id']) && isset($_SESSION['email'])) {
         <div class="logo">
             <img src="./images/logo 1.png">
         </div> 
+
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search" class="search-input">
+            <button type="submit"><i class='bx bx-search' style='color:#171720'  ></i></button>
+          </form>
+        </div>
    
     
-    <div class="search0">
-      <h1 class="username">Welcome back, <?php echo $firstname.""?>!</h1>
-    </div>
+    <!-- <div class="search0">
+      <h1 class="username">Welcome back, <?php //echo $firstname.""?>!</h1>
+    </div> -->
+    <div class="all-end-topbar">
     <i class='bx bxs-bell'></i>
-    
-    <div class="user">
+    <div class="end-topbar">
+      <div class="user">
         <img src="./images/<?php echo $pro_pic ?>" alt="propic">  
+      </div>
+      <a id="to-profile" href="../public/csmprofile.php"><h5><?php echo $firstname." ".$lastname?></h5></a>
+    </div>
     </div>
 
-    <h6><?php echo $firstname." ".$lastname?></h6>
+
 </div>
 </body>
 </html>
