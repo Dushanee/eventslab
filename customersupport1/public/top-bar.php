@@ -27,7 +27,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['email'])) {
 <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-<div class="topbar">
+<div class="topbar" style="position: fixed;">
         
         <div class="logo">
             <img src="./images/logo 1.png">

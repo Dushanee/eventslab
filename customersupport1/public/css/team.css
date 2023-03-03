@@ -65,6 +65,11 @@ i {
 
 tr {
   justify-content: left;
+  padding: 20px;
+}
+
+td {
+  padding-left: 20px;
 }
 
 /* th {

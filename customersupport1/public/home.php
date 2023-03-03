@@ -24,6 +24,11 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  
+  function showForm() {
+  var popup = document.getElementById("popupForm");
+  popup.style.display = "block";
+  }
 </script>
 <link rel="stylesheet" href="./css/home.css">
 </head>
@@ -36,7 +41,18 @@ session_start();
 
 <div class="username-cage" style="margin-top: 5%; margin-left: 19.5%">
   <h2 class="username"><b>Hello, <?php echo $firstname.""?>!</b></h2>
+  <div class="blog-button">
+  <button class="blogButton" onclick="showForm()">Submit a blog article</button>
+    <div id="popupForm" style="display: none;">
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="fileUpload">Upload a PDF File:</label>
+            <input type="file" name="fileUpload" id="fileUpload" accept=".pdf">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+  </div>
 </div>
+
 <!-- <div class="to-left-the-common">
 <div class="common"> -->
   <div class="container1">

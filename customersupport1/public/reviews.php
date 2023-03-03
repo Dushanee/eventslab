@@ -75,7 +75,10 @@ session_start();
 </ul>
 </div>
 
-<div class="common" style="position:absolute;margin-left:29%;padding:1px 16px;height:1000px; top: 50px">
+<div class="common-review-cage" style="position:absolute;padding:1px 16px;height:1000px; top: 50px">
+<div class="username-cage-in-reviews">
+  <h2 class="username"><b>Hello, <?php echo $firstname.""?>!</b></h2>
+</div>
 <?php
 
 $query_2 = "SELECT * FROM reviews INNER JOIN customers ON reviews.cust_Id = customers.cust_id";
@@ -104,6 +107,7 @@ echo '<div class="wrapper">';
                          $j++;
 
                        echo 
+                       //"<a href="../public/replyForm.php">".
          
                        "<div class='review-card'>".
                        
@@ -126,7 +130,8 @@ echo '<div class="wrapper">';
                         // //  "<span id='backgroundSubmit'></span>".
                         //  "</form>".            
                         // "</div>".
-                        "</div>";
+                        
+                        "</div></a><br />";
                     }
                     echo '</div>'; 
                 }

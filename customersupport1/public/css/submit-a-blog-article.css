@@ -108,6 +108,8 @@ a {
 
 .write-new-notification {
     align-self: center;
+    color: #ffffff;
+    font-size: larger;
 }
 
 .not-topic {

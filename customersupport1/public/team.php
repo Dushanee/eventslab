@@ -36,6 +36,7 @@
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a4f9e5cd76.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/team.css">
 <link rel="stylesheet" href="./css/home.css">
 </head>
@@ -105,7 +106,7 @@
                     <td>
                     <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    <i class='bx bx-edit-alt' style="color:#171720;"></i>
                     </a>
                     </form>
                 </tr>
@@ -142,7 +143,7 @@
                     <td>
                     <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    <!-- <i class='bx bx-edit-alt' style="color:#171720;"></i> -->
                     </a>
                     </form>
                 </tr>
@@ -179,7 +180,7 @@
                     <td>
                     <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    <i class='bx bx-edit-alt' style="color:#171720;"></i>
                     </a>
                     </form>
                 </tr>
@@ -213,7 +214,7 @@
                     <td>
                     <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    <i class='bx bx-edit-alt' style="color:#171720;"></i>
                     </a>
                     </form>
                 </tr>
@@ -251,7 +252,7 @@
                     <td>
                     <form action="msg-window">
                     <a href="./liveChat.php" class="message-btn">
-                    <i class='bx bx-message-square-edit' style='color:#0e0e0e'  ></i>
+                    <i class='bx bx-edit-alt' style="color:#171720;"></i>
                     </a>
                     </form>
                 </tr>
