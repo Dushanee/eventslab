@@ -1,11 +1,14 @@
 <?php
 
-// include '../back/db_conn.php';
-// //include 'viewmsg.php';
+include '../config/connection.php';
 
-// session_start();
-   
-// if(isset($_SESSION['id']) && isset($_SESSION['username'])) {
+session_start();
+
+                             $_SESSION['id'];
+                             $_SESSION['email'];
+                             $_SESSION['fname'];
+                             $_SESSION['lname'];
+                             $_SESSION['pro_pic'];
 
 ?>
 
@@ -17,6 +20,7 @@
 <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/home.css">
+<link rel="stylesheet" href="./css/review-cards.css">
 </head>
 <body>
 
@@ -25,60 +29,100 @@
 <div class="nav-bar" style="top: 8px;">
 
 <ul>
-  <li>
-    <a class="active" href="./home.php">
-    <i class='bx bx-grid-alt' style='color:#8d8da7'></i>Dashboard</a>
-  </li>
+  <!-- <div class="nav-bar-icons" class="active"> -->
+    <li class="list-item">
+      <a href="./home.php">
+      <i class='bx bx-grid-alt'></i>Dashboard</a>
+    </li>
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./team.php"><i class='bx bx-group'></i>Team</a>
   </li>
-  
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./reviews.php"><i class='bx bx-bookmark-heart'></i>Reviews</a>
   </li>
-  
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
-    <a href="./calendar-tmp.php"><i class='bx bx-calendar'></i>Calendar</a>
+    <a href="./messages.php" class="active"><i class='bx bx-message' style='color:#8d8da7'  ></i>Customer Forums</a>
   </li>
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./notification-store.php"><i class='bx bx-envelope'></i>Notification Store</a>
   </li>
-
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./submit-a-blog-article.php"><i class='bx bx-edit-alt' style='color:#8d8da7' ></i>Write a blog</a>
   </li>
- 
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./csmmessageportal.php"><i class='bx bx-message-rounded-dots'></i>Message Portal</a>
   </li>
+  <!-- </div> -->
+  <!-- <div class="nav-bar-icons"> -->
   <li>
     <a href="./loginFront.php" id="log_out"><i class='bx bx-log-out'></i>Logout</a>
   </li>
+  <!-- </div> -->
 </ul>
 </div>
-<div class="common-msg-cage" style="position:absolute;margin-left:18%;padding:1px 16px;height:1000px; margin-top: 8%;">
-<div class="message">
-              <table style="width: 100%;">
-                <tr>
-                  <th class="Email" style="width: 300px"></th>
-                  <th class="msg" style="width: 400px"></th>
-                  <th class="button"></th>
-                </tr>
-              <?php $query = "SELECT * FROM customer_forum";
-$result = mysqli_query($conn, $query);
 
-while($view=mysqli_fetch_assoc($result)) {
+<div class="common-review-cage" style="position:absolute;padding:1px 16px;height:1000px; top: 50px">
+<div class="username-cage-in-reviews">
+  <h2 class="username"><b>Hello, <?php echo $firstname.""?>!</b></h2>
+</div>
+
+
+<?php
+
+$query_2 = "SELECT * FROM customer_forum INNER JOIN customers ON customer_forum.cust_Id = customers.cust_id";
+$result_2=mysqli_query($conn, $query_2);
+
+echo '<div class="wrapper">';
+
+       $j = 0;
+
+        if($result_2 == true){
+         if(mysqli_num_rows($result_2)>0){
+             while($row = mysqli_fetch_assoc($result_2)){
+               $cust_id  = $row['cust_id']; 
+               $cust_email  = $row['cust_email'];  
+               $forum_subject = $row['forum_subject'];
+               $forum_message = $row['forum_message'];
+               $time_stamp = $row['time_stamp'];
+               
+               
+               $j++;
+
+                       echo 
+                       "<a href='reply.php'>".
+                       "<div class='review-card'>".
+                       "<div class='cust_email'>".
+                         "<h4><b>".$cust_email."</b></h4>".
+                         "</div><br />".
+
+                         "<p>".$forum_subject."</p>".
+                         "<p>".$forum_message."</p>".
+                         "<p>".$time_stamp."</p>".
+
+                         "</div></a><br />";
+                         "</a>";
+                    }
+                    echo '</div>'; 
+                }
+            }         
+
+      ?>
+      
+<?php 
+  mysqli_close($conn);
 ?>
-  <tr>
-    <td style="width: 300px; height: 60px"><b><?php echo $view['cust_id'];?></b></td>  <!--need to display cust_email here but currently showing id-->
-    <td style="width: 400px; height: 60px"></td><?php echo $view['forum_message'];?>
-    <td style="width: 60px"><a href="replyform.php" onclick="submitForm()" style="color: white; text-decoration:none"><i class='bx bx-reply' style="font-size: 16px; color:white"></i>Reply</a></td>
-  </tr><br />
-  
-  <?php
-}
-?>
-</table>
 
 
 
