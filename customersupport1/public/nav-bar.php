@@ -49,7 +49,7 @@
                         <div class="ico"><i class='bx bx-message-rounded-dots'></i></div>
                         <div class="icon_name">Message</div>
                     </a>
-                </li><br /><br /><br /><br /><br /><br /><br /><br />
+                </li><br /><br /><br /><br /><br /><br />
                 <li>
                     <a href="../src/logout.php">
                         <div class="ico"><i class='bx bx-log-out bx-rotate-180' ></i></div>

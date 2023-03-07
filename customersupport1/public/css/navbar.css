@@ -8,6 +8,7 @@
     --activeIcon-nameColor: #4c4b84;
     --activeNavbarIconBgColor: #efeef1;
     --activeNavbarIconLeftBorder: 5px solid #4c4b84;
+    --navbarBackgroundColor: #ffffff;
 }
 
 * {
@@ -16,13 +17,14 @@
 
 .navbar {
     padding: 30px;
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     width: 18%;
     margin-top: 4%;
     margin-left: 0;
-    /* background-color: rgb(200, 209, 209); */
+    background-color: var(--navbarBackgroundColor);
+    height: 100%;
 }
 
 ul {
@@ -62,7 +64,7 @@ li a {
 }
 
 li a.active {
-    background-color: var(--activeNavbarIconBgColor);
+    /* background-color: var(--activeNavbarIconBgColor); */
     color: var(--activeIconColor);
     /* border-left: 5px solid #4c4b84; */
     /* border-top-right-radius: 5px; */
@@ -80,18 +82,20 @@ li a.active {
   
   li a:hover:not(.active) {
       color: var(--activeIcon-nameColor);
-      /* background-color: #8d8da7;
-      opacity: 0.3; */
-      transform: translate(1px, 1px);
+      /* background-color: #8d8da7; */
+      /* opacity: 0.3; */
+     /* transform: translate(1px, 1px);
       /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px 0px #a5efea; */
       transition: all 0.4s ease-in-out;
+      transform:scale(1.05)
   }
   
   li i:hover:not(.active) {
-    color: var(--activeIcon-nameColor);
+    /*color: var(--activeIcon-nameColor);
     /* background-color: #8d8da7;
     opacity: 0.3; */
-    transform: translate(1px, 1px);
+    /*transform: translate(1px, 1px);
     /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px 0px #a5efea; */
     transition: all 0.4s ease-in-out;
+    transform:scale(1.05)
   }
