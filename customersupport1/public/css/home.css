@@ -417,11 +417,12 @@ height: 50px;
   align-items: center;
   justify-content: space-between;
   width: 80%;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
+  padding-bottom: 50px;
 }
 
 .card1 {
-  height: 380px;
+  height: 400px;
   width: 62.5%;
   /* margin: 0 20px; */
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
@@ -791,4 +792,10 @@ height: 50px;
 
 .under-the-top {
   background-color: #DCD7CE;
+}
+
+.message_window {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
