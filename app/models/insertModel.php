@@ -24,6 +24,14 @@ class insertModel extends Model
       
  }
 
+
+
+public function insertUser($id, $fname, $lname, $email, $user_type, $status) {
+ $this->insert('users', ['id' => $id,'fname' => $fname,'lname' => $lname,'email' => $email,'user_type' => $user_type, 'status ' => $status]);
+ 
+   
+}
+
   //  public function insertAdmin(  $name, $cust_email,$username,$password)
   //  {
   //    $this->insert('customer', [ 'name'=> $name,'cust_email'=> $cust_email,'username'=> $username,'password'=> $password]);
