@@ -6,7 +6,15 @@ class viewModel extends Model
     {
         parent::__construct();
     }
-
+    public function getUsers($id = null)
+    {
+        if (isset($id)) {
+            $append = "id='$id '";
+        } else {
+            $append = '';
+        }
+        return $this->get('users', $append);
+    }
 
     public function viewCustomer($cust_id = null)
     {

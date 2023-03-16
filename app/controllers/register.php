@@ -1,10 +1,3 @@
-<?php
-session_start();
-
-if (isset($_SESSION['email'])) {
-    header('Location: ' . BASEURL . '/welcome');
-}
-
 class login extends Controller
 {
     public function index()
@@ -34,13 +27,13 @@ class login extends Controller
 
  
 
-    public function login($email = null, $password = null, $user_type = null,$fname = null)
+    public function login($email = null, $password = null, $user_type = null)
     {
         if ($email != null) {
             $path = BASEURL;
             //echo $email;
 
-            $result = $this->model('loginModel')->login($email, $password, $user_type ,$fname);
+            $result = $this->model('loginModel')->login($email, $password, $user_type);
 
             if ($result != null) {
                 session_destroy();
@@ -51,7 +44,6 @@ class login extends Controller
 
                 $row = $result->fetch_assoc();
                 echo $row['email'];
-                echo $row['user_type'];
                 $_SESSION['email'] = $row['email'];
                 echo "success";
                 

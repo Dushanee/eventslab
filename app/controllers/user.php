@@ -66,19 +66,12 @@ class user extends Controller
     public function viewCustomer($cust_id)
     {
         $result = $this->model('viewModel')->viewCustomer($cust_id);
-
-
         $data = [
             'inputValue' => "",
             'result' => $result,
         ];
-
-
-
         $this->view('admin/customer_view', $data);
     }
-
-
 
     public function deleteCustomer($cust_id)
     {
@@ -98,18 +91,81 @@ class user extends Controller
             $cust_lname = $_POST['cust_lname'];
             $cust_email = $_POST['cust_email'];
 
-            // $birthday = $_POST['birthday'];
-           
-          
-
             $this->model('updateModel')->updateCustomer($cust_id, $cust_fname, $cust_lname, $cust_email);
-           
+
 
             header("Location: " . BASEURL . "/adminFunction/customer");
-
         } else {
             header("Location: " . BASEURL . "/adminFunction/service");
         }
     }
+    public function viewUsers($id)
+    {
+        $result = $this->model('viewModel')->getUsers($id);
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+        ];
+        $this->view('/superAdmin/viewUsers', $data);
+    }
 
+    public function deleteUser($id)
+    {
+        if (isset($id)) {
+            $this->model('deleteModel')->deleteUser($id);
+            header("Location: " . BASEURL . "/superadmin/manageUsers");
+        }
+    }
+
+
+    public function editUser()
+    {
+        if (isset($_POST['id'])) {
+
+            $id = $_POST['id'];
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $email = $_POST['email'];
+            $user_type = $_POST['user_type'];
+            $status = $_POST['status'];
+
+            $this->model('updateModel')->updateUser($id, $fname, $lname, $email ,$user_type ,$status);
+
+
+            header("Location: " . BASEURL . "/superAdmin/manageUsers");
+        } else {
+            header("Location: " . BASEURL . "/user/viewUsers");
+        }
+    }
+    public function addUser()
+
+
+    {
+        if (isset($_POST['id'])) {
+
+            $id = $_POST['id'];
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $email = $_POST['email'];
+            $user_type = $_POST['user_type'];
+            $status = $_POST['status'];
+
+            $this->model('insertModel')->insertUser($id, $fname, $lname, $email ,$user_type ,$status);
+            header("Location: " . BASEURL . "/superAdmin/manageUsers");
+        } else {
+            header("Location: " . BASEURL . "/superAdmin/manageUsers");
+        }
+    }
+
+
+    public function verify()
+    {
+        $result = $this->model('viewModel')->viewService();
+
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+        ];
+        $this->view('/admin/verify', $data);
+    }
 }

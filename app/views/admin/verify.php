@@ -1,3 +1,5 @@
+
+
 <?php
 
 session_start();
@@ -7,7 +9,6 @@ if (isset($_SESSION['email'])) {
 } else {
     echo '<br>You are not logged in';
 }
-
 
 ?>
 
@@ -21,7 +22,7 @@ if (isset($_SESSION['email'])) {
 
 <body>
     <div class="container">
-        <aside>
+    <aside>
             <div class="top">
                 <div class="logo">
                     <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
@@ -33,17 +34,17 @@ if (isset($_SESSION['email'])) {
                 </div>
             </div>
             <div class="sidebar">
-                <a href="<?php echo BASEURL ?>/adminFunction/admin"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/admin" ><span class="material-symbols-rounded">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/customer" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/customer" ><span class="material-symbols-rounded">
                         person
                     </span>
                     <h3>Customers</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/service"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/service"class="active"><span class="material-symbols-rounded">
                         storefront
                     </span>
                     <h3>Service Providers</h3>
@@ -103,75 +104,47 @@ if (isset($_SESSION['email'])) {
 
         <!-- ------- end of side bar ----- -->
         <main>
-            <h1>Customers</h1>
-            <p>Total Customers: <?php echo $data['drop']; ?></p>
-            <div class="date">
-                <select name="" id="">
-                    <option value="">Jhon</option>
-                </select>
-            </div>
+            <h1>Service Providers</h1>
 
-
-
+       
+           
             <!-- -------orders table----- -->
             <div class="recent-orders">
-                <h2>Customer Details</h2>
+                <h2>Service Provider Details</h2>
+                <?php 
+    $path = BASEURL;
+    echo"<table>";
+    echo"<thead>";
+    echo" <tr>";
+    echo"<th>Id</th>";
+    echo"<th>Name</th>";
+    echo" <th>Business</th>";
+    echo"<th >Actions</th>";
+    echo" </tr>";
+    echo" </thead>";
+    echo" <tbody>";
+    while ($row = $data['result']->fetch_assoc()) {
+               
+                        echo "<tr>";
+                        echo "<td>" . $row["sp_id"] . "</td>";
+                        echo "<td>" . $row["sp_name"] . "</td>";
+                          
+                         
+                        echo "<td>" . $row["sp_type_id"] . "</td>";
 
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
 
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
 
-                <?php
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteService/". $row["sp_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
 
-                $path = BASEURL;
-                echo " <table>";
-                echo "<thead>";
-                echo "<tr>";
-                echo " <th>Id</th>";
-                echo "  <th>Name</th>";
-                echo "  <th>Email</th>";
-                echo " <th>Actions</th>";
-                echo " </tr>";
-                echo "</thead>";
-                echo " <tbody>";
-                while ($row = $data['result']->fetch_assoc()) {
+                      echo "  </tr>";
+                        
+                      echo " </tbody>";
+      }
+      echo "   </table>";
 
-
-
-                    echo "<tr>";
-                    echo "<td>" . $row["cust_id"] . "</td>";
-                    echo "<td>" . $row["cust_fname"] . "</td>";
-
-
-                    echo "<td>" . $row["cust_email"] . "</td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/deleteCustomer/" . $row["cust_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-                    echo " </tr>";
-
-                    echo "    </tbody>";
-                }
-                echo "  </table>";
-
-
-
-                ?>
-                <form method="POST" action="<?php echo BASEURL ?>/pdf" target="_blank">
-
-                    <input type="submit" name="pd_createrf" value="PDF">
-
-                </form>
-
-                <a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
-
-
-
-
-
-
-
+      ?>
                 <a href="">Show all</a>
             </div>
         </main>
@@ -201,53 +174,49 @@ if (isset($_SESSION['email'])) {
             <!-- =====end of top=== -->
 
             <div class="recent-updates">
-                <h2>Add customer</h2>
+                <h2>Add Service Provider</h2>
                 <div class="updates">
                     <div class="">
-
-                        <form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
-                            <div class="col">
-                                <label>Customer Id</label><br>
-                                <input type="text" name="cust_id" placeholder="3"><br>
-                            </div>
-                            <div class="col">
-                                <label>Email Address</label><br>
-                                <input type="text" name="cust_email" placeholder="user@gmail.com"><br>
-                            </div>
-                            <div class="col">
-                                <label>First Name</label><br>
-                                <input type="text" name="cust_fname" placeholder="user"><br>
-                            </div>
-
-                            <div class="col">
-                                <label>Second Name</label><br>
-                                <input type="text" name="cust_lname" placeholder="user123"><br>
-                            </div>
-
-                            <div class="col">
-                                <label>Temporary Password</label><br>
-                                <input type="password" name="cust_password" placeholder="123456"><br>
-                            </div>
-
-
-
-
-                            <div class="col">
-                                <button type="submit" class="login-btn btn-primary btn">Submit</button>
-                            </div>
+                        
+                    <form action="<?php echo BASEURL ?>/user/addServiceProvider" method="post">
+                    <div class="col">
+                        <label>Service Provider Id</label><br>
+                        <input type="text" name="sp_id" placeholder="3"><br>
                     </div>
+                    <div class="col">
+                        <label>Email Address</label><br>
+                        <input type="text" name="sp_email" placeholder="user@gmail.com"><br>
+                    </div>
+                    <div class="col">
+                        <label>Name</label><br>
+                        <input type="text" name="sp_name" placeholder="user"><br>
+                    </div>
+                    
+        
+                    <div class="col">
+                        <label>Temporary Password</label><br>
+                        <input type="password" name="sp_password" placeholder="123456"><br>
+                    </div>
+                    
+                 
+                    
 
-                    </form>
-
-
-
-
-
+                    <div class="col">
+                     <button type="submit"  class="login-btn btn-primary btn">Submit</button>
+                    </div>
                 </div>
-                <!-- =====end of recent updates === -->
+                    
+                </form>
+                    
 
+                   
 
+                
             </div>
+            <!-- =====end of recent updates === -->
+
+            
+        </div>
 
         </div>
 
