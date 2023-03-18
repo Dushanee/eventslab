@@ -21,63 +21,13 @@ session_start();
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/home.css">
 <link rel="stylesheet" href="./css/review-cards.css">
+<link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
 
-<?php include '../public/top-bar.php'; ?>
-
-<div class="nav-bar" style="top: 8px;">
-
-<ul>
-  <!-- <div class="nav-bar-icons" class="active"> -->
-    <li class="list-item">
-      <a href="./home.php">
-      <i class='bx bx-grid-alt'></i>Dashboard</a>
-    </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./team.php"><i class='bx bx-group'></i>Team</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./reviews.php"><i class='bx bx-bookmark-heart'></i>Reviews</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./messages.php" class="active"><i class='bx bx-message' style='color:#8d8da7'  ></i>Customer Forums</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./notification-store.php"><i class='bx bx-envelope'></i>Notification Store</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./submit-a-blog-article.php"><i class='bx bx-edit-alt' style='color:#8d8da7' ></i>Write a blog</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./csmmessageportal.php"><i class='bx bx-message-rounded-dots'></i>Message Portal</a>
-  </li>
-  <!-- </div> -->
-  <!-- <div class="nav-bar-icons"> -->
-  <li>
-    <a href="./loginFront.php" id="log_out"><i class='bx bx-log-out'></i>Logout</a>
-  </li>
-  <!-- </div> -->
-</ul>
+<div class="name_of_the_page">
+    <h2 class="page_name">Customer Forums</h2>
 </div>
-
-<div class="common-review-cage" style="position:absolute;padding:1px 16px;height:1000px; top: 50px">
-<div class="username-cage-in-reviews">
-  <h2 class="username"><b>Hello, <?php echo $firstname.""?>!</b></h2>
-</div>
-
 
 <?php
 
@@ -132,10 +82,5 @@ echo '<div class="wrapper">';
 </html>
 
 <?php
-
-// }else {
-//     header("Location: ./index.php");
-//     exit();
-// }
 
 ?>
