@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 
 * {
@@ -82,9 +82,6 @@ margin-top: 1px
 .two {width:540px; height:300px;padding: 8px 16px; text-align: center; border-radius: 10px; border-style: none;}
 .four {width:250px; height:140px;padding: 8px 16px; text-align: center; border-radius: 10px;}
 
-i {
-  font-size: 30px;
-}
 
 .outer1{
   color: #210e54;
