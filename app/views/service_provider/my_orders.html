@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+          
+                <div class="logo">
+                    <img src="../img/logo.png">
+                </div> 
+           
+            
+            <div class="search">
+                <input type="text" id="search" placeholder="search here">
+                <label for ="search"><i class="fa fa-search"></i></label>
+            </div>
+            <i class="fa fa-bell"></i>
+            
+            <div class="user">
+                <a href="profile.php"><img src="../img/propic.jpg" alt="propic"> </a>
+                
+            </div>
+  
+            <h6> <?php echo $_SESSION['sp_name'];?> </h6>
+        </div>
+        
+        <div class="sidebar">
+  
+            <ul>
+  
+                <li> 
+                    <a  href ="dashboard.php">
+                        <i class="fa fa-th-large"></i>
+                        <div>Dashboard</div>
+                    </a>
+                </li>
+
+                <li> 
+                    <a  href ="mygig.php">
+                        <i class="fa fa-list-alt"></i>
+                        <div>My Packages</div>
+                    </a>
+                </li>
+
+                <li> 
+                    <a class="active" href ="orders.php">
+                        <i class="fa fa-th-large"></i>
+                        <div>My Orders</div>
+                    </a>
+                </li>
+  
+                <li> 
+                    <a href ="calender.php">
+                        <i class="fa fa-calendar"></i>
+                        <div>Calendar</div>
+                    </a>
+                </li>
+   
+                <li> 
+                    <a href ="notification.php">
+                        <i class="fa fa-envelope"></i>
+                        <div>Notifications</div>
+                    </a>
+                </li>
+  
+                <li> 
+                    <a href ="settings.php">
+                        <i class="fa fa-cog"></i>
+                        <div>Settings</div>
+                    </a>
+                </li>
+  
+                <li> 
+                    <a href ="help.php">
+                        <i class="fa fa-volume-control-phone"></i>
+                        <div>Help</div>
+                    </a>
+                </li>
+  
+                <li> 
+                    <a href ="logout.php">
+                        <i class="fa fa-sign-out"></i>
+                        <div>Log out</div>
+                    </a>
+                </li>
+  
+                
+            </ul>
+        </div>
+        </div>
+       <div class="main">
+        <div class="select-menu">
+            
+            <div class="select-btn">
+                <span class="material-icons">
+                    pending_actions
+                    </span>
+                <span class="option-text">Pending Requests</a></span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+
+            <ul class="options">
+                <a href="donation_req_Ui.html" style="text-decoration:none">
+                    <li class="option">
+                        <span class="material-icons" style="color: black; margin-right: 1rem;" >
+                            pending_actions
+                            </span>
+                         
+                        <span class="option-text"> Pending Requests</span>
+                    </li>
+                </a>
+                <a href="donation_req_rejected.html" style="text-decoration:none">
+                    <li class="option">
+                        <span class="material-icons" style="color: black; margin-right: 1rem;">
+                            error
+                            </span>
+                        <span class="option-text">Rejected Requests</span>
+                    </li>
+                </a>
+                <a href="donation_req_ongoing.html" style="text-decoration:none">
+                    <li class="option">
+                        <span class="material-icons" style="color: black; margin-right: 1rem;">
+                            receipt_long
+                            </span>
+                        <span class="option-text">Ongoing Requests</span>
+                    </li>
+                </a>
+                <a href="donation_req_completed.html" style="text-decoration:none">
+                    <li class="option">
+                        <span class="material-icons" style="color: black; margin-right: 1rem;">
+                            assignment_turned_in
+                            </span>
+                        <span class="option-text">Completed Requests</span>
+                    </li>
+                </a>
+
+                
+
+            </ul>
+        </div>
+        
+        
+         
+    </div>
+
+
+</body>
+</html>
