@@ -115,15 +115,14 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                     <span class="material-symbols-rounded">
                         analytics
                     </span>
+
                     <div class="middle">
                         <div class="left">
-                        <h3>Total Customers</h3>
-               
-               <h1> <?php echo $data['drop']; ?></h1>
-
+                             <h3>Total Customers</h3>
+                            <h1> <?php echo $data['drop']; ?></h1>
                         </div>
 
-                        <div class="progress">
+                        <!-- <div class="progress">
 
                             <svg>
                                 <circle cx='38' cy='38' r='36'></circle>
@@ -131,11 +130,11 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                             <div class="number">
                                 <p>81%</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <small class="text-muted">
+                    <!-- <small class="text-muted">
                         Last 24 hours
-                    </small>
+                    </small> -->
                 </div>
                 <!-- ------- end of sales card ----- -->
                 
@@ -151,7 +150,7 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
 
                         </div>
 
-                        <div class="progress">
+                        <!-- <div class="progress">
 
                             <svg>
                                 <circle cx='38' cy='38' r='36'></circle>
@@ -159,11 +158,11 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                             <div class="number">
                                 <p>21%</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <small class="text-muted">
+                    <!-- <small class="text-muted">
                         Last 24 hours
-                    </small>
+                    </small> -->
                 </div>
                 <!-- ------- end of expenses card ----- -->
                 <div class="income">
@@ -177,7 +176,7 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                             <h1> <?php echo $data['result']; ?></h1>
                         </div>
 
-                        <div class="progress">
+                        <!-- <div class="progress">
 
                             <svg>
                                 <circle cx='38' cy='38' r='36'></circle>
@@ -185,11 +184,11 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                             <div class="number">
                                 <p>54%</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <small class="text-muted">
+                    <!-- <small class="text-muted">
                         Last 24 hours
-                    </small>
+                    </small> -->
                 </div>
                 <!-- ------- end of income card ----- -->
             </div>
