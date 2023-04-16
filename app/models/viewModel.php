@@ -16,7 +16,7 @@ class viewModel extends Model
         return $this->get('users', $append);
     }
 
-    public function viewCustomer($cust_id = null)
+    public function viewCustomer1($cust_id = null)
     {
         if (isset($cust_id)) {
             $append = "cust_id='$cust_id '";
@@ -26,6 +26,21 @@ class viewModel extends Model
         return $this->get('customers', $append);
     }
 
+    public function viewCustomer($cust_id = null, $customers_per_page = 6)
+    {   if (isset($_GET['page'])) {
+        $current_page = $_GET['page'];
+    } else {
+        $current_page = 1;
+    }
+        $order = null;
+        $offset = ($current_page - 1) * $customers_per_page;
+        if (isset($cust_id)) {
+            $append = "cust_id='$cust_id'";
+        } else {
+            $append = '';
+        }
+        return $this->getoffset('customers',$append,$order,$customers_per_page,$offset);
+    }
     public function viewService($sp_id = null)
     {
         if (isset($sp_id)) {

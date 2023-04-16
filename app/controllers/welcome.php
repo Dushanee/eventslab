@@ -12,15 +12,18 @@ class welcome extends Controller
 
             'drop' => $drop,
         ];
-        var_dump($data);
-        $this->view('admin/dashboard', $data);
+        // var_dump($data);
+        $this->view('admin/dashboard',$data);
     }
 
     public function signout()
     {
-        header("Location: " . BASEURL . "/home");
+       
         session_start();
         session_destroy();
+        unset($_SESSION['email']);
+
+        header("Location: " . BASEURL . "/home");
     }
 
     public function admin()
@@ -35,7 +38,7 @@ class welcome extends Controller
             'result' => $result,
         ];
         // var_dump($data);
-        $this->view('admin/dashboard', $data);
+        $this->view('admin/dashboard',$data);
     }
 
 

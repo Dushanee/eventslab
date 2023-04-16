@@ -17,7 +17,7 @@ class login extends Controller
         $this->view('login/admin');
     }
 
-   
+
 
     public function adminLogin()
     {
@@ -28,46 +28,46 @@ class login extends Controller
 
             $this->login($email, $password, 'users');
         } else {
-            header("Location: " . BASEURL."/login/admin" );
+            header("Location: " . BASEURL . "/login/admin");
         }
     }
 
- 
 
-    public function login($email = null, $password = null, $user_type = null,$fname = null)
+
+    public function login($email = null, $password = null, $user_type = null, $fname = null)
     {
         if ($email != null) {
             $path = BASEURL;
             //echo $email;
 
-            $result = $this->model('loginModel')->login($email, $password, $user_type ,$fname);
+            $result = $this->model('loginModel')->login($email, $password, $user_type, $fname);
 
-            if ($result != null) {
+        
+            if ($result->num_rows > 0) {
                 session_destroy();
 
                 session_start();
-
-                
-
+    
+    
                 $row = $result->fetch_assoc();
                 echo $row['email'];
                 echo $row['user_type'];
                 $_SESSION['email'] = $row['email'];
                 echo "success";
-                
-                header("location: $path/welcome/".$row['user_type']);
+    
+                header("location:$path/welcome/" . $row['user_type']);
+
 
             } else {
-                echo "<br>Error<br><br><br> ";
-                header("location: $path/login/admin");
+                $data['count'] = 1;
+                $this->view('login/admin',$data);
+               
+              
             }
-
         } else {
 
             // echo "Invalid user";
-            $this->view('login/admin');
+            // $this->view('login/admin');
         }
     }
-
-
 }

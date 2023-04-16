@@ -13,6 +13,19 @@ if (isset($_SESSION['email'])) {
 
 
 
+<?php
+$path = BASEURL;
+$customers_per_page = 6;
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $customers_per_page;
+$total_customers = $data['drop'];
+$total_pages = ceil($total_customers / $customers_per_page);
+echo  'total pages = ', $total_pages;
+?>
+
+
+
+
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
 
 
@@ -67,15 +80,12 @@ if (isset($_SESSION['email'])) {
                     <h3>Messages</h3>
                     <span class="message-count">31</span>
                 </a>
-
-
                 <a href="<?php echo BASEURL ?>/adminFunction/packages"><span class="material-symbols-rounded">
                         inventory_2
                     </span>
                     <h3>Packages</h3>
                 </a>
-
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/customer"><span class="material-symbols-rounded">
                         payments
                     </span>
                     <h3>Payments</h3>
@@ -117,8 +127,6 @@ if (isset($_SESSION['email'])) {
             <div class="recent-orders">
                 <h2>Customer Details</h2>
 
-
-
                 <?php
 
                 $path = BASEURL;
@@ -155,9 +163,21 @@ if (isset($_SESSION['email'])) {
                 }
                 echo "  </table>";
 
-
+                
+                echo "<div class = 'pagination'>";
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $active = ($i == $current_page) ? "active" : "";
+                    echo "<a class='$active' href='?page=$i'>$i</a>";
+                }
+                echo "</div>";
 
                 ?>
+
+
+
+
+
+ 
                 <form method="POST" action="<?php echo BASEURL ?>/pdf" target="_blank">
 
                     <input type="submit" name="pd_createrf" value="PDF">

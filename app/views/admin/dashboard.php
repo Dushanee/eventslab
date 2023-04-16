@@ -8,9 +8,6 @@ if (isset($_SESSION['email'])) {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT email FROM users");
-
 ?>
 
 

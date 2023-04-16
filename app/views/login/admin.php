@@ -1,65 +1,59 @@
-<!-- 
-<script>
-    function validateForm() {
-        let x = document.forms["myForm"]["email"].value;
-        let y = document.forms["myForm"]["password"].value;
-        if (x == "") {
-            alert("email must be filled out");
-            return false;
-        }
-        if (y == "") {
-            alert("Password must be filled out");
-            return false;
-        }
-    }
-</script> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-
-<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/login.css">
-
-<body>
-    <div class="container">
-        <div class="wrapper">
-            <div class="title"><span>Admin Login</span></div>
-            <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
-                <div class="row"> 
-                    <i class="fas fa-user"></i>
-                    <input type="text" name="email" placeholder="email">
-                </div>
-                <div class="row">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <div class="pass"><a href="#">Forgot password?</a></div>
+<?php 
 
 
-                <div class="row button">
-                    <button type="submit" value="login">Login </button>
-                </div>
 
-            </form>
-        </div>
+if(isset($data['count'])) { 
+
+  if(($data['count'] == 0)){
+
+
+    
+
+  }
+
+  else {
+    ?>
+    <div class="alert">
+      <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+    Unsuccessful login
     </div>
+    <script>
+      var alertBox = document.querySelector('.alert');
+      alertBox.classList.add('show');
+      setTimeout(function() {
+        alertBox.classList.add('hide');
+      }, 5000); // 5000 milliseconds = 5 seconds
+      function dismissAlert(button) {
+        var alertBox = button.parentElement;
+        alertBox.classList.add('hide');
+        setTimeout(function() {
+          alertBox.remove();
+        }, 500); // 500 milliseconds = 0.5 seconds
+      }
+    </script>
+    <?php
+  // do something
+} 
 
-</body>
+
+}else {
+
+}
+   
+
+?>
+
+<html> 
+
+<head>
+<link rel="stylesheet" href="<?php echo BASEURL ?>/css/animations.css">
+<link rel="stylesheet" href="<?php echo BASEURL ?>/css/main.css">
+<link rel="stylesheet" href="<?php echo BASEURL ?>/css/login.css">
 
 
-</html> -->
 
-
-
- <link rel="stylesheet" href="<?php echo BASEURL ?>/css/animations.css">
-    <link rel="stylesheet" href="<?php echo BASEURL ?>/css/main.css">
-    <link rel="stylesheet" href="<?php echo BASEURL ?>/css/login.css">
-
-
-
-
-
-
-
-<body>
-
+</head>
+<body> 
     <center>
         <div class="container">
             <table border="0" style="margin: 0;padding: 0;width: 60%;">
@@ -75,14 +69,14 @@
                         </td>
                     </tr>
                     <tr>
-                  <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
+                        <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
                             <td class="label-td">
                                 <label for="email" class="form-label">Email: </label>
                             </td>
                     </tr>
                     <tr>
                         <td class="label-td">
-                        <input type="text" name="email" placeholder="email" class="input-text">
+                            <input type="text" name="email" placeholder="email" class="input-text" required>
                         </td>
                     </tr>
                     <tr>
@@ -93,17 +87,16 @@
 
                     <tr>
                         <td class="label-td">
-                        <input type="password" name="password" placeholder="Password" class="input-text">
+                            <input type="password" name="password" placeholder="Password" class="input-text"  required>
                         </td>
                     </tr>
-
-
 
                     <tr>
                         <td>
-                                  <button type="submit" value="login" class="login-btn btn-primary btn">Login </button>
+                            <button type="submit" value="login" class="login-btn btn-primary btn">Login </button>
                         </td>
                     </tr>
+
                 </div>
                 <tr>
                     <td>
@@ -122,6 +115,11 @@
 
         </div>
     </center>
+
+ 
+    
 </body>
 
+
 </html>
+

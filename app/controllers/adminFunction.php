@@ -32,6 +32,7 @@ class adminFunction extends Controller
         var_dump($data);
         $this->view('admin/customer', $data);
     }
+
     public function service()
     {
         $result = $this->model('viewModel')->viewService();

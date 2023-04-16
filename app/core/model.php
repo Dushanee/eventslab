@@ -97,4 +97,23 @@ class Model extends Database
             return 0;
         }
     }
+
+    public function getoffset($table, $where = null, $order = null, $limit = null, $offset = null)
+    {
+        $sql = "SELECT * FROM $table";
+        if ($where != null) {
+            $sql .= " WHERE $where";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+            if ($offset != null) {
+                $sql .= " OFFSET $offset";
+            }
+        }
+        $result = $this->runQuery($sql);
+        return $result;
+    }
 }

@@ -56,3 +56,56 @@ td {
     margin-bottom: 15px;
     width: 100%;
 }
+
+.alert {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    z-index: 999;
+    animation: slide-down 0.5s ease-in-out forwards;
+}
+
+.alert-success {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #09c372;
+    color: white;
+    border-radius: 5px;
+    z-index: 999;
+    animation: slide-down 0.5s ease-in-out forwards;
+}
+
+.alert.hide {
+    animation: slide-down 0.5s ease-in-out forwards;
+}
+
+.form-container {
+    position: relative;
+    margin-top: 50px;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateX(-50%) translateY(100%);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0%);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateX(-50%) translateY(-100%);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0%);
+    }
+}
