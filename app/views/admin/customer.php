@@ -163,7 +163,7 @@ echo  'total pages = ', $total_pages;
                 }
                 echo "  </table>";
 
-                
+
                 echo "<div class = 'pagination'>";
                 for ($i = 1; $i <= $total_pages; $i++) {
                     $active = ($i == $current_page) ? "active" : "";
@@ -177,12 +177,12 @@ echo  'total pages = ', $total_pages;
 
 
 
- 
-                <form method="POST" action="<?php echo BASEURL ?>/pdf" target="_blank">
+<!--  
+                <form method="POST" action="<?php echo BASEURL ?>/pdf/PDF" target="_blank">
 
                     <input type="submit" name="pd_createrf" value="PDF">
 
-                </form>
+                </form> -->
 
                 <a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
 

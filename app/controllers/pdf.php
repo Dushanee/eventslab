@@ -1,6 +1,12 @@
 <?php
 require_once '/Applications/XAMPP/xamppfiles/htdocs/eventslab/library/tcpdf/tcpdf.php';
 class MYPDF extends TCPDF {
+  public function index() 
+  {
+   
+  }  
+
+
 
   // Load table data from file
   public function LoadData() {
