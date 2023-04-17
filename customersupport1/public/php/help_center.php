@@ -1,3 +1,9 @@
+<?php
+    include '../config/connection.php';
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +13,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/help.css">
+    <link rel="stylesheet" type="text/css" href="./css/help.css">
     <!-- <link rel="stylesheet" type="text/css" href="../css/help_center.css"> -->
     <title>Document</title>
 </head>
@@ -17,7 +23,7 @@
     </div>
 	
 	<div class="help_picture">
-        <img src="../images/party.svg" alt="cover">
+        <img src="./images/party.svg" alt="cover">
     </div>
 	
 	<div class="salutation">
@@ -109,50 +115,105 @@
                 </div>
             </div>
         </div>
-    </div><br />
+    </div>
+
+    <div class="salutation">
+        <h1 class="salute">Frequently Asked Questions</h1>
+    </div> 
 	
     <div class="faq">
         <div class="dropdown">
+        <?php
+            $query = "SELECT * FROM cust_faq";
+            $result = mysqli_query($conn, $query);
+
+            if($result==true) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    $faq_id=$row['faq_id'];
+                    $payment_method=$row['payment_method'];
+                    $refund_process=$row['refund_process'];
+                    $booking_confirmation=$row['booking_confirmation'];
+                    $sp_cancel_event=$row['sp_cancel_event'];
+                    $sp_direct_contact=$row['sp_direct_contact'];
+                    $booking_changing_after_payment=$row['booking_changing_after_payment'];
+                    $ability_to_see_ratings=$row['ability_to_see_ratings'];
+                    $leaving_feedback=$row['leaving_feedback'];
+                    }
+                }
+
+                ?>   
+                   
             <button class="dropbtn">
                 How can I make payments for the services I booked on EventsLab?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['payment_method']</div>
+            <br />
             <button class="dropbtn">
                 Can I get a refund if I need to cancel my booking? If yes, what is the process?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['refund_process']</div>
+            <br />
             <button class="dropbtn">
                 How do I know that my payment has been received and my booking has been confirmed?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['booking_confirmation']</div>
+            <br />
             <button class="dropbtn">
                 What happens if the service providers cancels on the day of the event?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['sp_cancel_event']</div>
+            <br />
             <button class="dropbtn">
                 How can I contact the service provider directly if I have any specific requests or questions?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['sp_direct_contact']</div>
+            <br />
             <button class="dropbtn">
                 Can I make changes to my booking after I have already made the payment?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class="bx bx-chevron-down"></i>
+            </button>
+            <div class="dropbtn_answer">$row['booking_changing_after_payment']</div>
+            <br />
             <button class="dropbtn">
                 Will I be able to see the service provider's reviews and ratings before making a booking?
-                <i class='bx bx-chevron-down'></i>
-            </button><br />
+                <i class=bx bx-chevron-down></i>
+            </button>
+            <div class="dropbtn_answer">$row['ability_to_see_ratings']</div>
+            <br />
             <button class="dropbtn">
                 How can I leave feedback or a review after my event is over?
-                <i class='bx bx-chevron-down'></i>
+                <i class="bx bx-chevron-down"></i>
             </button>
+            <div class="dropbtn_answer"></div>
         </div>
+              
     </div><br />
-
+        
+        
     <div class="salutation">
         <h1 class="salute">Didn't find any answer? Contact us.</h1>
     </div>
 
     <div class="contact_form">
+        <script>
+            const dropbtn = document.querySelectorAll('.dropbtn');
+
+            dropbtn.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const dropbtn_answer = this.nextElementSibling;
+                    if(dropbtn_answer.style.display === 'block') {
+                        dropbtn_answer.style.display = 'none';
+                    } else{
+                        dropbtn_answer.style.display = 'block';
+                    }
+                });
+            });	
+        </script>
     <form action="../src/submit-article.php" class="submit-article" method="POST">
                     <div class="flex">
                     <label for="email" class="form">Email</label>
