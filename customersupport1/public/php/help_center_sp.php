@@ -1,3 +1,10 @@
+<?php
+    include '../config/connection.php';
+
+    $query_1="SELECT * FROM 'sp_faq'";
+    $result_1=mysqli_query($conn, $query_1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/help.css">
+    <link rel="stylesheet" type="text/css" href="./css/help.css">
     <!-- <link rel="stylesheet" type="text/css" href="../css/help_center.css"> -->
     <title>Document</title>
 </head>
@@ -17,7 +24,7 @@
     </div>
 	
 	<div class="help_picture">
-        <img src="../images/party.svg" alt="cover">
+        <img src="./images/party.svg" alt="cover">
     </div>
 	
 	<div class="salutation">
@@ -110,39 +117,70 @@
             </div>
         </div>
     </div><br />
-	
+    <div class="salutation">
+        <h1 class="salute">Frequently Asked Questions</h1>
+    </div> 
     <div class="faq">
         <div class="dropdown">
+            
             <button class="dropbtn">
                 How do I receive payments for the services I provide?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 What is the process for getting paid for a particular booking?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 How can I update my service offerings or pricing on the platform?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 What happens if a buyer cancels their booking after I have already received payment?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 Can I communicate directly with the buyer after I receive a booking request?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 How can I view my reviews and ratings from past customers?
                 <i class='bx bx-chevron-down'></i>
-            </button><br />
+            </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
+            <br />
             <button class="dropbtn">
                 What happens if there is a dispute with a buyer over payment or services provided?
                 <i class='bx bx-chevron-down'></i>
             </button>
+            <div class="dropbtn_answer">Yes, you can request a refund if you need to cancel your booking. The refund policy may vary depending on the service provider and the terms and conditions of your booking. Please refer to the cancellation and refund policy stated on the service provider's profile or contact our customer support team for assistance.</div>
         </div>
     </div><br />
+
+    <script>
+            const dropbtn = document.querySelectorAll('.dropbtn');
+
+            dropbtn.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const dropbtn_answer = this.nextElementSibling;
+                    if(dropbtn_answer.style.display === 'block') {
+                        dropbtn_answer.style.display = 'none';
+                    } else{
+                        dropbtn_answer.style.display = 'block';
+                    }
+                });
+            });
+    </script>
 
     <div class="salutation">
         <h1 class="salute">Didn't find any answer? Contact us.</h1>
