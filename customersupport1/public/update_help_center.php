@@ -97,10 +97,13 @@ session_start();
                 <?php include './create_faqs.php'; ?>
             </div><br />
             <div class="update_section">
-                <?php include './create_faqs_sp.php'; ?>
-            </div>
-            <div class="update_section">
                 <?php include './view_customer_faqs_table.php'; ?>
+            </div><br />
+            <div class="update_section">
+                <?php include './create_faqs_sp.php'; ?>
+            </div><br />
+            <div class="update_section">
+                <?php include './view_sp_faqs_table.php'; ?>
             </div>
         </div>
 </body>
