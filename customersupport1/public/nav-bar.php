@@ -53,9 +53,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./csmmessageportal.php">
-                        <div class="ico"><i class='bx bx-message-rounded-dots'></i></div>
-                        <div class="icon_name">Message</div>
+                    <a href="./update_help_center.php">
+                        <div class="ico"><i class='bx bxs-pen'></i></div>
+                        <div class="icon_name">Manage Help Center</div>
                     </a>
                 </li><br /><br /><br /><br />
                 <li>
