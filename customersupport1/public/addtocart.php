@@ -1,3 +1,9 @@
+<?php
+    require '../config/connection.php';
+
+    $query="SELECT * FROM shopping_cart";
+    $result=mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,37 +22,50 @@
                     <th>Quantity</th>
                     <th>Subtotal</th>
                 </tr>
+                <?php while($row=mysqli_fetch_assoc($result)) { ?>
                 <tr>
+
                     <td>
                         <div class="cart-info">
                             <div class="image">
-                                <img src="./images/weddingHall.jpg" />
+                                <img src=<?php echo $row['service_image']; ?> />
                         </div>
                             <div class="orderDetails">
-                                <h3>Hall Paradise - Araliya Guest House</h3>
-                                <small>Price: $700.00</small><br />
-                                <a href="#">Remove</a>
+                                <h3><?php echo $row['service_name']; ?></h3>
+                                <small>Price: <?php echo $row['service_price']; ?></small><br />
+                                <a onclick="return confirm('Confirm deletion');" href="delete.php" class="table_btn" id="delete_btn">Remove</a>
                             </div>
                         </div>
                     </td>
-                    <td><input type="number" value="1" /></td>
-                    <td>$50.00</td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    <!-- <td>$50.00</td> -->
                 </tr>
+                <?php } ?>
             </table>
             <div class="total-price">
                 <table class="calc">
+                    <?php while($row=mysqli_fetch_assoc($result)) {
+                        $subtotal = $row['service_price'] * $row['quantity'];
+                        $total += $subtotal;
+                        
+                        $update_query="UPDATE shopping_cart SET subtotal=$subtotal, total=$total WHERE service_id=".$row['service_id'];
+                        mysqli_query($conn, $update_query);
+                    ?>
                     <tr>
                         <td>Subtotal</td>
-                        <td>$200.00</td>
+                        <td><?php echo $row['subtotal']; ?></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Tax</td>
                         <td>$35.00</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>Total</td>
-                        <td>$230.00</td>
+                        <td><?php echo $row['total']; ?></td>
                     </tr>
+                    <?php
+                    }
+                    ?>
                 </table>
             </div>
             <div class="buttons">
