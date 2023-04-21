@@ -147,43 +147,43 @@
                 How can I make payments for the services I booked on EventsLab?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['payment_method']</div>
+            <div class="dropbtn_answer"><?php echo $row['payment_method']; ?></div>
             <br />
             <button class="dropbtn">
                 Can I get a refund if I need to cancel my booking? If yes, what is the process?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['refund_process']</div>
+            <div class="dropbtn_answer"><?php echo $row['refund_process']; ?></div>
             <br />
             <button class="dropbtn">
                 How do I know that my payment has been received and my booking has been confirmed?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['booking_confirmation']</div>
+            <div class="dropbtn_answer"><?php echo $row['booking_confirmation']; ?></div>
             <br />
             <button class="dropbtn">
                 What happens if the service providers cancels on the day of the event?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['sp_cancel_event']</div>
+            <div class="dropbtn_answer"><?php echo $row['sp_cancel_event']; ?></div>
             <br />
             <button class="dropbtn">
                 How can I contact the service provider directly if I have any specific requests or questions?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['sp_direct_contact']</div>
+            <div class="dropbtn_answer"><?php echo $row['sp_direct_contact']; ?></div>
             <br />
             <button class="dropbtn">
                 Can I make changes to my booking after I have already made the payment?
                 <i class="bx bx-chevron-down"></i>
             </button>
-            <div class="dropbtn_answer">$row['booking_changing_after_payment']</div>
+            <div class="dropbtn_answer"><?php echo $row['booking_changing_after_payment']; ?></div>
             <br />
             <button class="dropbtn">
                 Will I be able to see the service provider's reviews and ratings before making a booking?
                 <i class=bx bx-chevron-down></i>
             </button>
-            <div class="dropbtn_answer">$row['ability_to_see_ratings']</div>
+            <div class="dropbtn_answer"><?php echo $row['ability_to_see_ratings']; ?></div>
             <br />
             <button class="dropbtn">
                 How can I leave feedback or a review after my event is over?
@@ -198,9 +198,7 @@
     <div class="salutation">
         <h1 class="salute">Didn't find any answer? Contact us.</h1>
     </div>
-
-    <div class="contact_form">
-        <script>
+    <script>
             const dropbtn = document.querySelectorAll('.dropbtn');
 
             dropbtn.forEach(function(button) {
@@ -214,6 +212,9 @@
                 });
             });	
         </script>
+
+    <div class="contact_form">
+
     <form action="../src/submit-article.php" class="submit-article" method="POST">
                     <div class="flex">
                     <label for="email" class="form">Email</label>
