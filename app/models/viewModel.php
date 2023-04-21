@@ -107,4 +107,8 @@ class viewModel extends Model
         return $this->getTableCount('service_providers');
     }
 
+
+
+   
+
 }

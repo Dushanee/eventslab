@@ -99,6 +99,31 @@ class user extends Controller
             header("Location: " . BASEURL . "/adminFunction/service");
         }
     }
+
+
+    public function searchCustomer()
+    {
+        // Get the query string from the search form
+        $query = $_GET['query'];
+
+        // Call the search model to perform the search
+        $results = $this->model('searchModel')->search($query);
+
+        $result = $this->model('viewModel')->viewCustomer();   
+        $drop = $this->model('viewModel')->getTotalCustomers();
+     
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+            'results' => $results,
+            'drop' => $drop,
+        ];
+        // var_dump($data);
+        $this->view('admin/customer', $data);
+
+       
+    }
+
     public function viewUsers($id)
     {
         $result = $this->model('viewModel')->getUsers($id);
@@ -129,7 +154,7 @@ class user extends Controller
             $user_type = $_POST['user_type'];
             $status = $_POST['status'];
 
-            $this->model('updateModel')->updateUser($id, $fname, $lname, $email ,$user_type ,$status);
+            $this->model('updateModel')->updateUser($id, $fname, $lname, $email, $user_type, $status);
 
 
             header("Location: " . BASEURL . "/superAdmin/manageUsers");
@@ -150,7 +175,7 @@ class user extends Controller
             $user_type = $_POST['user_type'];
             $status = $_POST['status'];
 
-            $this->model('insertModel')->insertUser($id, $fname, $lname, $email ,$user_type ,$status);
+            $this->model('insertModel')->insertUser($id, $fname, $lname, $email, $user_type, $status);
             header("Location: " . BASEURL . "/superAdmin/manageUsers");
         } else {
             header("Location: " . BASEURL . "/superAdmin/manageUsers");

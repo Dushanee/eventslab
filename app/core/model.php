@@ -116,4 +116,19 @@ class Model extends Database
         $result = $this->runQuery($sql);
         return $result;
     }
+    public function searchBar($table, $where = null, $search = null, $order = null, $limit = null)
+    {
+        $sql = "SELECT * FROM $table";
+        if ($where != null && $search != null) {
+            $sql .= " WHERE $where LIKE '%$search%'";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+        }
+        $result = $this->runQuery($sql);
+        return $result;
+    }
 }

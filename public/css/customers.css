@@ -1,0 +1,173 @@
+/* search customer */
+
+.search-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 20px;
+}
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input-container input[type="text"] {
+    width: 500px;
+    padding: 10px;
+    border: 2px solid var(--color-secondary);
+    border-right: none;
+    border-radius: var(--border-radius-3) 0 0 var(--border-radius-3);
+    outline: none;
+    font-size: 16px;
+}
+
+.search-input-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: white;
+    font-size: 16px;
+    border-radius: 0 var(--border-radius-3) var(--border-radius-3) 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-input-container button[type="submit"]:hover {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+
+/* pagination */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--padding);
+    font-size: 16px;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 6px 12px;
+    /* reduce the padding value */
+    margin-right: calc(var(--padding) / 2);
+    border-radius: var(--border-radius-1);
+    text-decoration: none;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    transition: background-color 0.3s ease;
+}
+
+.pagination a.active,
+.pagination a:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+
+/* generate report */
+
+.generate-report-btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: #fff;
+    font-size: 12px;
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.generate-report-btn:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+
+/* add user */
+
+.add-user {
+    margin-top: 20px;
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--box-shadow);
+}
+
+.add-user h2 {
+    margin-bottom: var(--padding);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.add-user .col {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--padding);
+}
+
+.add-user label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.add-user input[type="text"],
+.add-user input[type="password"] {
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-1);
+    border: 2px solid var(--color-secondary);
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.add-user input[type="text"]:focus,
+.add-user input[type="password"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.add-user button[type="submit"] {
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-1);
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--color-primary);
+    transition: background-color 0.3s ease;
+}
+
+.add-user button[type="submit"]:hover {
+    background-color: var(--color-dark);
+}
+
+
+/* card */
+
+.card {
+    background-color: #fff;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    padding: var(--card-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+}

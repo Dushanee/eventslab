@@ -690,29 +690,3 @@ main .recent-orders a {
         font-size: 2rem;
     }
 }
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #0295A9;
-}
-
-.pagination a {
-    display: inline-block;
-    padding: 8px 16px;
-    margin-right: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: #f2f2f2;
-    color: #0295A9;
-    transition: background-color 0.3s ease;
-}
-
-.pagination a.active,
-.pagination a:hover {
-    background-color: #0295A9;
-    color: #fff;
-}

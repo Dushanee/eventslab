@@ -7,11 +7,7 @@ if (isset($_SESSION['email'])) {
 } else {
     echo '<br>You are not logged in';
 }
-
-
 ?>
-
-
 
 <?php
 $path = BASEURL;
@@ -20,15 +16,16 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $customers_per_page;
 $total_customers = $data['drop'];
 $total_pages = ceil($total_customers / $customers_per_page);
-echo  'total pages = ', $total_pages;
+// echo  'total pages = ', $total_pages;
+
+
+
+
 ?>
 
 
-
-
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
-
-
+<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/customers.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
@@ -114,13 +111,24 @@ echo  'total pages = ', $total_pages;
         <!-- ------- end of side bar ----- -->
         <main>
             <h1>Customers</h1>
-            <p>Total Customers: <?php echo $data['drop']; ?></p>
-            <div class="date">
+            <!-- <p>Total Customers: <?php echo $data['drop']; ?></p> -->
+            <!-- <div class="date">
                 <select name="" id="">
                     <option value="">Jhon</option>
                 </select>
+            </div> -->
+
+            <div class="search-form-container">
+                <form action="<?php echo BASEURL ?>/user/searchCustomer" method="GET">
+                    <div class="search-input-container">
+                        <input type="text" name="query" placeholder="Search for customer...">
+                        <button type="submit">Search</button>
+                    </div>
+
+                </form>
             </div>
 
+            <a href="<?php echo BASEURL ?>/pdf/generate" class="generate-report-btn">Generate PDF Report</a>
 
 
             <!-- -------orders table----- -->
@@ -129,74 +137,102 @@ echo  'total pages = ', $total_pages;
 
                 <?php
 
-                $path = BASEURL;
-                echo " <table>";
-                echo "<thead>";
-                echo "<tr>";
-                echo " <th>Id</th>";
-                echo "  <th>Name</th>";
-                echo "  <th>Email</th>";
-                echo " <th>Actions</th>";
-                echo " </tr>";
-                echo "</thead>";
-                echo " <tbody>";
-                while ($row = $data['result']->fetch_assoc()) {
+
+                if (!isset($data['results'])) {
 
 
 
+                    $path = BASEURL;
+                    echo " <table>";
+                    echo "<thead>";
                     echo "<tr>";
-                    echo "<td>" . $row["cust_id"] . "</td>";
-                    echo "<td>" . $row["cust_fname"] . "</td>";
-
-
-                    echo "<td>" . $row["cust_email"] . "</td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/deleteCustomer/" . $row["cust_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
+                    echo " <th>Id</th>";
+                    echo "  <th>Name</th>";
+                    echo "  <th>Email</th>";
+                    echo " <th>Actions</th>";
                     echo " </tr>";
+                    echo "</thead>";
+                    echo " <tbody>";
+                    while ($row = $data['result']->fetch_assoc()) {
 
-                    echo "    </tbody>";
+
+
+                        echo "<tr>";
+                        echo "<td>" . $row["cust_id"] . "</td>";
+                        echo "<td>" . $row["cust_fname"] . "</td>";
+
+
+                        echo "<td>" . $row["cust_email"] . "</td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteCustomer/" . $row["cust_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+
+                        echo " </tr>";
+
+                        echo "    </tbody>";
+                    }
+                    echo "  </table>";
+
+
+                    // echo "<div class = 'pagination'>";
+                    // for ($i = 1; $i <= $total_pages; $i++) {
+                    //     $active = ($i == $current_page) ? "active" : "";
+                    //     echo "<a class='$active' href='?page=$i'>$i</a>";
+                    // }
+                    // echo "</div>";
                 }
-                echo "  </table>";
 
 
-                echo "<div class = 'pagination'>";
-                for ($i = 1; $i <= $total_pages; $i++) {
-                    $active = ($i == $current_page) ? "active" : "";
-                    echo "<a class='$active' href='?page=$i'>$i</a>";
+                if (isset($data['results'])) {
+                    while ($row = $data['results']->fetch_assoc()) {
+                        $path = BASEURL;
+                        echo " <table>";
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo " <th>Id</th>";
+                        echo "  <th>Name</th>";
+                        echo "  <th>Email</th>";
+                        echo " <th>Actions</th>";
+                        echo " </tr>";
+                        echo "</thead>";
+                        echo " <tbody>";
+                        echo "<tr>";
+                        echo "<td>" . $row["cust_id"] . "</td>";
+                        echo "<td>" . $row["cust_fname"] . "</td>";
+                        echo "<td>" . $row["cust_email"] . "</td>";
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteCustomer/" . $row["cust_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+                        echo " </tr>";
+                        echo "    </tbody>";
+                        echo "  </table>";
+                    }
                 }
-                echo "</div>";
-
                 ?>
-
-
-
-
-
-<!--  
+                <!--  
                 <form method="POST" action="<?php echo BASEURL ?>/pdf/PDF" target="_blank">
-
                     <input type="submit" name="pd_createrf" value="PDF">
-
                 </form> -->
-
-                <a href="<?php echo BASEURL ?>/pdf/generate">Generate PDF Report</a>
-
-
-
-
-
 
 
                 <a href="">Show all</a>
             </div>
+            <?php
+            echo "<div class = 'pagination'>";
+            for ($i = 1; $i <= $total_pages; $i++) {
+                $active = ($i == $current_page) ? "active" : "";
+                echo "<a class='$active' href='?page=$i'>$i</a>";
+            }
+            echo "</div>";
+            ?>
+
         </main>
         <!-- ------- end of main ----- -->
 
+        <!-- =====right section=== -->
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -218,11 +254,16 @@ echo  'total pages = ', $total_pages;
             </div>
 
 
-            <!-- =====end of top=== -->
+            <!-- =====end of top right=== -->
 
-            <div class="recent-updates">
+
+            <div class="card">
+                <p>Total Customers: <?php echo $data['drop']; ?></p>
+            </div>
+
+            <div class="add-user">
                 <h2>Add customer</h2>
-                <div class="updates">
+                <div class="">
                     <div class="">
 
                         <form action="<?php echo BASEURL ?>/user/addCustomer" method="post">
@@ -250,19 +291,11 @@ echo  'total pages = ', $total_pages;
                             </div>
 
 
-
-
                             <div class="col">
                                 <button type="submit" class="login-btn btn-primary btn">Submit</button>
                             </div>
                     </div>
-
                     </form>
-
-
-
-
-
                 </div>
                 <!-- =====end of recent updates === -->
 

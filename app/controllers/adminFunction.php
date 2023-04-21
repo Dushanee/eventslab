@@ -29,7 +29,7 @@ class adminFunction extends Controller
             'result' => $result,
             'drop' => $drop,
         ];
-        var_dump($data);
+        // var_dump($data);
         $this->view('admin/customer', $data);
     }
 
@@ -81,6 +81,43 @@ class adminFunction extends Controller
         $this->view('admin/packages', $data );
     }
 
+    public function searchCustomer()
+    {
+        $result = $this->model('viewModel')->viewCustomer();   
+        $drop = $this->model('viewModel')->getTotalCustomers();
+     
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+            'drop' => $drop,
+        ];
+        // var_dump($data);
+        $this->view('admin/searchCustomer', $data);
+    }
+
+
+ 
+      
+    public function search() {
+     
+        
+        // Get the query string from the search form
+        $query = $_GET['query'];
+    
+        // Call the search model to perform the search
+        $results = $this->model('searchModel')->search($query);
+    
+        // Pass the search results to the view if not empty
+        $data = [
+            'inputValue' => "",
+            'results' => $results
+        ];
+
+            $this->view('admin/searchCustomer', $data);
+      
+    }
+    
+    
 
     public function csm()
     {
