@@ -81,44 +81,51 @@ class adminFunction extends Controller
         $this->view('admin/packages', $data );
     }
 
-    public function searchCustomer()
-    {
-        $result = $this->model('viewModel')->viewCustomer();   
-        $drop = $this->model('viewModel')->getTotalCustomers();
+    // public function searchCustomer()
+    // {
+    //     $result = $this->model('viewModel')->viewCustomer();   
+    //     $drop = $this->model('viewModel')->getTotalCustomers();
      
-        $data = [
-            'inputValue' => "",
-            'result' => $result,
-            'drop' => $drop,
-        ];
-        // var_dump($data);
-        $this->view('admin/searchCustomer', $data);
-    }
+    //     $data = [
+    //         'inputValue' => "",
+    //         'result' => $result,
+    //         'drop' => $drop,
+    //     ];
+    //     // var_dump($data);
+    //     $this->view('admin/searchCustomer', $data);
+    // }
 
 
  
       
-    public function search() {
+    // public function search() {
      
         
-        // Get the query string from the search form
-        $query = $_GET['query'];
+    //     // Get the query string from the search form
+    //     $query = $_GET['query'];
     
-        // Call the search model to perform the search
-        $results = $this->model('searchModel')->search($query);
+    //     // Call the search model to perform the search
+    //     $results = $this->model('searchModel')->search($query);
     
-        // Pass the search results to the view if not empty
-        $data = [
-            'inputValue' => "",
-            'results' => $results
-        ];
+    //     // Pass the search results to the view if not empty
+    //     $data = [
+    //         'inputValue' => "",
+    //         'results' => $results
+    //     ];
 
-            $this->view('admin/searchCustomer', $data);
+    //         $this->view('admin/searchCustomer', $data);
       
+    // }
+    
+    
+    public function settings()
+    {
+        $this->view('admin/settings');
     }
-    
-    
-
+    public function payments()
+    {
+        $this->view('admin/payments');
+    }
     public function csm()
     {
         $this->view('csm/dashboard');

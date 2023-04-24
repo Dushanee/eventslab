@@ -156,6 +156,8 @@
 /* card */
 
 .card {
+    margin-top: 10px;
+    height: 155px;
     background-color: #fff;
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);

@@ -218,8 +218,7 @@ $total_pages = ceil($total_customers / $customers_per_page);
                 </form> -->
 
 
-                <a href="">Show all</a>
-            </div>
+              
             <?php
             echo "<div class = 'pagination'>";
             for ($i = 1; $i <= $total_pages; $i++) {
@@ -244,7 +243,7 @@ $total_pages = ceil($total_customers / $customers_per_page);
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey ,<b> Dushanee</b></p>
+                        <p>Hey ,<b>  <?php echo $_SESSION['email']; ?></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">

@@ -75,7 +75,7 @@ if (isset($_SESSION['email'])) {
                     <h3>Packages</h3>
                 </a>
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/payments"><span class="material-symbols-rounded">
                         payments
                     </span>
                     <h3>Payments</h3>
@@ -87,7 +87,7 @@ if (isset($_SESSION['email'])) {
                     <h3>Reports</h3>
                 </a>
 
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/settings"><span class="material-symbols-rounded">
                         settings
                     </span>
                     <h3>Settings</h3>
