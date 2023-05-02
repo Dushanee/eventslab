@@ -57,6 +57,20 @@ class welcome extends Controller
         // var_dump($data);
         $this->view('superadmin/dashboard', $data);
     }
+    public function manager()
+    {
+
+        $drop = $this->model('viewModel')->getTotalCustomers();
+        $result = $this->model('viewModel')->getTotalSPs();
+        $data = [
+            'inputValue' => "",
+
+            'drop' => $drop,
+            'result' => $result,
+        ];
+        // var_dump($data);
+        $this->view('manager/dashboard', $data);
+    }
 
 
 

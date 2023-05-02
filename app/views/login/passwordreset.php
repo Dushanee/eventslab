@@ -2,9 +2,9 @@
 
 
 
-if(isset($data['count'])) { 
+if(isset($data['error'])) { 
 
-  if(($data['count'] == 0)){
+  if(($data['error'] == 0)){
 
 
     
@@ -15,7 +15,7 @@ if(isset($data['count'])) {
     ?>
     <div class="alert">
       <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
-    Unsuccessful login
+    Email does not exist
     </div>
     <script>
       var alertBox = document.querySelector('.alert');
@@ -43,83 +43,64 @@ if(isset($data['count'])) {
 
 ?>
 
-<html> 
+
+
+<!DOCTYPE html>
+<html>
 
 <head>
-<link rel="stylesheet" href="<?php echo BASEURL ?>/css/animations.css">
-<link rel="stylesheet" href="<?php echo BASEURL ?>/css/main.css">
-<link rel="stylesheet" href="<?php echo BASEURL ?>/css/login.css">
+    <link rel="stylesheet" href="<?php echo BASEURL ?>/css/animations.css">
+    <link rel="stylesheet" href="<?php echo BASEURL ?>/css/main.css">
+    <link rel="stylesheet" href="<?php echo BASEURL ?>/css/login.css">
 
 
 
 </head>
-<body> 
+
+<body>
     <center>
         <div class="container">
             <table border="0" style="margin: 0;padding: 0;width: 60%;">
                 <tr>
                     <td>
-                        <p class="header-text">Welcome Back!</p>
+                        <p class="header-text">Forgot Password?</p>
                     </td>
                 </tr>
                 <div class="form-body">
                     <tr>
                         <td>
-                            <p class="sub-text">Login with your details to continue</p>
+                            <p class="sub-text">Enter your email address below to reset your password</p>
                         </td>
                     </tr>
                     <tr>
-                        <form name="myForm" action="<?php echo BASEURL ?>/login/adminLogin" onsubmit="return validateForm()" method="post">
+                        <form name="myForm" action="<?php echo BASEURL ?>/login/checkemail"  method="post">
                             <td class="label-td">
                                 <label for="email" class="form-label">Email: </label>
                             </td>
                     </tr>
                     <tr>
                         <td class="label-td">
-                            <input type="text" name="email" placeholder="email" class="input-text" required>
+                            <input type="email" name="email" placeholder="email" class="input-text" required>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="label-td">
-                            <label for="password" class="form-label">Password: </label>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="label-td">
-                            <input type="password" name="password" placeholder="Password" class="input-text"  required>
-                        </td>
-                    </tr>
-
                     <tr>
                         <td>
-                            <button type="submit" value="login" class="login-btn btn-primary btn">Login </button>
+                            <button type="submit" value="reset_password" class="login-btn btn-primary btn">Verify</button>
                         </td>
                     </tr>
-
                 </div>
                 <tr>
                     <td>
                         <br>
-                        <label for="" class="sub-text" style="font-weight: 280;">Forgot your password&#63; </label>
-                        <a href="<?php echo BASEURL ?>/login/reset" class="hover-link1 non-style-link">Reset</a>
+                        <label for="" class="sub-text" style="font-weight: 280;">Go back to </label><a href="<?php echo BASEURL ?>/login" class="hover-link1 non-style-link">Login</a>
+                        
                         <br><br><br>
                     </td>
                 </tr>
-
-
-
-
                 </form>
             </table>
-
         </div>
     </center>
-
- 
-    
 </body>
 
-
 </html>
-

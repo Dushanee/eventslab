@@ -14,5 +14,16 @@ class loginModel extends Model
     
     }
    
+    public function checkemail($email)
+    {
+        return $this->get("users", "email = '$email'");
+    
+    }
+    public function checkotp($code)
+    {
+        return $this->get("users", "code = '$code'");
+    
+    }
+   
    
 } 

@@ -39,4 +39,18 @@ class updateModel extends Model
             "id= '$id'"
         );
     }
+
+
+    public function updateCode($code ,$email)
+    {
+        $this->update(
+            'users',
+            [
+                'code' => $code,
+               
+
+            ],
+            "email= '$email'"
+        );
+    }
 }
