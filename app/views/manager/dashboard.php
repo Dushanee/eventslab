@@ -38,7 +38,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/managerFunction/sales" ><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/managerFunction/sales"><span class="material-symbols-rounded">
                         person
                     </span>
                     <h3>Sales</h3>
@@ -49,7 +49,7 @@ if (isset($_SESSION['email'])) {
                     <h3>Customer Sales</h3>
                 </a>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
+                <!-- <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
@@ -91,7 +91,7 @@ if (isset($_SESSION['email'])) {
                         settings
                     </span>
                     <h3>Settings</h3>
-                </a>
+                </a> -->
 
 
                 <a href="<?php echo BASEURL ?>/welcome/signout"><span class="material-symbols-rounded">
@@ -105,7 +105,7 @@ if (isset($_SESSION['email'])) {
         <main>
             <h1>Dashboard</h1>
 
-           
+
 
             <div class="insights">
                 <div class="sales">
@@ -114,10 +114,50 @@ if (isset($_SESSION['email'])) {
                     </span>
 
                     <div class="middle">
-                        <div class="left">
-                             <h3>Total Customers</h3>
-                            <h1> <?php echo $data['drop']; ?></h1>
-                        </div>
+                        <?php
+                        // Replace with your database connection details
+                        $host = 'localhost';
+                        $user = 'root';
+                        $password = '';
+                        $dbname = 'eventslab';
+
+                        // Connect to the database
+                        $conn = mysqli_connect($host, $user, $password, $dbname);
+
+                        // Check if the connection was successful
+                        if (!$conn) {
+                            die('Connection failed: ' . mysqli_connect_error());
+                        }
+
+                        // Get the current week start and end dates
+                        $week_start = date('Y-m-d', strtotime('this week'));
+                        $week_end = date('Y-m-d', strtotime('this week +6 days'));
+
+                        // Execute the SQL query to retrieve the total number of orders within the current week
+                        $sql = "SELECT COUNT(*) AS total_orders
+        FROM orders
+        WHERE order_date BETWEEN '$week_start' AND '$week_end'";
+
+                        $result = mysqli_query($conn, $sql);
+
+                        // Check if the query was successful
+                        if (!$result) {
+                            die('Query failed: ' . mysqli_error($conn));
+                        }
+
+                        // Get the total number of orders within the current week from the query result
+                        $row = mysqli_fetch_assoc($result);
+                        $total_orders = $row['total_orders'];
+
+                        // Display the total number of orders within the current week
+                        echo '<div class="left">';
+                        echo '<h3>Total No of Orders </h3>';
+                        echo '<h1>' . $total_orders . '</h1>';
+                        echo '</div>';
+                        // Close the database connection
+                        mysqli_close($conn);
+                        ?>
+
 
                         <!-- <div class="progress">
 
@@ -129,23 +169,62 @@ if (isset($_SESSION['email'])) {
                             </div>
                         </div> -->
                     </div>
-                    <!-- <small class="text-muted">
-                        Last 24 hours
-                    </small> -->
+                    <small class="text-muted">
+                        within this week
+                    </small>
                 </div>
                 <!-- ------- end of sales card ----- -->
-                
-               <div class="expenses">
+
+                <div class="expenses">
                     <span class="material-symbols-rounded">
                         bar_chart
                     </span>
                     <div class="middle">
-                        <div class="left">
-                        <h3>Total Service Providers</h3>
-               
-               <h1> <?php echo $data['result']; ?></h1>
 
-                        </div>
+                        <?php
+                        // Replace with your database connection details
+                        $host = 'localhost';
+                        $user = 'root';
+                        $password = '';
+                        $dbname = 'eventslab';
+
+                        // Connect to the database
+                        $conn = mysqli_connect($host, $user, $password, $dbname);
+
+                        // Check if the connection was successful
+                        if (!$conn) {
+                            die('Connection failed: ' . mysqli_connect_error());
+                        }
+
+                        // Calculate the start and end date of the current week
+                        $week_start = date('Y-m-d', strtotime('this week'));
+                        $week_end = date('Y-m-d', strtotime('this week +6 days'));
+
+                        // Execute the SQL query to retrieve the total sales for the current week
+                        $sql = "SELECT SUM(total_price) AS total_sales
+        FROM orders
+        WHERE order_date BETWEEN '$week_start' AND '$week_end'";
+
+                        $result = mysqli_query($conn, $sql);
+
+                        // Check if the query was successful
+                        if (!$result) {
+                            die('Query failed: ' . mysqli_error($conn));
+                        }
+
+                        // Fetch the total sales from the result set
+                        $row = mysqli_fetch_assoc($result);
+                        $total_sales = $row['total_sales'];
+
+                        // Close the database connection
+                        mysqli_close($conn);
+
+                        // Display the total sales for the current week
+                        echo '<div class="left">';
+                        echo '<h3>Total Sales </h3>';
+                        echo '<h1>LKR ' . number_format($total_sales, 2) . '</h1>';
+                        echo '</div>';
+                        ?>
 
                         <!-- <div class="progress">
 
@@ -157,9 +236,9 @@ if (isset($_SESSION['email'])) {
                             </div>
                         </div> -->
                     </div>
-                    <!-- <small class="text-muted">
-                        Last 24 hours
-                    </small> -->
+                    <small class="text-muted">
+                        within this week
+                    </small>
                 </div>
                 <!-- ------- end of expenses card ----- -->
                 <div class="income">
@@ -169,7 +248,7 @@ if (isset($_SESSION['email'])) {
                     <div class="middle">
                         <div class="left">
                             <h3>Total Packages</h3>
-               
+
                             <h1> <?php echo $data['result']; ?></h1>
                         </div>
 
@@ -238,7 +317,7 @@ if (isset($_SESSION['email'])) {
             </div>
         </main>
         <!-- ------- end of main ----- -->
- <!-- =====right=== -->
+        <!-- =====right=== -->
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -261,9 +340,9 @@ if (isset($_SESSION['email'])) {
 
 
             <!-- =====end of top=== -->
-            
 
-              
+
+
             <div class="recent-updates">
                 <h2>Recent Updates</h2>
                 <div class="updates">
@@ -354,8 +433,8 @@ if (isset($_SESSION['email'])) {
                 </div>
                 <div class="item add-product">
                     <div><span class="material-symbols-rounded">
-                        shopping_cart
-                    </span>
+                            shopping_cart
+                        </span>
                         <h3>Add products</h3>
                     </div>
                 </div>
@@ -365,6 +444,6 @@ if (isset($_SESSION['email'])) {
 
         </div>
 
-        </div>
-<script src="<?php echo BASEURL ?>/public/js/index.js"></script>
+    </div>
+    <script src="<?php echo BASEURL ?>/public/js/index.js"></script>
 </body>

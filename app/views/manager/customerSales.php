@@ -21,79 +21,13 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
 <head>
     <title>Sales Report</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+    
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        form {
-            width: 400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        textarea {
-            height: 100px;
-        }
-
-        button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0069d9;
-        }
     </style>
 
 
 
-    <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/manager_styles.css">
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />

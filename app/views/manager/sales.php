@@ -14,88 +14,12 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
 ?>
 
 
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Sales Report</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        form {
-            width: 400px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        textarea {
-            height: 100px;
-        }
-
-        button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0069d9;
-        }
-    </style>
-
-
-
-    <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
-
-
+    <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/manager_styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
@@ -114,7 +38,7 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                 </div>
             </div>
             <div class="sidebar">
-                <a href="<?php echo BASEURL ?>/managerFunction/dashboard" ><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/managerFunction/dashboard"><span class="material-symbols-rounded">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
@@ -191,11 +115,6 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                 </tbody>
 
             </table>
-
-
-
-
-
         </main>
         <!-- ------- end of main ----- -->
         <!-- =====right=== -->
@@ -223,9 +142,52 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
             <!-- =====end of top=== -->
 
 
+            <!-- display highest sales day card -->
+      <?php
 
+             // Connect to database
+             $conn = mysqli_connect('localhost', 'root', '', 'eventslab');
+            $sql2 = "SELECT DATE(order_date) AS date, SUM(total_price) AS revenue, COUNT(*) AS num_orders
+            FROM orders
+            GROUP BY DATE(order_date)
+            ORDER BY COUNT(*) DESC
+            LIMIT 1";
 
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
+ // Close database connection
+ mysqli_close($conn);
+            ?>
+<div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="<?php echo BASEURL ?>/images/user.png" alt="">
+                        </div>
+                        <div class="message">
+                            <h2><b>Highest sales</b> on</h2>
+                            <p><strong> Date: </strong> <?php echo $row2['date']; ?></p>
+            <p><strong> Revenue: </strong> <h4>LKR <?php echo number_format($row2['revenue'], 2); ?>  </p></h4>
+            <p><strong>Number of Orders:</strong> <?php echo $row2['num_orders']; ?></p>
+                            <!-- <small class="text-muted"> 2 minutes ago</small> -->
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
         </div>
+
+
+
+
+
+
+
+     
+</div>
+
 
     </div>
     <script src="<?php echo BASEURL ?>/public/js/index.js"></script>

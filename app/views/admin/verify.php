@@ -12,13 +12,31 @@ if (isset($_SESSION['email'])) {
 
 ?>
 
-
+<head>
+    <style>
+  input[type="checkbox"] {
+    background-color: #fff;
+    margin: 0 auto;
+    display: block;
+    width: 25px;
+    height: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #555;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+  }
+  </style>
 
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
-
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+</head>
 
 <body>
     <div class="container">
@@ -44,7 +62,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Customers</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/service"class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/service"><span class="material-symbols-rounded">
                         storefront
                     </span>
                     <h3>Service Providers</h3>
@@ -55,12 +73,46 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
-                        mail
-                    </span>
-                    <h3>Verify Users</h3>
-                    <span class="message-count">31</span>
-                </a>
+
+
+                <?php
+// Connect to the database
+$db = new mysqli('localhost', 'root', '', 'eventslab');
+
+// Check if the connection was successful
+if ($db->connect_error) {
+    die('Connect Error (' . $db->connect_errno . ') ' . $db->connect_error);
+}
+
+// Query the database to get the count of inactive sellers
+$sql = "SELECT COUNT(*) AS inactive_count FROM service_providers WHERE status = 0";
+$result = $db->query($sql);
+
+// Check if the query was successful
+if (!$result) {
+    die('Query Error: ' . $db->error);
+}
+
+// Fetch the result
+$row = $result->fetch_assoc();
+
+// Display the count of inactive sellers
+// echo 'Number of inactive sellers: ' . $row['inactive_count'];
+
+// Close the database connection
+$db->close();
+?>
+
+
+
+<a href="" class="active"><span class="material-symbols-rounded">
+    mail
+</span>
+<h3>Verify Users</h3>
+<span class="message-count"><?php echo $row['inactive_count']; ?></span>
+</a>
+
+
 
                 <a href=""><span class="material-symbols-rounded">
                         mail
@@ -110,41 +162,84 @@ if (isset($_SESSION['email'])) {
            
             <!-- -------orders table----- -->
             <div class="recent-orders">
-                <h2>Service Provider Details</h2>
-                <?php 
-    $path = BASEURL;
-    echo"<table>";
-    echo"<thead>";
-    echo" <tr>";
-    echo"<th>Id</th>";
-    echo"<th>Name</th>";
-    echo" <th>Business</th>";
-    echo"<th >Actions</th>";
-    echo" </tr>";
-    echo" </thead>";
-    echo" <tbody>";
-    while ($row = $data['result']->fetch_assoc()) {
-               
-                        echo "<tr>";
-                        echo "<td>" . $row["sp_id"] . "</td>";
-                        echo "<td>" . $row["sp_name"] . "</td>";
-                          
-                         
-                        echo "<td>" . $row["sp_type_id"] . "</td>";
+                <h2>Verify Service Providers</h2>
+         <?php
+// Replace with your database connection details
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'eventslab';
 
-                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+// Connect to the database
+$conn = mysqli_connect($host, $user, $password, $dbname);
 
-                        echo "<td class='warning'><a href=" . BASEURL . "/user/viewService/". $row["sp_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+// Check if the connection was successful
+if (!$conn) {
+    die('Connection failed: ' . mysqli_connect_error());
+}
 
-                        echo "<td class='warning'><a href=" . BASEURL . "/user/deleteService/". $row["sp_id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+// If the form was submitted, update the status of the service provider
+if (isset($_POST['verify']) && isset($_POST['sp_id'])) {
+    $sp_id = $_POST['sp_id'];
+    $status = $_POST['verify'] == 'on' ? 1 : 0;
+    $update_sql = "UPDATE service_providers SET status = $status WHERE sp_id = $sp_id";
+    mysqli_query($conn, $update_sql);
+}
 
-                      echo "  </tr>";
-                        
-                      echo " </tbody>";
-      }
-      echo "   </table>";
+// Build the SQL query to retrieve service provider information
+$sql = "SELECT sp_id, sp_name, sp_email, sp_city, buisness_name, contact_num, status
+        FROM service_providers";
 
-      ?>
+// Execute the query and fetch the results
+$service_providers = mysqli_query($conn, $sql);
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+<!-- Create an HTML table to display the service providers -->
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Business</th>
+      <th>Document</th>
+      <th>Status</th>
+      <th>Verify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Loop through the service providers and create a row for each one -->
+    <?php while ($sp = mysqli_fetch_assoc($service_providers)): ?>
+     <?php if ($sp['status'] == 0): ?>
+    <tr>
+      <td><?= $sp['sp_name'] ?></td>
+      <td><?= $sp['sp_email'] ?></td>
+      <td><?= $sp['sp_city'] ?></td>
+      <td><?= $sp['buisness_name'] ?></td>
+      <td><?= $sp['contact_num'] ?></td>
+      <td><?= $sp['status'] == 1 ? 'Verified' : 'Unverified' ?></td>
+      <td>
+        <?php if ($sp['status'] == 0): ?>
+
+            
+        <form method="post">
+          <input type="hidden" name="sp_id" value="<?= $sp['sp_id'] ?>">
+          <input type="checkbox" name="verify" onchange="this.form.submit()">
+        </form>
+
+
+
+        <?php endif ?>
+      </td>
+    </tr>
+    <?php endif ?>
+    <?php endwhile ?>
+  </tbody>
+</table>
+
                 <a href="">Show all</a>
             </div>
         </main>
@@ -175,43 +270,12 @@ if (isset($_SESSION['email'])) {
 
             <div class="recent-updates">
                 <h2>Add Service Provider</h2>
-                <div class="updates">
-                    <div class="">
-                        
-                    <form action="<?php echo BASEURL ?>/user/addServiceProvider" method="post">
-                    <div class="col">
-                        <label>Service Provider Id</label><br>
-                        <input type="text" name="sp_id" placeholder="3"><br>
-                    </div>
-                    <div class="col">
-                        <label>Email Address</label><br>
-                        <input type="text" name="sp_email" placeholder="user@gmail.com"><br>
-                    </div>
-                    <div class="col">
-                        <label>Name</label><br>
-                        <input type="text" name="sp_name" placeholder="user"><br>
-                    </div>
-                    
-        
-                    <div class="col">
-                        <label>Temporary Password</label><br>
-                        <input type="password" name="sp_password" placeholder="123456"><br>
-                    </div>
-                    
-                 
-                    
-
-                    <div class="col">
-                     <button type="submit"  class="login-btn btn-primary btn">Submit</button>
-                    </div>
-                </div>
+                <!-- <div class="updates">
+                   
+                </div> -->
                     
                 </form>
-                    
-
-                   
-
-                
+         
             </div>
             <!-- =====end of recent updates === -->
 
