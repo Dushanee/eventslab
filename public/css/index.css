@@ -19,6 +19,11 @@ body {
     height: 100vh;
 }
 
+.full-height table tr {
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
 table {
     width: 100%;
     padding-top: 5px;
@@ -71,4 +76,29 @@ table {
 
 .nav-item:hover {
     color: #f0f0f0;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.btn {
+    display: block;
+    width: 250px;
+    height: 50px;
+    background-color: #210E54;
+    border: none;
+    border-radius: 5px;
+    padding-top: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #f0f0f0;
+    margin-bottom: 20px;
 }

@@ -12,9 +12,9 @@ class insertModel extends Model
         $result = $this->get('customer', "$column = '$value'");
         return $result;
     }
-     public function insertCustomer( $cust_id, $cust_email,  $cust_fname ,$cust_lname, $cust_password)
+     public function insertCustomer(  $cust_email,  $cust_fname ,$cust_lname, $cust_password,$phone_number)
     {
-      $this->insert('customers', ['cust_id'=> $cust_id, 'cust_email'=> $cust_email,'cust_fname'=> $cust_fname,'cust_lname'=> $cust_lname,'cust_password'=> $cust_password]);
+      $this->insert('customers', [ 'cust_email'=> $cust_email,'cust_fname'=> $cust_fname,'cust_lname'=> $cust_lname,'cust_password'=> $cust_password,'phone_number'=> $phone_number]);
       
         
    }

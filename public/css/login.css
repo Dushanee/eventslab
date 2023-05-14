@@ -26,11 +26,6 @@ td {
     margin-bottom: 10px;
 }
 
-.sub-text {
-    font-size: 15px;
-    color: rgb(138, 138, 138);
-}
-
 .form-label {
     color: rgb(44, 44, 44);
     text-align: left;
@@ -55,36 +50,6 @@ td {
     /*margin-top: 15px;*/
     margin-bottom: 15px;
     width: 100%;
-}
-
-.alert {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border-radius: 5px;
-    z-index: 999;
-    animation: slide-down 0.5s ease-in-out forwards;
-}
-
-.alert-success {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #09c372;
-    color: white;
-    border-radius: 5px;
-    z-index: 999;
-    animation: slide-down 0.5s ease-in-out forwards;
-}
-
-.alert.hide {
-    animation: slide-down 0.5s ease-in-out forwards;
 }
 
 .form-container {

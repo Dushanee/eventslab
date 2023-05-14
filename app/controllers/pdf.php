@@ -42,6 +42,8 @@ class MYPDF extends TCPDF {
       foreach($data as $row) {
           $this->Cell($w[0], 6, $row['cust_id'], 'LR', 0, 'L', $fill);
           $this->Cell($w[1], 6, $row['cust_fname'], 'LR', 0, 'L', $fill);
+          $this->Cell($w[2], 6, $row['cust_email'], 'LR', 0, 'L', $fill);
+          // $this->Cell($w[3], 6, $row['phone_number'], 'LR', 0, 'L', $fill);
           // $this->Cell($w[2], 6, number_format($row[2]), 'LR', 0, 'R', $fill);
           // $this->Cell($w[3], 6, number_format($row[3]), 'LR', 0, 'R', $fill);
           $this->Ln();
@@ -98,7 +100,7 @@ class pdf extends Controller{
     $pdf->AddPage();
     
     // column titles
-    $header = array('ID', 'Name');
+    $header = array('ID', 'Name','Email', 'Phone Number');
     
     // data loading
     $data = $pdf->LoadData();

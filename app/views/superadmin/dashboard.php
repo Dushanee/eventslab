@@ -46,9 +46,7 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
                     </span>
                     <h3>Manage Users</h3>
                 </a>
-               
-
-                <a href="<?php echo BASEURL ?>/welcome/signout"><span class="material-symbols-rounded">
+               <a href="<?php echo BASEURL ?>/welcome/signout"><span class="material-symbols-rounded">
                         logout
                     </span>
                     <h3>Logout</h3>
@@ -59,9 +57,6 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
         <main>
             <h1>Dashboard</h1>
 
-           
-
-           
         </main>
         <!-- ------- end of main ----- -->
  <!-- =====right=== -->

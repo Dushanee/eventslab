@@ -39,7 +39,46 @@ class updateModel extends Model
             "id= '$id'"
         );
     }
+    public function updateSP($sp_id, $sp_name,  $sp_email,  $status)
+    {
+        $this->update(
+            'service_providers',
+            [
+                'sp_id' => $sp_id,
+                'sp_name' => $sp_name,
+                'sp_email' => $sp_email,
+                'status' => $status,
+               
+            ],
+            "sp_id= '$sp_id'"
+        );
+    }
 
+    public function updatePassword($password, $email)
+    {   
+        $this->update(
+            'users',
+            [
+                'password' => $password,
+                
+            ],
+            "email= '$email'"
+        );
+    }
+
+
+    public function updateStatus($id, $status)
+    {
+        
+        $this->update(
+            'users',
+            [
+                'status' => $status,
+                
+            ],
+            "id= '$id'"
+        );
+    }
 
     public function updateCode($code ,$email)
     {

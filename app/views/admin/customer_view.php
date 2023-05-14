@@ -102,8 +102,8 @@
            
 
 
-            <div class="view-form">
-  <form action="<?php echo BASEURL ?>/user/editCustomer" method="post">
+<div class="view-form">
+     <form action="<?php echo BASEURL ?>/user/editCustomer" method="post">
 <?php
   while ($row = $data['result']->fetch_assoc()) {
     echo"<label >Customer Id</label>";
@@ -117,23 +117,29 @@
 
     echo"<label >Email</label>";
     echo"<input type='text'  name='cust_email' value=' $row[cust_email] '>";
-
+    echo " <a href=" . BASEURL . "/user/sendmail/" .$row["cust_email"]  ."> Send mail </a> " ;
     // echo"<label >Birthday</label>";
     // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
   };
   ?>
 
-
-   
-
   <br>
-
-  
   <div class="col">
     <br>
                      <button type="submit"  class="login-btn btn-primary btn">Update</button>
                     </div>
   </form>
+ 
+
+  <br>
+          
+  <?php
+   while ($row = $data['result']->fetch_assoc()) {
+echo " <a href=" . BASEURL . "/user/sendmail/" .$row["cust_email"]  ."> Send mail </a> " ;
+   }
+?>
+
+
 </div>
 
   

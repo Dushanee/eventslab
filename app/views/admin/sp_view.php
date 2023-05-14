@@ -1,29 +1,12 @@
-
-
-<?php
-
-session_start();
-
-if (isset($_SESSION['email'])) {
-    // echo $_SESSION['email'];
-} else {
-    echo '<br>You are not logged in';
-}
-
-
-?>
-
-
-
-<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
-
+<link rel="stylesheet" type="text/css " href="<?php echo BASEURL ?>/public/css/customer_view.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-
 <body>
+
+
     <div class="container">
-    <aside>
+        <aside>
             <div class="top">
                 <div class="logo">
                     <img src="<?php echo BASEURL ?>/images/logo1.png" alt="logo">
@@ -40,7 +23,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/customer" ><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/customer" class="active"><span class="material-symbols-rounded">
                         person
                     </span>
                     <h3>Customers</h3>
@@ -51,12 +34,12 @@ if (isset($_SESSION['email'])) {
                     <h3>Service Providers</h3>
                 </a>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/orders" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/user/verify"><span class="material-symbols-rounded">
+                <a href=""><span class="material-symbols-rounded">
                         mail
                     </span>
                     <h3>Verify Users</h3>
@@ -105,53 +88,76 @@ if (isset($_SESSION['email'])) {
 
         <!-- ------- end of side bar ----- -->
         <main>
-            <h1>Orders</h1>
-<p>filter by</p>
+            <h1>Dashboard</h1>
+
             <div class="date">
                 <input type="date">
             </div>
 
-            
-           
+
             <!-- -------orders table----- -->
-            <div class="recent-orders">
-                <h2>Order Details</h2>
-                <?php 
-    $path = BASEURL;
-    echo"<table>";
-    echo" <thead>";
-    echo" <tr>";
-    echo" <th>Order Id</th>";
-    echo" <th>Date</th>";
-    echo" <th>Customer Id</th>";
-    echo" <th>Customer Name </th>";
-                          
-    echo" </thead>";
-    echo" <tbody>";
-    while ($row = $data['result']->fetch_assoc()) {
-      
-                        echo "<tr>";
-                        echo "<td>" . $row["order_id"] . "</td>";
-                        echo "<td>" . $row["order_date"] . "</td>";
-                        echo "<td>" . $row["cust_id"] . "</td>";
-                        echo "<td>" . $row["cust_fname"] . "</td>";
-                          
-                         
-                        echo "<td>Paid</td>";
-                        echo "<td class='warning'><a href=" . BASEURL . "/order/viewOrder/". $row["order_id"] . "><input type='button' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
 
-                    echo "</tr>";
-                        
-                        echo" </tbody>";
 
-    }
-                        echo"</table>";
-                        ?>
-                <a href="">Show all</a>
+
+            <div class="view-form">
+                <form action="<?php echo BASEURL ?>/user/editSp" method="post">
+                    <?php
+                    while ($row = $data['result']->fetch_assoc()) {
+                        echo "<label >Sp Id</label>";
+                        echo "<input type='text'  name='cust_id' value='$row[sp_id]'>";
+
+                        echo "<label >SP Name</label>";
+                        echo "<input type='text'  name='cust_fname' value='$row[sp_name]'>";
+
+                        echo "<label >Sp Email</label>";
+                        echo "<input type='text'  name='cust_lname' value='$row[sp_email]'>";
+
+                        echo"<label>Status</label>";
+    echo " <select name='status'>";
+    echo "<option  value='0'" . ($row['status'] == 0 ? "selected='selected'" : "") . ">Not verified</option>";
+    echo "<option  value='1'" . ($row['status']== 1 ? "selected='selected'" : "") . ">Verified</option>";
+    echo "</select>";
+
+                        // echo " <a href=" . BASEURL . "/user/sendmail/" . $row["cust_email"]  . "> Send mail </a> ";
+                        // echo"<label >Birthday</label>";
+                        // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
+                    };
+                    ?>
+
+                    <br>
+                    <div class="col">
+                        <br>
+                        <button type="submit" class="login-btn btn-primary btn">Update</button>
+                    </div>
+                </form>
+
+
+                <br>
+
+                <?php
+                while ($row = $data['result']->fetch_assoc()) {
+                    echo " <a href=" . BASEURL . "/user/sendmail/" . $row["cust_email"]  . "> Send mail </a> ";
+                }
+                ?>
+
+
             </div>
-        </main>
-        <!-- ------- end of main ----- -->
 
+
+            <div class="col">
+                <br>
+                <a href="<?php echo BASEURL ?>/adminFunction/customer">
+                    <button type="submit" class="login-btn btn-primary btn">Back</button></a>
+            </div>
+
+
+        </main>
+
+
+
+
+        <!-- ------- end of main ----- -->
+        <!-- =====right=== -->
         <div class="right">
             <div class="top">
                 <button id="menu-btn">
@@ -167,7 +173,7 @@ if (isset($_SESSION['email'])) {
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="1.jpg" alt="">
+                        <img src="<?php echo BASEURL ?>/images/logo1.png" alt="dp">
                     </div>
                 </div>
             </div>
@@ -175,12 +181,22 @@ if (isset($_SESSION['email'])) {
 
             <!-- =====end of top=== -->
 
-            
+
+
+
+
             <!-- =====end of recent updates === -->
 
-            
-        </div>
+            <!-- =====sales analytics-->
+
 
         </div>
+
+    </div>
+
+
+
 
 </body>
+
+</html>

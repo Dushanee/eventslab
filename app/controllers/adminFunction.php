@@ -19,15 +19,28 @@ class adminFunction extends Controller
 
 
 
-    public function customer()
+    public function customer($id=null)
     {
+        if($id=='success'){
+            $error = 0;
+        }
+            else if($id=='fail'){
+                $error = 1;
+
+               
+            }else{
+                $error = null;
+
+            }
         $result = $this->model('viewModel')->viewCustomer();   
         $drop = $this->model('viewModel')->getTotalCustomers();
+        
      
         $data = [
             'inputValue' => "",
             'result' => $result,
             'drop' => $drop,
+            'error' => $error,
         ];
         // var_dump($data);
         $this->view('admin/customer', $data);

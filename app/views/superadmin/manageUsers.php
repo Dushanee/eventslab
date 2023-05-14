@@ -8,9 +8,6 @@ if (isset($_SESSION['email'])) {
     echo '<br>You are not logged in';
 }
 
-$conn = mysqli_connect("localhost", "root", "", "eventslab");
-$rows = mysqli_query($conn, "SELECT email FROM users");
-
 ?>
 
 
@@ -62,9 +59,11 @@ $rows = mysqli_query($conn, "SELECT email FROM users");
            
             <div class="recent-orders">
                 <h2>All Internal Users</h2>
+  
                 <?php
 
 $path = BASEURL;
+
 echo " <table>";
 echo "<thead>";
 echo "<tr>";
@@ -81,30 +80,36 @@ while ($row = $data['result']->fetch_assoc()) {
 
 
 
-    echo "<tr>";
-    echo "<td>".$row["id"]."</td>";
-    echo "<td>".$row["fname"]."</td>";
+echo "<tr>";
+echo "<td >".$row["id"]."</td>";
+
+echo "<td>".$row["fname"]."</td>";
 
 
-    echo "<td>".$row["user_type"]."</td>";
-    echo "<td>".$row["status"]."</td>";
+echo "<td>".$row["user_type"]."</td>";
+echo "<td >";
+if ($row["status"]==0){
+    echo "Inactive";
+}else
+echo "Active";
 
+echo "</td>";
 
-
-    echo "<td class='warning'><a href=" . BASEURL . "/user/viewUsers/" . $row["id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-    echo "<td class='warning'><a href=" . BASEURL . "/user/deleteUser/" . $row["id"] . "><input type='button' value='Delete' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-
-    echo " </tr>";
-
-    echo "    </tbody>";
+echo "<td class='warning'><a href=" . BASEURL . "/user/viewUsers/" . $row["id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+// echo "<td class='warning'><a href=" . BASEURL . "/user/deleteUser/" . $row["id"] . "><input type='button' value='Remove User' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+echo " </tr>";
+echo "    </tbody>";
 }
 echo "  </table>";
 
 
-
 ?>
-                <a href="">Show all</a>
+
+
+
+
+
+<a href="">Show all</a>
             </div>
            
         </main>

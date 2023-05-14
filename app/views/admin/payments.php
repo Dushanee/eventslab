@@ -55,7 +55,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/user/verify"><span class="material-symbols-rounded">
                         mail
                     </span>
                     <h3>Verify Users</h3>
@@ -110,45 +110,47 @@ if (isset($_SESSION['email'])) {
            
             <!-- -------orders table----- -->
             <div class="recent-orders">
-                <h2>Payments</h2>
-                <table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Service Provider</th>
-      <th>Order ID</th>
-      <th>Payment Amount</th>
-      <th>Payment Status</th>
-      <th>Select</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>04/01/2023</td>
-      <td>John Doe</td>
-      <td>12345</td>
-      <td>$90.00</td>
-      <td>Paid</td>
-      <td><input type="checkbox" name="pay[]" value="john_doe"></td>
-    </tr>
-    <tr>
-      <td>04/01/2023</td>
-      <td>Jane Smith</td>
-      <td>54321</td>
-      <td>$45.00</td>
-      <td>Pending</td>
-      <td><input type="checkbox" name="pay[]" value="jane_smith"></td>
-    </tr>
-    <tr>
-      <td>04/01/2023</td>
-      <td>Bob Johnson</td>
-      <td>98765</td>
-      <td>$67.50</td>
-      <td>Unpaid</td>
-      <td><input type="checkbox" name="pay[]" value="bob_johnson"></td>
-    </tr>
-  </tbody>
-</table>
+            <h2>Customer Payments Table</h2>
+	<table>
+		<tr>
+			<th>Transaction ID</th>
+			<th>Order ID</th>
+			<th>Total Payment</th>
+			<th>Status</th>
+			<th>Reference No.</th>
+		</tr>
+		<?php
+			// Connect to the database
+			$host = 'localhost';
+			$user = 'root';
+			$password = '';
+			$database = 'eventslab';
+			$connection = mysqli_connect($host, $user, $password, $database);
+
+			// Check for errors
+			if (mysqli_connect_errno()) {
+				die("Failed to connect to MySQL: " . mysqli_connect_error());
+			}
+
+			// Retrieve data from the payments table
+			$query = "SELECT * FROM `payments`";
+			$result = mysqli_query($connection, $query);
+
+			// Loop through the results and display them as a table
+			while ($row = mysqli_fetch_assoc($result)) {
+				echo "<tr>";
+				echo "<td>" . $row['transaction_id'] . "</td>";
+				echo "<td>" . $row['order_id'] . "</td>";
+				echo "<td>" . $row['total_payment'] . "</td>";
+				echo "<td>" . $row['status'] . "</td>";
+				echo "<td>" . $row['ref_no'] . "</td>";
+				echo "</tr>";
+			}
+
+			// Close the database connection
+			mysqli_close($connection);
+		?>
+	</table>
 
                 <a href="">Show all</a>
             </div>

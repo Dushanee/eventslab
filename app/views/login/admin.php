@@ -2,16 +2,36 @@
 
 
 
-if(isset($data['count'])) { 
+if(isset($data['error'])) { 
 
-  if(($data['count'] == 0)){
-
+  if(($data['error'] == 0)){
+    ?>
+    <div class="alert-success">
+      <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+    Your Password is Successfully Changed
+    </div>
+    <script>
+      var alertBox = document.querySelector('.alert');
+      alertBox.classList.add('show');
+      setTimeout(function() {
+        alertBox.classList.add('hide');
+      }, 5000); // 5000 milliseconds = 5 seconds
+      function dismissAlert(button) {
+        var alertBox = button.parentElement;
+        alertBox.classList.add('hide');
+        setTimeout(function() {
+          alertBox.remove();
+        }, 500); // 500 milliseconds = 0.5 seconds
+      }
+    </script>
+    <?php
+  // do something
 
     
 
   }
 
-  else {
+  else if(($data['error'] == 1)) {
     ?>
     <div class="alert">
       <span class="closebtn" onclick="dismissAlert(this);">&times;</span>

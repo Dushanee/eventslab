@@ -72,10 +72,13 @@
     echo"<label>User Type</label>";
     echo"<input type='text'  name='user_type' value='$row[user_type]'>";
     
+   
+
     echo"<label>Status</label>";
-    echo"<input type='text'  name='status' value='$row[status]'>";
-
-
+    echo " <select name='status'>";
+    echo "<option  value='0'" . ($row['status'] == 0 ? "selected='selected'" : "") . ">Inactive</option>";
+    echo "<option  value='1'" . ($row['status']== 1 ? "selected='selected'" : "") . ">Active</option>";
+    echo "</select>";
 
     // echo"<label >Birthday</label>";
     // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";

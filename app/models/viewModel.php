@@ -51,6 +51,15 @@ class viewModel extends Model
         return $this->get('service_providers', $append);
     }
 
+    public function viewSp($sp_id = null)
+    {
+        if (isset($sp_id)) {
+            $append = "sp_id='$sp_id '";
+        } else {
+            $append = '';
+        }
+        return $this->get('service_providers', $append);
+    }
 
 
     public function viewPackages($pack_id = null)

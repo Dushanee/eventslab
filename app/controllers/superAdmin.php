@@ -17,17 +17,36 @@ class superAdmin extends Controller
         $this->view('superadmin/dashboard' ,$data);
     }
 
-
-    public function manageUsers()
+    public function status()
     {
   
-       
+        if ($_POST['id']) {
+
+            $id = $_POST['id'];
+            $status = $_POST['status'];
+
+            $this->model('updateModel')->updateStatus($id,$status);
+
+            $result = $this->model('viewModel')->getUsers();  
+     
+            $data = [
+                'inputValue' => "",
+                'result' => $result,
+    
+            ];
+
+            echo $id;
+            echo $status;
+        $this->view('superadmin/manageUser' ,$data);
+    }
+}
+    public function manageUsers()
+    {
         $result = $this->model('viewModel')->getUsers();  
      
         $data = [
             'inputValue' => "",
-            'result' => $result,
-
+            'result' => $result,2
         ];
 
         $this->view('superadmin/manageUsers' ,$data);
@@ -35,10 +54,6 @@ class superAdmin extends Controller
 
 
 
-
-
-
-  
   
     public function signout()
     {

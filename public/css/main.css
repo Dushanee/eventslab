@@ -56,7 +56,6 @@ body {
 }
 
 .input-text {
-    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 14px;
     line-height: 26px;
@@ -94,6 +93,18 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.sub-text {
+    font-size: 15px;
+    color: rgb(138, 138, 138);
+    margin-bottom: 30px;
+}
+
+.sub-text-para {
+    font-size: 12px;
+    color: rgb(138, 138, 138);
+    margin-bottom: 0px;
+}
+
 
 /* -----------Buttons---------------*/
 
@@ -114,6 +125,7 @@ body {
     box-shadow: none;
     transition: all 0.5s;
     font-family: 'Inter', sans-serif;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -138,6 +150,7 @@ body {
     /*border: 1px solid rgba(57,108,240,0.1) ;*/
     color: #fff;
     box-shadow: 0 3px 5px 0 rgba(57, 108, 240, 0.3);
+    text-decoration: none;
 }
 
 .btn-in-text {
@@ -578,4 +591,34 @@ input[type=search]:focus {
     background-position: 68% 50%;
     background-repeat: no-repeat;
     transition: 0.5s;
+}
+
+.alert {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #c23026;
+    color: white;
+    border-radius: 5px;
+    z-index: 999;
+    animation: slide-down 0.5s ease-in-out forwards;
+}
+
+.alert-success {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #54B435;
+    color: white;
+    border-radius: 5px;
+    z-index: 999;
+    animation: slide-down 0.5s ease-in-out forwards;
+}
+
+.alert.hide {
+    animation: slide-down 0.5s ease-in-out forwards;
 }

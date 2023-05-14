@@ -55,7 +55,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/user/verify"><span class="material-symbols-rounded">
                         mail
                     </span>
                     <h3>Verify Users</h3>
@@ -118,7 +118,7 @@ if (isset($_SESSION['email'])) {
     echo" <tr>";
     echo"<th>Id</th>";
     echo"<th>Name</th>";
-    echo" <th>Business</th>";
+    echo" <th>Business Id</th>";
     echo"<th >Actions</th>";
     echo" </tr>";
     echo" </thead>";

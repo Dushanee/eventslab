@@ -14,7 +14,7 @@
 }
 
 .search-input-container input[type="text"] {
-    width: 500px;
+    width: 700px;
     padding: 10px;
     border: 2px solid var(--color-secondary);
     border-right: none;
@@ -34,10 +34,11 @@
     transition: all 0.3s ease;
 }
 
-.search-input-container button[type="submit"]:hover {
-    background-color: var(--color-success);
+
+/* .search-input-container button[type="submit"]:hover {
+    background-color: var(--color-);
     border-color: var(--color-success);
-}
+} */
 
 
 /* pagination */
@@ -113,7 +114,19 @@
 .add-user .col {
     display: flex;
     flex-direction: column;
+    position: relative;
     margin-bottom: var(--padding);
+    margin-bottom: 10%;
+}
+
+.add-user .col .error-message {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #cc0022;
+    font-size: 12px;
+    margin-top: 2px;
 }
 
 .add-user label {
@@ -138,6 +151,7 @@
 }
 
 .add-user button[type="submit"] {
+    margin-top: 5%;
     padding: 0.8rem 1.2rem;
     border-radius: var(--border-radius-1);
     border: none;
@@ -149,7 +163,7 @@
 }
 
 .add-user button[type="submit"]:hover {
-    background-color: var(--color-dark);
+    background-color: var(--color-secondary);
 }
 
 

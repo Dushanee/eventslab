@@ -158,42 +158,80 @@ if (isset($_SESSION['email'])) {
             <div class="recent-orders">
                 <h2>Verify Service Providers</h2>
                 <?php
-                $path = BASEURL;
-                echo "<table>";
-                echo " <thead>";
-                echo " <tr>";
-                echo "    <th>SP Id</th>";
-                echo " <th>SP Name</th>";
-                echo " <th>SP Email</th>";
-                echo " <th>SP Type</th>";
-                echo " <th>Document</th>";
-                echo " <th> Status</th>";
-                // echo" <th>Package Description</th>";
-                // echo"  <th>Location</th>";
-                // echo"<th>Options</th>";
-                // echo" <th>Rates</th>";
-                echo" <th>Verify User </th>";
-                echo " </tr>";
-                echo " </thead>";
-                echo " <tbody>";
+                // Replace with your database connection details
+                $host = 'localhost';
+                $user = 'root';
+                $password = '';
+                $dbname = 'eventslab';
 
+                // Connect to the database
+                $conn = mysqli_connect($host, $user, $password, $dbname);
 
-                while ($row = $data['result']->fetch_assoc()) {
-
-                    echo "<tr>";
-                    echo "<td>" . $row["sp_id"] . "</td>";
-                    echo "<td>" . $row["sp_name"] . "</td>";
-                    echo "<td>" . $row["sp_email"] . "</td>";
-                    echo "<td>" . $row["sp_type_id"] . "</td>";
-                    echo "<td><a href=" . BASEURL . "/public/" . $row["document"] . ">View</a></a></td>";
-                    echo "<td>" . $row["status"] . "</td>";
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewSp/". $row["sp_id"] . "><input type='button' value='Verify' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
-                    echo "</tr>";
-                    echo "</tbody>";
+                // Check if the connection was successful
+                if (!$conn) {
+                    die('Connection failed: ' . mysqli_connect_error());
                 }
-                echo "</table>";
 
+                // If the form was submitted, update the status of the service provider
+                if (isset($_POST['verify']) && isset($_POST['sp_id'])) {
+                    $sp_id = $_POST['sp_id'];
+                    $status = $_POST['verify'] == 'on' ? 1 : 0;
+                    $update_sql = "UPDATE service_providers SET status = $status WHERE sp_id = $sp_id";
+                    mysqli_query($conn, $update_sql);
+                }
+
+                // Build the SQL query to retrieve service provider information
+                $sql = "SELECT sp_id, sp_name, sp_email, sp_city, business_name, contact_num, document, status
+        FROM service_providers";
+
+                // Execute the query and fetch the results
+                $service_providers = mysqli_query($conn, $sql);
+
+                // Close the database connection
+                mysqli_close($conn);
                 ?>
+
+                <!-- Create an HTML table to display the service providers -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Business</th>
+                            <th>Document</th>
+                            <th>Status</th>
+                            <th>Verify</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the service providers and create a row for each one -->
+                        <?php while ($sp = mysqli_fetch_assoc($service_providers)) : ?>
+
+                            <tr>
+                                <td><?= $sp['sp_name'] ?></td>
+                                <td><?= $sp['sp_email'] ?></td>
+                                <td><?= $sp['sp_city'] ?></td>
+                                <td><?= $sp['business_name'] ?></td>
+                                <td><a href=" <?= $sp['document'] ?>"> </a></td>
+                                <td><?= $sp['status'] == 1 ? 'Verified' : 'Unverified' ?></td>
+                                <td>
+                                    <?php if ($sp['status'] == 0) : ?>
+
+
+                                        <form method="post">
+                                            <input type="hidden" name="sp_id" value="<?= $sp['sp_id'] ?>">
+                                            <select name="status" onchange="this.form.submit()">
+                                                <option value="1" <?= $sp['status'] == 1 ? 'selected' : '' ?>>Verified</option>
+                                                <option value="0" <?= $sp['status'] == 0 ? 'selected' : '' ?>>Unverified</option>
+                                            </select>
+                                        </form>
+                                    <?php endif ?>
+                                </td>
+                            </tr>
+                        <?php endwhile ?>
+                    </tbody>
+                </table>
 
                 <a href="">Show all</a>
             </div>

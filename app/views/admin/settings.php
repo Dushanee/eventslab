@@ -62,7 +62,7 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/user/verify"><span class="material-symbols-rounded">
                         mail
                     </span>
                     <h3>Verify Users</h3>

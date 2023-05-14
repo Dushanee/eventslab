@@ -1,0 +1,57 @@
+<form action="<?php echo BASEURL ?>/superAdmin/status" id="status" onchange="submitForm()" method='POST' autocomplete="off">
+    <?php
+
+$path = BASEURL;
+
+echo " <table>";
+echo "<thead>";
+echo "<tr>";
+echo " <th>Id</th>";
+echo "  <th>Name</th>";
+echo "  <th>Role</th>";
+echo " <th>Status</th>";
+echo " <th>Actions</th>";
+
+echo " </tr>";
+echo "</thead>";
+echo " <tbody>";
+while ($row = $data['result']->fetch_assoc()) {
+
+
+
+echo "<tr>";
+echo "<td >".$row["id"]."</td>";
+echo"<input name='id' value=".$row["id"].">";
+echo "<td>".$row["fname"]."</td>";
+
+
+echo "<td>".$row["user_type"]."</td>";
+echo "<td>";
+echo " <select name='status'>";
+echo "<option  value='0'" . ($row['status'] == 0 ? "selected='selected'" : "") . ">Inactive</option>";
+echo "<option  value='1'" . ($row['status']== 1 ? "selected='selected'" : "") . ">Active</option>";
+echo "</select>";
+echo "</td>";
+
+echo "<td class='warning'><a href=" . BASEURL . "/user/viewUsers/" . $row["id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+// echo "<td class='warning'><a href=" . BASEURL . "/user/deleteUser/" . $row["id"] . "><input type='button' value='Remove User' class=' danger login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+echo " </tr>";
+echo "    </tbody>";
+}
+echo "  </table>";
+
+echo " </form>";
+?>
+
+        <script>
+            function submitForm() {
+                // Get a reference to the form element
+                var form = document.getElementById("status");
+
+                // Submit the form
+                form.submit();
+
+                // Display a confirmation message
+                alert("Status Updated successfully");
+            }
+        </script>

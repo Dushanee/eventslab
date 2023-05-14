@@ -2,25 +2,45 @@
 
 class user extends Controller
 {
+    public function index()
+    {
+        $this->view('admin/dashboard');
+    }
     public function addCustomer()
 
 
     {
-        if (isset($_POST['cust_id'])) {
+        if (isset($_POST['cust_email'])) {
 
-            $cust_id = $_POST['cust_id'];
+            $result = $this->model('loginModel')->checkemail($_POST['cust_email']);
+
+            if ($result->num_rows > 0) {
+
+
+                header("Location: " . BASEURL . "/adminFunction/customer/fail");
+
+            
+            
+        } else {
+
             $cust_email = $_POST['cust_email'];
             $cust_fname = $_POST['cust_fname'];
             $cust_lname = $_POST['cust_lname'];
             $cust_password = $_POST['cust_password'];
+            $phone_number = $_POST['phone_number'];
 
 
-            $this->model('insertModel')->insertCustomer($cust_id, $cust_email, $cust_fname, $cust_lname, $cust_password);
-            header("Location: " . BASEURL . "/adminFunction/customer");
-        } else {
-            header("Location: " . BASEURL . "/adminFunction/index");
+            $this->model('insertModel')->insertCustomer( $cust_email, $cust_fname, $cust_lname, $cust_password,$phone_number);
+
+            
+   
+            header("Location: " . BASEURL . "/adminFunction/customer/success");
+
+
+            
         }
     }
+}
     public function  addServiceProvider()
     {
         if (isset($_POST['sp_id'])) {
@@ -82,6 +102,33 @@ class user extends Controller
     }
 
 
+    public function viewSp($sp_id)
+    {
+        $result = $this->model('viewModel')->viewSp($sp_id);
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+        ];
+        $this->view('admin/sp_view', $data);
+    }
+
+    public function editSp()
+    {
+        if (isset($_POST['sp_id'])) {
+
+            $sp_id = $_POST['sp_id'];
+            $sp_name = $_POST['sp_name'];
+            $sp_email = $_POST['sp_email'];
+            $status = $_POST['status'];
+
+            $this->model('updateModel')->editSp($sp_id, $sp_name, $sp_email, $status);
+
+            header("Location: " . BASEURL . "/user/verify");
+        } else {
+            header("Location: " . BASEURL . "/user/viewService");
+        }
+    }
+
     public function editCustomer()
     {
         if (isset($_POST['cust_id'])) {
@@ -109,9 +156,9 @@ class user extends Controller
         // Call the search model to perform the search
         $results = $this->model('searchModel')->search($query);
 
-        $result = $this->model('viewModel')->viewCustomer();   
+        $result = $this->model('viewModel')->viewCustomer();
         $drop = $this->model('viewModel')->getTotalCustomers();
-     
+
         $data = [
             'inputValue' => "",
             'result' => $result,
@@ -120,8 +167,6 @@ class user extends Controller
         ];
         // var_dump($data);
         $this->view('admin/customer', $data);
-
-       
     }
 
     public function viewUsers($id)
@@ -191,6 +236,41 @@ class user extends Controller
             'inputValue' => "",
             'result' => $result,
         ];
-        $this->view('/admin/verify', $data);
+
+
+        $this->view('admin/verify', $data);
+    }
+
+
+
+
+
+    public function sendmail($cust_email)
+    {
+        if (isset($cust_email)) {
+            // $_SESSION['email'] = $_POST['email'];
+            // $result = $this->model('loginModel')->checkemail($_SESSION['email']);
+
+            // if ($result->num_rows > 0) {
+            //     $name = 'User';
+            //     $email_address = $_SESSION['email'];
+            //     $_SESSION['otp'] = rand(1000, 9999);
+
+            //     $otp =   $_SESSION['otp'];
+
+
+            $this->model('mailModel')->sendmail($cust_email);
+
+            $this->view('admin/customer_view');
+        } else {
+            $error = 1;
+            $data = [
+                'inputValue' => "",
+                'error' => $error,
+
+            ];
+
+            $this->view('admin/dashboard', $data);
+        }
     }
 }
