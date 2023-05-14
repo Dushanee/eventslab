@@ -41,7 +41,7 @@ class viewModel extends Model
         }
         return $this->getoffset('customers',$append,$order,$customers_per_page,$offset);
     }
-    public function viewService($sp_id = null)
+    public function viewService1($sp_id = null)
     {
         if (isset($sp_id)) {
             $append = "sp_id='$sp_id '";
@@ -49,6 +49,21 @@ class viewModel extends Model
             $append = '';
         }
         return $this->get('service_providers', $append);
+    }
+    public function viewService($sp_id = null, $sps_per_page = 6)
+    {   if (isset($_GET['page'])) {
+        $current_page = $_GET['page'];
+    } else {
+        $current_page = 1;
+    }
+        $order = null;
+        $offset = ($current_page - 1) * $sps_per_page;
+        if (isset($sp_id)) {
+            $append = "sp_id='$sp_id'";
+        } else {
+            $append = '';
+        }
+        return $this->getoffset('service_providers',$append,$order,$sps_per_page,$offset);
     }
 
     public function viewSp($sp_id = null)

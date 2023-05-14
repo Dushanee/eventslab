@@ -46,13 +46,26 @@ class adminFunction extends Controller
         $this->view('admin/customer', $data);
     }
 
-    public function service()
-    {
+    public function service($id=null)
+    { if($id=='success'){
+        $error = 0;
+    }
+        else if($id=='fail'){
+            $error = 1;
+
+           
+        }else{
+            $error = null;
+
+        }
         $result = $this->model('viewModel')->viewService();
+        $drop =  $this->model('viewModel')->getTotalSps();  
 
         $data = [
             'inputValue' => "",
+            'drop' => $drop,
             'result' => $result,
+            'error' => $error,
         ];
 
         $this->view('admin/service', $data);

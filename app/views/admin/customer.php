@@ -14,64 +14,54 @@ if (isset($_SESSION['email'])) {
 if (isset($data['error'])) {
 
     if (($data['error'] == 0)) {
-        ?>
+?>
         <div class="alert-success">
-          <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
-          Customer Successfully Registered !
+            <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+            Customer Successfully Registered !
         </div>
         <script>
-          var alertBox = document.querySelector('.alert');
-          alertBox.classList.add('show');
-          setTimeout(function() {
-            alertBox.classList.add('hide');
-          }, 5000); // 5000 milliseconds = 5 seconds
-          function dismissAlert(button) {
-            var alertBox = button.parentElement;
-            alertBox.classList.add('hide');
+            var alertBox = document.querySelector('.alert');
+            alertBox.classList.add('show');
             setTimeout(function() {
-              alertBox.remove();
-            }, 500); // 500 milliseconds = 0.5 seconds
-          }
+                alertBox.classList.add('hide');
+            }, 5000); // 5000 milliseconds = 5 seconds
+            function dismissAlert(button) {
+                var alertBox = button.parentElement;
+                alertBox.classList.add('hide');
+                setTimeout(function() {
+                    alertBox.remove();
+                }, 500); // 500 milliseconds = 0.5 seconds
+            }
         </script>
     <?php
 
     } else {
-  ?>
-      <div class="alert">
-        <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
-        Email is Already Registered !
-      </div>
-      <script>
-        var alertBox = document.querySelector('.alert');
-        alertBox.classList.add('show');
-        setTimeout(function() {
-          alertBox.classList.add('hide');
-        }, 5000); // 5000 milliseconds = 5 seconds
-        function dismissAlert(button) {
-          var alertBox = button.parentElement;
-          alertBox.classList.add('hide');
-          setTimeout(function() {
-            alertBox.remove();
-          }, 500); // 500 milliseconds = 0.5 seconds
-        }
-      </script>
-  <?php
-      // do something
+    ?>
+        <div class="alert">
+            <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+            Email is Already Registered !
+        </div>
+        <script>
+            var alertBox = document.querySelector('.alert');
+            alertBox.classList.add('show');
+            setTimeout(function() {
+                alertBox.classList.add('hide');
+            }, 5000); // 5000 milliseconds = 5 seconds
+            function dismissAlert(button) {
+                var alertBox = button.parentElement;
+                alertBox.classList.add('hide');
+                setTimeout(function() {
+                    alertBox.remove();
+                }, 500); // 500 milliseconds = 0.5 seconds
+            }
+        </script>
+<?php
+        // do something
     }
-  } else {
-  }
-
-
-
-
+} else {
+}
 
 ?>
-
-
-
-
-
-
 
 <?php
 $path = BASEURL;
@@ -80,11 +70,6 @@ $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $customers_per_page;
 $total_customers = $data['drop'];
 $total_pages = ceil($total_customers / $customers_per_page);
-// echo  'total pages = ', $total_pages;
-
-
-
-
 ?>
 
 
@@ -175,7 +160,7 @@ $total_pages = ceil($total_customers / $customers_per_page);
         <!-- ------- end of side bar ----- -->
         <main>
             <h1>Customers</h1>
-            <!-- <p>Total Customers: <?php echo $data['drop']; ?></p> -->
+            <!-- <p>Total Customers: /p> -->
             <!-- <div class="date">
                 <select name="" id="">
                     <option value="">Jhon</option>
@@ -194,24 +179,24 @@ $total_pages = ceil($total_customers / $customers_per_page);
 
             <a href="<?php echo BASEURL ?>/pdf/generate" class="generate-report-btn">Generate PDF Report</a>
 
-            <!-- <a href="<?php echo BASEURL ?>/documents/persona.pdf" class="generate-report-btn">pdf</a> -->
+
             <!-- -------orders table----- -->
             <div class="recent-orders">
-           
+
 
                 <?php
 
-echo " <table>";
-echo "<thead>";
-echo "<tr>";
-echo " <th>Id</th>";
-echo "  <th>Name</th>";
-echo "  <th>Email</th>";
-echo "  <th>Phone</th>";
-echo " <th></th>";
-echo " </tr>";
-echo "</thead>";
-echo " <tbody>";
+                echo " <table>";
+                echo "<thead>";
+                echo "<tr>";
+                echo " <th>Id</th>";
+                echo "  <th>Name</th>";
+                echo "  <th>Email</th>";
+                echo "  <th>Phone</th>";
+                echo " <th></th>";
+                echo " </tr>";
+                echo "</thead>";
+                echo " <tbody>";
                 if (!isset($data['results'])) {
                     while ($row = $data['result']->fetch_assoc()) {
 
@@ -220,9 +205,9 @@ echo " <tbody>";
                         echo "<tr>";
                         echo "<td>" . $row["cust_id"] . "</td>";
                         echo "<td>" . $row["cust_fname"] . "</td>";
-            
 
-               
+
+
                         echo "<td>" . $row["cust_email"] . "</td>";
                         echo "<td>" . $row["phone_number"] . "</td>";
 
@@ -242,15 +227,12 @@ echo " <tbody>";
                         $active = ($i == $current_page) ? "active" : "";
                         echo "<a class='$active' href='?page=$i'>$i</a>";
                     }
-                  
-                }
-
-               
-                else{
+                
+                } else {
                     while ($row = $data['results']->fetch_assoc()) {
                         $path = BASEURL;
-                        
-                       
+
+
                         echo "<tr>";
                         echo "<td>" . $row["cust_id"] . "</td>";
                         echo "<td>" . $row["cust_fname"] . "</td>";
@@ -261,27 +243,20 @@ echo " <tbody>";
                         // echo "<td class='warning'><a href=" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "><input type='button' value='Edit' class=' success login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
                         echo "<td class='warning'><a href='" . BASEURL . "/user/viewCustomer/" . $row["cust_id"] . "'><input type='button' value='Remove' class='login-btn btn-primary btn button-delete'></a></td>";
                         echo " </tr>";
-                     
                     }
                 }
                 echo "    </tbody>";
                 echo "  </table>";
                 ?>
-                <!--  
-                <form method="POST" action="<?php echo BASEURL ?>/pdf/PDF" target="_blank">
-                    <input type="submit" name="pd_createrf" value="PDF">
-                </form> -->
 
+            </div>
 
-              
-          </div>
-         
         </main>
         <!-- ------- end of main ----- -->
 
         <!-- =====right section=== -->
         <div class="right">
-         
+
 
 
             <!-- =====end of top right=== -->
@@ -308,22 +283,19 @@ echo " <tbody>";
                             </div>
                             <div class="col">
                                 <label>Phone Number</label><br>
-                               
+
                                 <input type="text" name="phone_number" placeholder="user" required><br>
                                 <span class="error-message" id="contact-error">Contact number must be 10 digits long</span>
-                             
+
                             </div>
 
-                            
+
 
                             <div class="col">
                                 <label>First Name</label><br>
                                 <input type="text" name="cust_fname" placeholder="user"><br>
-                                
+
                             </div>
-
-                           
-
 
                             <div class="col">
                                 <label>Second Name</label><br>
@@ -352,96 +324,97 @@ echo " <tbody>";
 
 </body>
 
-<!--Signup form Validation-->
+<!--Add user form Validation-->
 <script>
-const form = document.getElementById('form');
-const emailAddressInput = document.querySelector('input[name="cust_email"]');
-const contactNoInput = document.querySelector('input[name="phone_number"]');
-const passwordInput = document.querySelector('input[name="cust_password"]');
-const errorMessages = document.querySelectorAll('.error-message');
+    const form = document.getElementById('form');
+    const emailAddressInput = document.querySelector('input[name="cust_email"]');
+    const contactNoInput = document.querySelector('input[name="phone_number"]');
+    const passwordInput = document.querySelector('input[name="cust_password"]');
+    const errorMessages = document.querySelectorAll('.error-message');
 
 
-emailAddressInput.addEventListener('input', validateEmailAddress);
-contactNoInput.addEventListener('input', validateContactNo);
-passwordInput.addEventListener('input', validatePassword);
-
-
-
+    emailAddressInput.addEventListener('input', validateEmailAddress);
+    contactNoInput.addEventListener('input', validateContactNo);
+    passwordInput.addEventListener('input', validatePassword);
 
 
 
 
 
 
-  function validateEmailAddress() {
-
-  
-  if (emailAddressInput.value.trim() === '' || !validateEmail(emailAddressInput.value.trim())) {
-    emailAddressInput.classList.add('error');
-    errorMessages[0].style.display = 'block';
-  } else {
-    emailAddressInput.classList.remove('error');
-    errorMessages[0].style.display = 'none';
-  }
-
-}
-
-function validateContactNo() {
-  if (contactNoInput.value.trim() === '' || contactNoInput.value.trim().length !== 10) {
-    contactNoInput.classList.add('error');
-    errorMessages[1].style.display = 'block';
-  } else {
-    contactNoInput.classList.remove('error');
-    errorMessages[1].style.display = 'none';
-  }
-}
 
 
 
+    function validateEmailAddress() {
 
 
+        if (emailAddressInput.value.trim() === '' || !validateEmail(emailAddressInput.value.trim())) {
+            emailAddressInput.classList.add('error');
+            errorMessages[0].style.display = 'block';
+        } else {
+            emailAddressInput.classList.remove('error');
+            errorMessages[0].style.display = 'none';
+        }
 
-function validatePassword() {
-  console.log('validatePassword called');
-  console.log('passwordInput.value', passwordInput.value.trim());
-  console.log('validatePasswordRegex', validatePasswordRegex(passwordInput.value.trim()));
-  if (passwordInput.value.trim() === '' || !validatePasswordRegex(passwordInput.value.trim())) {
-    passwordInput.classList.add('error');
-    errorMessages[2].style.display = 'block';
-  } else {
-    passwordInput.classList.remove('error');
-    errorMessages[2].style.display = 'none';
-  }
-}
+    }
+
+    function validateContactNo() {
+        if (contactNoInput.value.trim() === '' || contactNoInput.value.trim().length !== 10) {
+            contactNoInput.classList.add('error');
+            errorMessages[1].style.display = 'block';
+        } else {
+            contactNoInput.classList.remove('error');
+            errorMessages[1].style.display = 'none';
+        }
+    }
 
 
 
 
 
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
 
-function validatePasswordRegex(password) {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-  return passwordRegex.test(password);
-}
+    function validatePassword() {
+        console.log('validatePassword called');
+        console.log('passwordInput.value', passwordInput.value.trim());
+        console.log('validatePasswordRegex', validatePasswordRegex(passwordInput.value.trim()));
+        if (passwordInput.value.trim() === '' || !validatePasswordRegex(passwordInput.value.trim())) {
+            passwordInput.classList.add('error');
+            errorMessages[2].style.display = 'block';
+        } else {
+            passwordInput.classList.remove('error');
+            errorMessages[2].style.display = 'none';
+        }
+    }
 
 
 
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (contactNoInput.classList.contains('error') || emailAddressInput.classList.contains('error') || passwordInput.classList.contains('error') ) {
-    // If any of the inputs has the error class, the form will not be submitted
-    return;
-  }
-  // If all inputs pass validation, display a confirmation message
-  const shouldSubmit = confirm("Are you sure you want to add the Customer?");
-  if (shouldSubmit) {
-    form.submit();
-  }
-});
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validatePasswordRegex(password) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+
+
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (contactNoInput.classList.contains('error') || emailAddressInput.classList.contains('error') || passwordInput.classList.contains('error')) {
+            // If any of the inputs has the error class, the form will not be submitted
+            return;
+        }
+        // If all inputs pass validation, display a confirmation message
+        const shouldSubmit = confirm("Are you sure you want to add the Customer?");
+        if (shouldSubmit) {
+            form.submit();
+        }
+    });
 </script>
+
 </html>

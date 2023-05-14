@@ -43,15 +43,14 @@ class user extends Controller
 }
     public function  addServiceProvider()
     {
-        if (isset($_POST['sp_id'])) {
+        if (isset($_POST['sp_email'])) {
 
-            $sp_id = $_POST['sp_id'];
             $sp_email = $_POST['sp_email'];
             $sp_name = $_POST['sp_name'];
             $sp_password = $_POST['sp_password'];
 
 
-            $this->model('insertModel')->insertServiceProvider($sp_id, $sp_email, $sp_name, $sp_password);
+            $this->model('insertModel')->insertServiceProvider( $sp_email, $sp_name, $sp_password);
             header("Location: " . BASEURL . "/adminFunction/service");
         } else {
             header("Location: " . BASEURL . "/adminFunction/index");
@@ -154,7 +153,7 @@ class user extends Controller
         $query = $_GET['query'];
 
         // Call the search model to perform the search
-        $results = $this->model('searchModel')->search($query);
+        $results = $this->model('searchModel')->searchCust($query);
 
         $result = $this->model('viewModel')->viewCustomer();
         $drop = $this->model('viewModel')->getTotalCustomers();
@@ -168,7 +167,26 @@ class user extends Controller
         // var_dump($data);
         $this->view('admin/customer', $data);
     }
+    public function searchSp()
+    {
+        // Get the query string from the search form
+        $query = $_GET['query'];
 
+        // Call the search model to perform the search
+        $results = $this->model('searchModel')->searchSp($query);
+
+        $result = $this->model('viewModel')->viewService();
+        $drop = $this->model('viewModel')->getTotalSps();
+
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+            'results' => $results,
+            'drop' => $drop,
+        ];
+        // var_dump($data);
+        $this->view('admin/service', $data);
+    }
     public function viewUsers($id)
     {
         $result = $this->model('viewModel')->getUsers($id);

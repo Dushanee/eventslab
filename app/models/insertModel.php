@@ -18,8 +18,8 @@ class insertModel extends Model
       
         
    }
-   public function insertServiceProvider($sp_id, $sp_email, $sp_name , $sp_password) {
-    $this->insert('service_providers', ['sp_id'=> $sp_id, 'sp_email'=> $sp_email,'sp_name '=> $sp_name ,'sp_password'=> $sp_password]);
+   public function insertServiceProvider( $sp_email, $sp_name , $sp_password) {
+    $this->insert('service_providers', ['sp_email'=> $sp_email,'sp_name '=> $sp_name ,'sp_password'=> $sp_password]);
     
       
  }
