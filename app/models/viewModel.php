@@ -65,7 +65,21 @@ class viewModel extends Model
         }
         return $this->getoffset('service_providers',$append,$order,$sps_per_page,$offset);
     }
-
+    public function verifyService($sp_id = null, $sps_per_page = 6)
+    {   if (isset($_GET['page'])) {
+        $current_page = $_GET['page'];
+    } else {
+        $current_page = 1;
+    }
+        $order = null;
+        $offset = ($current_page - 1) * $sps_per_page;
+        if (isset($sp_id)) {
+            $append = "status='0'";
+        } else {
+            $append = "status='0'";
+        }
+        return $this->getoffset('service_providers',$append,$order,$sps_per_page,$offset);
+    }
     public function viewSp($sp_id = null)
     {
         if (isset($sp_id)) {
@@ -163,6 +177,27 @@ class viewModel extends Model
 
 
     public function customerOrders($cust_id=null)
+
+    {
+        if (isset($cust_id)) {
+            $append = "cust_id='$cust_id'";
+        } else {
+            $append = '';
+        }
+     
+        $table1 = "customers";
+        $table2 = "orders";
+        $joinOn1 = "customers.cust_id = orders.cust_id";
+        $where = $append;
+        $order = "";
+        $limit = "";
+  
+
+        return $this->getjoin($table1, $table2, $joinOn1, $where,$order, $limit);
+    }
+
+
+    public function customerSales($cust_id=null)
 
     {
         if (isset($cust_id)) {

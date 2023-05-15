@@ -9,36 +9,79 @@ if (isset($_SESSION['email'])) {
 }
 
 ?>
+<?php
+
+if (isset($data['error'])) {
+
+    if (($data['error'] == 0)) {
+?>
+        <div class="alert-success">
+            <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+            Service Provider succesfully verified !
+        </div>
+        <script>
+            var alertBox = document.querySelector('.alert');
+            alertBox.classList.add('show');
+            setTimeout(function() {
+                alertBox.classList.add('hide');
+            }, 5000); // 5000 milliseconds = 5 seconds
+            function dismissAlert(button) {
+                var alertBox = button.parentElement;
+                alertBox.classList.add('hide');
+                setTimeout(function() {
+                    alertBox.remove();
+                }, 500); // 500 milliseconds = 0.5 seconds
+            }
+        </script>
+    <?php
+
+    } else {
+    ?>
+        <div class="alert">
+            <span class="closebtn" onclick="dismissAlert(this);">&times;</span>
+            Error!
+        </div>
+        <script>
+            var alertBox = document.querySelector('.alert');
+            alertBox.classList.add('show');
+            setTimeout(function() {
+                alertBox.classList.add('hide');
+            }, 5000); // 5000 milliseconds = 5 seconds
+            function dismissAlert(button) {
+                var alertBox = button.parentElement;
+                alertBox.classList.add('hide');
+                setTimeout(function() {
+                    alertBox.remove();
+                }, 500); // 500 milliseconds = 0.5 seconds
+            }
+        </script>
+<?php
+        // do something
+    }
+} else {
+}
+
+?>
+<?php
+$path = BASEURL;
+$sps_per_page = 6;
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $sps_per_page;
+$total_sps = $data['drop'];
+$total_pages = ceil($total_sps / $sps_per_page);
+
+
+?>
 
 <head>
-    <!-- <style>
-        input[type="checkbox"] {
-            background-color: #fff;
-            margin: 0 auto;
-            display: block;
-            width: 25px;
-            height: 25px;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border: 2px solid #555;
-            outline: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
 
-        input[type="checkbox"]:checked {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
-        }
-    </style> -->
 
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-full">
         <aside>
             <div class="top">
                 <div class="logo">
@@ -153,7 +196,6 @@ if (isset($_SESSION['email'])) {
             <h1>Service Providers</h1>
 
 
-
             <!-- -------orders table----- -->
             <div class="recent-orders">
                 <h2>Verify Service Providers</h2>
@@ -166,13 +208,13 @@ if (isset($_SESSION['email'])) {
                 echo " <th>SP Name</th>";
                 echo " <th>SP Email</th>";
                 echo " <th>SP Type</th>";
-                echo " <th>Document</th>";
+            
                 echo " <th> Status</th>";
                 // echo" <th>Package Description</th>";
                 // echo"  <th>Location</th>";
                 // echo"<th>Options</th>";
                 // echo" <th>Rates</th>";
-                echo" <th>Verify User </th>";
+                echo" <th> </th>";
                 echo " </tr>";
                 echo " </thead>";
                 echo " <tbody>";
@@ -184,8 +226,25 @@ if (isset($_SESSION['email'])) {
                     echo "<td>" . $row["sp_id"] . "</td>";
                     echo "<td>" . $row["sp_name"] . "</td>";
                     echo "<td>" . $row["sp_email"] . "</td>";
-                    echo "<td>" . $row["sp_type_id"] . "</td>";
-                    echo "<td><a href=" . BASEURL . "/public/" . $row["document"] . ">View</a></a></td>";
+                    // echo "<td>" . $row["sp_type_id"] . "</td>";
+
+                    if($row['sp_type_id'] == 1){
+                        echo "<td>Venue Provider</td>";
+
+                    }else if($row['sp_type_id'] == 2){
+                    
+                    echo "<td>Food Caterer</td>";
+                    
+                    }else if($row['sp_type_id'] == 3){
+                    
+                        echo "<td>Decorations</td>";
+                        
+                        }else if($row['sp_type_id'] == 4){
+                    
+                            echo "<td>Photographer</td>";
+                            
+                            }
+                    // echo "<td><a href=" . BASEURL . "/public/" . $row["document"] . ">View</a></a></td>";
                     
 
                     if($row['status'] == 1){
@@ -197,10 +256,7 @@ if (isset($_SESSION['email'])) {
                     
                     }
                     
-                    
-                    
-                    
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewSp/". $row["sp_id"] . "><input type='button' class='button-view' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+                    echo "<td ><a href=" . BASEURL . "/user/viewSp/". $row["sp_id"] . "><input type='button' class='button-view' value='View'  ></a></td>";
                     echo "</tr>";
                     echo "</tbody>";
                 }
@@ -213,42 +269,7 @@ if (isset($_SESSION['email'])) {
         </main>
         <!-- ------- end of main ----- -->
 
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-symbols-rounded">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-rounded active"> light_mode</span>
-                    <span class="material-symbols-rounded">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey ,<b> Dushanee</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- =====end of top=== -->
-
-            <div class="recent-updates">
-                <!-- <h2>Add Service Provider</h2> -->
-                <!-- <div class="updates">
-                   
-                </div> -->
-
-                </form>
-
-            </div>
-            <!-- =====end of recent updates === -->
-
-
-        </div>
+        
 
     </div>
 

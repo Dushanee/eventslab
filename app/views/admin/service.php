@@ -71,10 +71,6 @@ $total_sps = $data['drop'];
 $total_pages = ceil($total_sps / $sps_per_page);
 
 
-// echo $data['drop'];
-// echo $total_pages;
-
-
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
 <link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/customers.css">
@@ -248,9 +244,9 @@ $total_pages = ceil($total_sps / $sps_per_page);
             <div class="card">
                 <p>Total Service Providers: <?php echo $data['drop']; ?></p>
             </div>
-            <!-- <div class="card">
+            <div class="card">
                 <p>Total Service Providers: <?php echo $data['drop']; ?></p>
-            </div> -->
+            </div>
             <div class="add-user">
                 <h2>Add Service Provider</h2>
                 <div class="updates">

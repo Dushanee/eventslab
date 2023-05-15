@@ -56,7 +56,6 @@ class adminFunction extends Controller
            
         }else{
             $error = null;
-
         }
         $result = $this->model('viewModel')->viewService();
         $drop =  $this->model('viewModel')->getTotalSps();  

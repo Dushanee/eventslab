@@ -52,6 +52,15 @@ body {
     color: var(--color-dark);
 }
 
+.container-full {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 0rem;
+    /* background: #171720; */
+}
+
 .container {
     display: grid;
     width: 96%;
@@ -220,6 +229,11 @@ aside .sidebar .message-count {
 
 
 /* ==========MAIN========= */
+
+.main-full {
+    width: 100%;
+    overflow-x: scroll;
+}
 
 main {
     margin-top: 1.4rem;

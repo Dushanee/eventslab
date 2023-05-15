@@ -50,11 +50,12 @@ class managerFunction extends Controller
     public function customerSales()
     {
         $result = $this->model('viewModel')->customerOrders();
-        $resul2 = $this->model('viewModel')->customerSales();
+        $result2 = $this->model('viewModel')->customerSales();
      
         $data = [
             'inputValue' => "",
             'result' => $result,
+            'result2' => $result2,
          
         ];
         $this->view('manager/customerSales', $data);

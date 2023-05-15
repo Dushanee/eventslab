@@ -117,6 +117,14 @@
 
                         echo "<label >Email Address</label>";
                         echo "<input type='text'  name='sp_email' value='$row[sp_email]'>";
+                        echo "<br>";
+                        echo "<br>";
+                        echo "<label >Business Document</label>";
+                        
+                        echo "<a href=" . BASEURL . "/public/" . $row["document"] . " class ='button-update'> View Document </a> ";
+
+
+                    echo "<br>";
 
                         echo "<label>Verification Status</label>";
                         echo " <select name='status'>";
@@ -128,7 +136,7 @@
                         // echo"<label >Birthday</label>";
                         // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
                     };
-                    echo "<button class='button-update'  onclick=\"return confirm('Are you sure you want to delete this user' )\">Update</button></a>";
+                    echo "<button class='button-update'  onclick=\"return confirm('Are you sure you want to update this user?' )\">Update</button></a>";
                     ?>
 
                     <br>
@@ -153,7 +161,7 @@
 
             <div class="col">
                 <br>
-                <a href="<?php echo BASEURL ?>/adminFunction/customer">
+                <a href="<?php echo BASEURL ?>/user/verify">
                     <button type="submit" class="login-btn btn-primary btn">Back</button></a>
             </div>
 

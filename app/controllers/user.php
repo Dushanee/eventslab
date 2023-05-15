@@ -126,9 +126,9 @@ class user extends Controller
 
             $this->model('updateModel')->updateSp($sp_id, $sp_name, $sp_email, $status);
 
-            header("Location: " . BASEURL . "/user/verify");
+            header("Location: " . BASEURL . "/user/verify/success");
         } else {
-            header("Location: " . BASEURL . "/user/viewService");
+            header("Location: " . BASEURL . "/user/verify/fail");
         }
     }
 
@@ -250,13 +250,26 @@ class user extends Controller
     }
 
 
-    public function verify()
-    {
-        $result = $this->model('viewModel')->viewService();
+    public function verify($id=null)
+    {if($id=='success'){
+        $error = 0;
+    }
+        else if($id=='fail'){
+            $error = 1;
+
+           
+        }else{
+            $error = null;
+
+        }
+        $result = $this->model('viewModel')->verifyService();
+        $drop =  $this->model('viewModel')->getTotalSps();  
 
         $data = [
             'inputValue' => "",
             'result' => $result,
+            'error' => $error,
+            'drop' => $drop,
         ];
 
 
