@@ -248,9 +248,9 @@ $total_pages = ceil($total_sps / $sps_per_page);
             <div class="card">
                 <p>Total Service Providers: <?php echo $data['drop']; ?></p>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <p>Total Service Providers: <?php echo $data['drop']; ?></p>
-            </div>
+            </div> -->
             <div class="add-user">
                 <h2>Add Service Provider</h2>
                 <div class="updates">

@@ -50,6 +50,7 @@ class user extends Controller
             $sp_password = $_POST['sp_password'];
 
 
+            
             $this->model('insertModel')->insertServiceProvider( $sp_email, $sp_name, $sp_password);
             header("Location: " . BASEURL . "/adminFunction/service");
         } else {
@@ -92,9 +93,12 @@ class user extends Controller
         $this->view('admin/customer_view', $data);
     }
 
-    public function deleteCustomer($cust_id)
+    public function deleteCustomer()
     {
-        if (isset($cust_id)) {
+        if (isset($_POST['cust_id'])) {
+
+           $cust_id=$_POST['cust_id'];
+
             $this->model('deleteModel')->deleteCustomer($cust_id);
             header("Location: " . BASEURL . "/adminFunction/customer");
         }
@@ -120,7 +124,7 @@ class user extends Controller
             $sp_email = $_POST['sp_email'];
             $status = $_POST['status'];
 
-            $this->model('updateModel')->editSp($sp_id, $sp_name, $sp_email, $status);
+            $this->model('updateModel')->updateSp($sp_id, $sp_name, $sp_email, $status);
 
             header("Location: " . BASEURL . "/user/verify");
         } else {
@@ -290,5 +294,41 @@ class user extends Controller
 
             $this->view('admin/dashboard', $data);
         }
+    }
+    public function customMail()
+    {
+        if (isset($_POST['cust_email'])) {
+
+            $id = $_POST['id'];
+
+            $email = $_POST['cust_email'];
+            $subject = $_POST['subject'];
+            $body = $_POST['body'];
+  
+
+            $this->model('mailModel')->sendCustomMail($email,$subject,$body);
+
+            header("Location: " . BASEURL . "/user/viewCustomer/$id");
+        } else {
+
+        }
+
+    }
+
+    public function customerOrder($cust_id=null)
+    {
+        $customerOrder = $this->model('viewModel')->customerOrders1($cust_id);
+        $result = $this->model('viewModel')->viewCustomer($cust_id);   
+
+        
+     
+        $data = [
+            'inputValue' => "",
+            'result' => $result,
+            'customerOrder' => $customerOrder,
+            
+        ];
+
+        $this->view('admin/customer_view', $data);
     }
 }

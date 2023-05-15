@@ -296,3 +296,21 @@ input[type=submit]:hover {
         margin-top: 0;
     }
 }
+
+.container {
+    display: flex;
+}
+
+.left-container,
+.right-container {
+    flex: 1;
+}
+
+.left-container {
+    background-color: #F5F2F1;
+}
+
+.right-container {
+    padding-top: 20px;
+    background-color: #F5F2F1;
+}

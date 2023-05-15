@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css " href="<?php echo BASEURL ?>/public/css/customer_view.css">
+<link rel="stylesheet" type="text/css " href="<?php echo BASEURL ?>/public/css/customer_view.css">
+<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -23,7 +25,7 @@
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="<?php echo BASEURL ?>/adminFunction/customer" class="active"><span class="material-symbols-rounded">
+                <a href="<?php echo BASEURL ?>/adminFunction/customer" ><span class="material-symbols-rounded">
                         person
                     </span>
                     <h3>Customers</h3>
@@ -39,7 +41,7 @@
                     </span>
                     <h3>Orders</h3>
                 </a>
-                <a href=""><span class="material-symbols-rounded">
+                <a href="" class="active"><span class="material-symbols-rounded">
                         mail
                     </span>
                     <h3>Verify Users</h3>
@@ -87,13 +89,14 @@
         </aside>
 
         <!-- ------- end of side bar ----- -->
-        <main>
-            <h1>Dashboard</h1>
+          <div class="left-container">
 
-            <div class="date">
-                <input type="date">
-            </div>
+<main>
+    <div class="recent-order">
+<div class="view-form-col-50 ">
+            <h1>Service Provider Details</h1>
 
+    
 
             <!-- -------orders table----- -->
 
@@ -103,31 +106,35 @@
                 <form action="<?php echo BASEURL ?>/user/editSp" method="post">
                     <?php
                     while ($row = $data['result']->fetch_assoc()) {
-                        echo "<label >Sp Id</label>";
-                        echo "<input type='text'  name='cust_id' value='$row[sp_id]'>";
+                        $spId = $row['sp_id'];
+                        $spEmail = $row['sp_email'];
 
-                        echo "<label >SP Name</label>";
-                        echo "<input type='text'  name='cust_fname' value='$row[sp_name]'>";
+                        echo "<label >Supplier ID</label>";
+                        echo "<input type='text'  name='sp_id' value='$row[sp_id]' readonly>";
 
-                        echo "<label >Sp Email</label>";
-                        echo "<input type='text'  name='cust_lname' value='$row[sp_email]'>";
+                        echo "<label >Name</label>";
+                        echo "<input type='text'  name='sp_name' value='$row[sp_name]'>";
 
-                        echo"<label>Status</label>";
-    echo " <select name='status'>";
-    echo "<option  value='0'" . ($row['status'] == 0 ? "selected='selected'" : "") . ">Not verified</option>";
-    echo "<option  value='1'" . ($row['status']== 1 ? "selected='selected'" : "") . ">Verified</option>";
-    echo "</select>";
+                        echo "<label >Email Address</label>";
+                        echo "<input type='text'  name='sp_email' value='$row[sp_email]'>";
+
+                        echo "<label>Verification Status</label>";
+                        echo " <select name='status'>";
+                        echo "<option  value='0'" . ($row['status'] == 0 ? "selected='selected'" : "") . ">Not verified</option>";
+                        echo "<option  value='1'" . ($row['status'] == 1 ? "selected='selected'" : "") . ">Verified</option>";
+                        echo "</select>";
 
                         // echo " <a href=" . BASEURL . "/user/sendmail/" . $row["cust_email"]  . "> Send mail </a> ";
                         // echo"<label >Birthday</label>";
                         // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
                     };
+                    echo "<button class='button-update'  onclick=\"return confirm('Are you sure you want to delete this user' )\">Update</button></a>";
                     ?>
 
                     <br>
                     <div class="col">
                         <br>
-                        <button type="submit" class="login-btn btn-primary btn">Update</button>
+                        <!-- <button type="submit" class="login-btn btn-primary btn">Update</button> -->
                     </div>
                 </form>
 
@@ -154,46 +161,58 @@
         </main>
 
 
+            </div>
+    
 
 
-        <!-- ------- end of main ----- -->
-        <!-- =====right=== -->
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-symbols-rounded">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-rounded active"> light_mode</span>
-                    <span class="material-symbols-rounded">dark_mode</span>
+
+
+
+        <div class="right-container">
+ 
+       
+        <div class="view-form-col-50 ">
+        <div class="view-form">
+
+        <form  action="<?php echo BASEURL ?>/user/customMail" method="post">
+        <h1>Send Email</h1>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Sent to :</label>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey ,<b> Dushanee</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="<?php echo BASEURL ?>/images/logo1.png" alt="dp">
-                    </div>
+                <div class="col-75"><?php
+                echo "<input type='text' name='cust_email' value='$spEmail'>";
+                echo "<input type='hidden' name='id' value='$spId'>";
+                ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Subject</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="subject" name="subject" placeholder="Email Subject">
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Body</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="lname" name="body" placeholder="email body goes here" rows="10"></textarea>
+                </div>
+            </div>
 
-            <!-- =====end of top=== -->
+         
 
+            <br>
+            <div class="row">
+            <button class="button-update" type="submit" value="Send Mail" onclick="return confirm('Are you sure you want to send the email')">Send Mail</button>
 
-
-
-
-            <!-- =====end of recent updates === -->
-
-            <!-- =====sales analytics-->
-
-
-        </div>
-
-    </div>
-
+            </div>
+        </form>
+    </div>     </div> </div> 
 
 
 

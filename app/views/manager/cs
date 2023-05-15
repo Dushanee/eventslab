@@ -72,9 +72,42 @@ if (isset($_SESSION['email'])) {
                 <input type="text" name="cust" id="cust" value="<?php echo isset($_GET['cust']) ? $_GET['cust'] : ''; ?>">
                 <button type="submit">Filter</button>
             </form>
-            <button> <a href="<?php echo BASEURL ?>/managerFunction/customerSales" >by customer </a></button>
-   <?php
-            
+
+            <?php
+            // Replace with your database connection details
+            $host = 'localhost';
+            $user = 'root';
+            $password = '';
+            $dbname = 'eventslab';
+
+            // Connect to the database
+            $conn = mysqli_connect($host, $user, $password, $dbname);
+
+            // Check if the connection was successful
+            if (!$conn) {
+                die('Connection failed: ' . mysqli_connect_error());
+            }
+
+            // Build the SQL query to retrieve customer and order information
+            $sql = "SELECT c.cust_fname, c.cust_lname, o.order_id, o.order_date, o.total_price
+        FROM customers c
+        JOIN orders o ON c.cust_id = o.cust_id";
+
+            // Check if the customer name filter was applied
+            if (isset($_GET['cust'])) {
+                $cust = mysqli_real_escape_string($conn, $_GET['cust']);
+                $sql .= " WHERE c.cust_fname LIKE '%$cust%' OR c.cust_lname LIKE '%$cust%'";
+            }
+
+            $sql .= " ORDER BY o.order_date DESC";
+
+            $result = mysqli_query($conn, $sql);
+
+            // Check if the query was successful
+            if (!$result) {
+                die('Query failed: ' . mysqli_error($conn));
+            }
+
             // Display the results in a table
             echo '<table>';
             echo '<thead>';
@@ -87,7 +120,7 @@ if (isset($_SESSION['email'])) {
             echo '</thead>';
             echo '<tbody>';
 
-            while ($row = $data['result']->fetch_assoc()) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['cust_fname'] . ' ' . $row['cust_lname'] . '</td>';
                 echo '<td>' . $row['order_id'] . '</td>';
@@ -99,8 +132,14 @@ if (isset($_SESSION['email'])) {
             echo '</tbody>';
             echo '</table>';
 
-         
+            // Close the database connection
+            mysqli_close($conn);
             ?>
+
+
+
+
+
 
 
         </main>

@@ -75,7 +75,7 @@ class adminFunction extends Controller
    
     public function orders()
     {
-        $result = $this->model('viewModel')->viewOrder();
+        $result = $this->model('viewModel')->customerOrders();
 
         $data = [
             'inputValue' => "",

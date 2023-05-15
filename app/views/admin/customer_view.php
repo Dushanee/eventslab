@@ -1,7 +1,5 @@
-
-
-
 <link rel="stylesheet" type="text/css " href="<?php echo BASEURL ?>/public/css/customer_view.css">
+<link rel="stylesheet" type="text/css" href="<?php echo BASEURL ?>/public/css/admin_styles.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -89,154 +87,208 @@
                 </a>
         </aside>
 
-        <!-- ------- end of side bar ----- -->
-        <main>
-            <h1>Dashboard</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
+      
 
-            
-            <!-- -------orders table----- -->
-           
+  <div class="left-container">
+
+<main>
 
 
+<div class="recent-order">
+<div class="view-form-col-50 ">
 <div class="view-form">
-     <form action="<?php echo BASEURL ?>/user/editCustomer" method="post">
-<?php
-  while ($row = $data['result']->fetch_assoc()) {
-    echo"<label >Customer Id</label>";
-    echo"<input type='text'  name='cust_id' value=' $row[cust_id] '>";
+ <?php
 
-    echo"<label >First Name</label>";
-    echo"<input type='text'  name='cust_fname' value=' $row[cust_fname] '>";
+ if (isset($data['customerOrder'])){
 
-    echo"<label >Last Name</label>";
-    echo"<input type='text'  name='cust_lname' value=' $row[cust_lname] '>";
+    
+    $path = BASEURL;
+    echo"<table>";
+    echo" <thead>";
+    echo" <tr>";
+    echo" <th>Order Id</th>";
+    echo" <th>Date</th>";
+    echo" <th>Customer Id</th>";
+    echo" <th>Customer Name </th>";
+                          
+    echo" </thead>";
+    echo" <tbody>";
+    while ($row = $data['customerOrder']->fetch_assoc()) {
+      
+                        echo "<tr>";
+                        echo "<td>" . $row["order_id"] . "</td>";
+                        echo "<td>" . $row["order_date"] . "</td>";
+                        echo "<td>" . $row["cust_id"] . "</td>";
+                        echo "<td>" . $row["cust_fname"] . "</td>";
+                          
+                         
+                        echo "<td>Paid</td>";
+                        echo "<td class='warning'><a href=" . BASEURL . "/order/viewOrder/". $row["order_id"] . "><input type='button' value='View' class='button-view'></a></td>";
 
-    echo"<label >Email</label>";
-    echo"<input type='text'  name='cust_email' value=' $row[cust_email] '>";
-    echo " <a href=" . BASEURL . "/user/sendmail/" .$row["cust_email"]  ."> Send mail </a> " ;
-    // echo"<label >Birthday</label>";
-    // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
-  };
-  ?>
+                    echo "</tr>";
+                        
+                        echo" </tbody>";
 
-  <br>
-  <div class="col">
-    <br>
-                     <button type="submit"  class="login-btn btn-primary btn">Update</button>
-                    </div>
-  </form>
+    }
+                        echo"</table>";
+                        echo"</div>";  
+                        echo"</div>"; 
+                   
+                          
+
+
+}else{
+                        ?>
+
+
+
+
+
+
+
+
  
 
-  <br>
-          
-  <?php
-   while ($row = $data['result']->fetch_assoc()) {
-echo " <a href=" . BASEURL . "/user/sendmail/" .$row["cust_email"]  ."> Send mail </a> " ;
-   }
+
+            <h1>Customer Details</h1>
+            <div class="view-form-col-50 ">
+            <div class="view-form">
+     <form  action="<?php echo BASEURL ?>/user/editCustomer" method="post">
+
+           
+
+<?php
+  while ($row = $data['result']->fetch_assoc()) {
+    $custId = $row['cust_id'];
+    $custFname = $row['cust_fname'];
+    $custLname = $row['cust_lname'];
+    $custEmail = $row['cust_email'];
+    $phoneNumber = $row['phone_number'];
+    $custAddress = $row['cust_address'];
+    $custPassword = $row['cust_password'];
+
+
+    echo"<label >Customer Id</label>";
+    echo"<input type='text'  name='cust_id' value='$row[cust_id]' readonly>";
+
+    echo"<label >First Name</label>";
+    echo"<input type='text'  name='cust_fname' value='$row[cust_fname]'>";
+
+    echo"<label >Last Name</label>";
+    echo"<input type='text'  name='cust_lname' value='$row[cust_lname]'>";
+
+    echo"<label >Email</label>";
+    echo"<input type='text'  name='cust_email' value='$row[cust_email]'>";
+   
+
+    echo"<label >Contact No</label>";
+    echo"<input type='text'  name='phone_number' value='$row[phone_number]'>";
+
+    echo"<label >Address</label>";
+    echo"<input type='text'  name='cust_address' value='$row[cust_address]'>";
+
+    echo"<label >Password</label>";
+    echo"<input type='text'  name='cust_password' value='$row[cust_address]'>";
+    // echo"<label >Birthday</label>";
+    // echo"<input type='date'  name='birthday' value=' $row[birthday] '>";
+
+
+    
+  };
+  echo "<div  class='button-row'>";
+  echo "<a href='" . BASEURL . "/user/updateCustomer/" . $custId . "' class='button-delete-link' onclick=\"return confirm('Are you sure you want to update this user')\"><button class='button-update'>Update</button></a>";
+?>
+</form>
+<form  action="<?php echo BASEURL ?>/user/deleteCustomer" method="post">
+
+<?php
+echo"<input type='hidden' name='cust_id' value='$custId'>";
+  echo "<button class='button-delete' onclick=\"return confirm('Are you sure you want to delete this user' )\" type='submit'>Delete</button></a>";
+
+
+
+  echo "<a href='" . BASEURL . "/user/customerOrder/" . $custId . "' class='button-update'>View Orders</a>";
+
+  echo "</div>";
+
+
+
+  echo"</div>";
+  echo"</main>";
+
+}
+
+
+
+
+
 ?>
 
-
-</div>
-
-  
-<div class="col">
-    <br>
-    <a href="<?php echo BASEURL ?>/adminFunction/customer">
-                     <button type="submit"  class="login-btn btn-primary btn">Back</button></a>
-                    </div>
-
-
-        </main>
-
-
-
-
-        <!-- ------- end of main ----- -->
- <!-- =====right=== -->
-        <div class="right">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-symbols-rounded">menu</span>
-                </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-rounded active"> light_mode</span>
-                    <span class="material-symbols-rounded">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey ,<b> Dushanee</b></p>
-                        <small class="text-muted">Admin</small>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="<?php echo BASEURL ?>/images/logo1.png" alt="dp">
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- =====end of top=== -->
-            
-
-              
          
-
-            <!-- =====end of recent updates === -->
-
-            <!-- =====sales analytics-->
-
-            
-        </div>
-
-        </div>
+</div>        
 
 
-    <!-- <div class="view-container">
-        <form action="/action_page.php">
+
+
+
+
+        <div class="right-container">
+ 
+       
+        <div class="view-form-col-50 ">
+        <div class="view-form">
+        <?php
+  while ($row = $data['result']->fetch_assoc()) {
+    $custId = $row['cust_id'];
+    $custFname = $row['cust_fname'];
+    $custLname = $row['cust_lname'];
+    $custEmail = $row['cust_email'];
+    $phoneNumber = $row['phone_number'];
+    $custAddress = $row['cust_address'];
+    $custPassword = $row['cust_password'];
+  }?>
+
+
+        <form  action="<?php echo BASEURL ?>/user/customMail" method="post">
+        <h1>Send Email</h1>
             <div class="row">
                 <div class="col-25">
-                    <label for="fname">First Name</label>
+                    <label for="fname">Sent to :</label>
                 </div>
-                <div class="col-75">
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                <div class="col-75"><?php
+                echo "<input type='text' name='cust_email' value='$custEmail'>";
+                echo "<input type='hidden' name='id' value='$custId'>";
+                ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-25">
-                    <label for="lname">Last Name</label>
+                    <label for="lname">subject</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <input type="text" id="subject" name="subject" placeholder="Email Subject">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-25">
-                    <label for="lname">Email</label>
+                    <label for="lname">Body</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <textarea id="lname" name="body" placeholder="email body goes here" rows="10"></textarea>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-25">
-                    <label for="lname">Birthday</label>
-                </div>
-                <div class="col-75">
-                    <input type="date" id="lname" name="lastname" placeholder="Your last name..">
-                </div>
-            </div>
+         
 
             <br>
             <div class="row">
-                <input type="submit" value="Update">
+            <button class="button-update" type="submit" value="Send Mail" onclick="return confirm('Are you sure you want to send the email')">Send Mail</button>
+
             </div>
         </form>
-    </div> -->
+    </div>     </div> </div> 
 
 </body>
 

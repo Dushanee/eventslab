@@ -48,7 +48,12 @@ if (isset($_SESSION['email'])) {
                     </span>
                     <h3>Customer Sales</h3>
                 </a>
+                <a href="<?php echo BASEURL ?>/managerFunction/payments"><span class="material-symbols-rounded">
+                        payments
+                    </span>
+                    <h3>Payments</h3>
                 </a>
+                
                 <!-- <a href="<?php echo BASEURL ?>/adminFunction/orders"><span class="material-symbols-rounded">
                         order_approve
                     </span>

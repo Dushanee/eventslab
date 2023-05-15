@@ -21,8 +21,25 @@ class Model extends Database
         }
         $result = $this->runQuery($sql);
         return $result;
+    }public function getGroup($select, $table, $where = null, $group = null, $order = null, $limit = null)
+    {
+        $sql = "$select FROM $table";
+        if ($where != null) {
+            $sql .= " WHERE $where";
+        }
+        if ($group != null) {
+            $sql .= " GROUP BY $group";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+        }
+        $result = $this->runQuery($sql);
+        return $result;
     }
-
+    
     public function insert($table, $data)
     {
         $sql = "INSERT INTO $table SET ";
@@ -84,6 +101,42 @@ class Model extends Database
         $result = $this->runQuery($sql);
         return $result;
     }
+
+
+    public function getFourJoin($table1, $table2, $table3, $table4, $joinOn1, $joinOn2, $joinOn3, $where = null, $order = null, $limit = null) {
+        $sql = "SELECT * FROM $table1 JOIN $table2 ON $joinOn1 JOIN $table3 ON $joinOn2 JOIN $table4 ON $joinOn3";
+        if ($where != null) {
+            $sql .= " WHERE $where";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+        }
+        $result = $this->runQuery($sql);
+        return $result;
+    }
+    
+    public function getFiveJoin($table1, $table2, $table3, $table4, $table5, $joinOn1, $joinOn2, $joinOn3, $joinOn4, $where = null, $order = null, $limit = null) {
+        $sql = "SELECT * FROM $table1 
+                JOIN $table2 ON $joinOn1 
+                JOIN $table3 ON $joinOn2 
+                JOIN $table4 ON $joinOn3 
+                JOIN $table5 ON $joinOn4";
+        if ($where != null) {
+            $sql .= " WHERE $where";
+        }
+        if ($order != null) {
+            $sql .= " ORDER BY $order";
+        }
+        if ($limit != null) {
+            $sql .= " LIMIT $limit";
+        }
+        $result = $this->runQuery($sql);
+        return $result;
+    }
+    
     
 
     public function getTableCount($table) {

@@ -8,6 +8,9 @@ if (isset($_SESSION['email'])) {
     echo '<br>You are not logged in';
 }
 
+$conn = mysqli_connect("localhost", "root", "", "eventslab");
+$rows = mysqli_query($conn, "SELECT email FROM users");
+
 ?>
 
 
@@ -68,34 +71,49 @@ if (isset($_SESSION['email'])) {
                 <button type="submit">Filter</button>
             </form>
 
-            <?php
-            
-            // Display the results in a table
-            echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Order Date</th>';
-            echo '<th>Total Orders</th>';
-            echo '<th>Total Revenue</th>';
-     
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Total Revenue</th>
+                        <th>Number of Orders</th>
+                        <th>Average Order Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Connect to database
+                    $conn = mysqli_connect('localhost', 'root', '', 'eventslab');
 
-            while ($row = $data['result']->fetch_assoc()) {
-                echo '<tr>';
-             
-                echo '<td>' . $row['order_date'] . '</td>';
-                echo '<td>' . $row['total_orders'] . '</td>';
-                echo '<td>$' . number_format($row['total_revenue'], 2) . '</td>';
-                echo '</tr>';
-            }
+                    // Query to get sales data
+                    $sql = "SELECT DATE(order_date) AS date, SUM(total_price) AS revenue, COUNT(*) AS num_orders, AVG(total_price) AS avg_order_value
+                FROM orders";
+                    // Get selected date from form input
+                    $date = isset($_GET['date']) ? $_GET['date'] : null;
+                    // Build SQL query with optional WHERE clause for selected date
+                    if ($date) {
+                        $sql .= " WHERE DATE(order_date) = '$date'";
+                    }
+                    $sql .= " GROUP BY DATE(order_date)";
 
-            echo '</tbody>';
-            echo '</table>';
+                    // Execute query
+                    $result = mysqli_query($conn, $sql);
 
-         
-            ?>
+                    // Loop through results and display in table
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr>';
+                        echo '<td>' . $row['date'] . '</td>';
+                        echo '<td>$' . number_format($row['revenue'], 2) . '</td>';
+                        echo '<td>' . $row['num_orders'] . '</td>';
+                        echo '<td>$' . number_format($row['avg_order_value'], 2) . '</td>';
+                        echo '</tr>';
+                    }
+
+                    // Close database connection
+                    mysqli_close($conn);
+                    ?>
+                </tbody>
+
             </table>
         </main>
         <!-- ------- end of main ----- -->
@@ -125,8 +143,21 @@ if (isset($_SESSION['email'])) {
 
 
             <!-- display highest sales day card -->
-    
-            
+      <?php
+
+             // Connect to database
+             $conn = mysqli_connect('localhost', 'root', '', 'eventslab');
+            $sql2 = "SELECT DATE(order_date) AS date, SUM(total_price) AS revenue, COUNT(*) AS num_orders
+            FROM orders
+            GROUP BY DATE(order_date)
+            ORDER BY COUNT(*) DESC
+            LIMIT 1";
+
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
+ // Close database connection
+ mysqli_close($conn);
+            ?>
 <div class="recent-updates">
                 <h2>Recent Updates</h2>
                 <div class="updates">
@@ -136,14 +167,9 @@ if (isset($_SESSION['email'])) {
                         </div>
                         <div class="message">
                             <h2><b>Highest sales</b> on</h2>
-                            <?php while ($row = $data['result2']->fetch_assoc()) {
-                         echo '<p><strong> Date: </strong>' . $row['order_date'] . '</p>'  ;
-                         echo '  <p><strong> Revenue: </strong> <h4>LKR' .  number_format($row['total_revenue'], 2). '  </p></h4>';
-                         echo ' <p><strong>Number of Orders:</strong>' .  $row['total_orders']. '</p>';
-                            }      
-            ?>
-
-                            
+                            <p><strong> Date: </strong> <?php echo $row2['date']; ?></p>
+            <p><strong> Revenue: </strong> <h4>LKR <?php echo number_format($row2['revenue'], 2); ?>  </p></h4>
+            <p><strong>Number of Orders:</strong> <?php echo $row2['num_orders']; ?></p>
                             <!-- <small class="text-muted"> 2 minutes ago</small> -->
                         </div>
                     </div>

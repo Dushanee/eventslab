@@ -39,7 +39,7 @@ class updateModel extends Model
             "id= '$id'"
         );
     }
-    public function updateSP($sp_id, $sp_name,  $sp_email,  $status)
+    public function updateSp($sp_id, $sp_name,  $sp_email,  $status)
     {
         $this->update(
             'service_providers',

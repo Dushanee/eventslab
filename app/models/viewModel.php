@@ -86,7 +86,35 @@ class viewModel extends Model
         }
         return $this->get('packages', $append);
     }
+  
+    public function orders($order_id = null)
+    {
+        $select = "SELECT order_date, COUNT(*) AS total_orders, SUM(total_price) AS total_revenue";
+        if (isset($order_id)) {
+            $append = "order_id='$order_id'";
+        } else {
+            $append = '';
+        }
+        $group = "order_date";
+        $order = "order_date DESC";
+           
+        return $this->getGroup($select, 'orders', $append, $group,$order);
+    }
 
+
+    public function maxRevenue($order_id = null)
+{
+    $select = "SELECT order_date, COUNT(*) AS total_orders, SUM(total_price) AS total_revenue";
+    if (isset($order_id)) {
+        $append = "order_id='$order_id'";
+    } else {
+        $append = '';
+    }
+    $group = "order_date";
+    $order = "total_revenue DESC";
+    $limit = "1";
+    return $this->getGroup($select, 'orders', $append, $group, $order, $limit);
+}
 
     public function viewOrder()
     {
@@ -123,6 +151,8 @@ class viewModel extends Model
 
         return $this->getThreeJoin($table1, $table2, $table3, $joinOn1, $joinOn2, $where,$order, $limit);
     }
+
+
     public function getTotalCustomers() {
         return $this->getTableCount('customers');
     }
@@ -132,7 +162,111 @@ class viewModel extends Model
     }
 
 
+    public function customerOrders($cust_id=null)
 
-   
+    {
+        if (isset($cust_id)) {
+            $append = "cust_id='$cust_id'";
+        } else {
+            $append = '';
+        }
+     
+        $table1 = "customers";
+        $table2 = "orders";
+        $joinOn1 = "customers.cust_id = orders.cust_id";
+        $where = $append;
+        $order = "";
+        $limit = "";
+  
 
+        return $this->getjoin($table1, $table2, $joinOn1, $where,$order, $limit);
+    }
+    public function customerOrders1($cust_id=null)
+
+    {
+        if (isset($cust_id)) {
+            $append = "orders.cust_id='$cust_id'";
+        } else {
+            $append = '';
+        }
+     
+        $table1 = "customers";
+        $table2 = "orders";
+        $joinOn1 = "customers.cust_id = orders.cust_id";
+        $where = $append;
+        $order = "";
+        $limit = "";
+  
+
+        return $this->getjoin($table1, $table2, $joinOn1, $where,$order, $limit);
+    }
+    // public function spPayments($order_id=null)
+
+    // {
+    //     if (isset($order_id)) {
+    //         $append = "order_id='$order_id'";
+    //     } else {
+    //         $append = '';
+    //     }
+     
+    //     $table1 = "orders";
+    //     $table2 = "order_details";
+    //     $joinOn1 = "orders.order_id = order_details.order_id";
+    //     $where = $append;
+    //     $order = "";
+    //     $limit = "";
+  
+
+    //     return $this->getjoin($table1, $table2, $joinOn1, $where,$order, $limit);
+    // }
+
+
+    // public function spPayments($order_id=null)
+
+    // {
+
+    //     if (isset($order_id)) {
+    //                 $append = "order_id='$order_id'";
+    //             } else {
+    //                 $append = '';
+    //             }
+     
+    //     $table1 = "orders";
+    //     $table2 = "order_details";
+    //     $table3 = "options";
+    //     $joinOn1 = "orders.order_id = order_details.order_id";
+    //     $joinOn2 = "order_details.option_id = options.option_id ";
+    //     $where = $append;
+    //     $order = "";
+    //     $limit = "";
+  
+
+    //     return $this->getThreeJoin($table1, $table2, $table3, $joinOn1, $joinOn2, $where,$order, $limit);
+    // }
+
+
+    public function spPayments($order_id=null)
+
+    {
+
+        if (isset($order_id)) {
+                    $append = "order_id='$order_id'";
+                } else {
+                    $append = '';
+                }
+     
+        $table1 = "orders";
+        $table2 = "order_details";
+        $table3 = "options";
+        $table4 = "sp_pack";
+        $joinOn1 = "orders.order_id = order_details.order_id";
+        $joinOn2 = "order_details.option_id = options.option_id ";
+        $joinOn3 = "options.pack_id = sp_pack.pack_id ";
+        $where = $append;
+        $order = "sp_id";
+        $limit = "";
+  
+
+        return $this->getFourJoin($table1, $table2, $table3,  $table4,$joinOn1, $joinOn2, $joinOn3, $where,$order, $limit);
+    }
 }

@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 session_start();
 
@@ -186,8 +186,21 @@ if (isset($_SESSION['email'])) {
                     echo "<td>" . $row["sp_email"] . "</td>";
                     echo "<td>" . $row["sp_type_id"] . "</td>";
                     echo "<td><a href=" . BASEURL . "/public/" . $row["document"] . ">View</a></a></td>";
-                    echo "<td>" . $row["status"] . "</td>";
-                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewSp/". $row["sp_id"] . "><input type='button' value='Verify' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
+                    
+
+                    if($row['status'] == 1){
+                        echo "<td>Verified</td>";
+
+                    }else{
+                    
+                    echo "<td>Not Verified</td>";
+                    
+                    }
+                    
+                    
+                    
+                    
+                    echo "<td class='warning'><a href=" . BASEURL . "/user/viewSp/". $row["sp_id"] . "><input type='button' class='button-view' value='View' class='login-btn btn-primary btn' style='padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;'></a></td>";
                     echo "</tr>";
                     echo "</tbody>";
                 }
